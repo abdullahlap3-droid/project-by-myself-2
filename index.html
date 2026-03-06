@@ -277,16 +277,16 @@
     </div>
 </section> -->
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-12">
 
        
 <footer>
     <div class="list-4">
-        <!-- <div class="inner-link logo">
+        <div class="inner-link logo">
               <h1 class="footer-logo">𝔗𝔥𝔢𝔞𝔱𝔢𝔯𝔰𝔥𝔬𝔴<span>.𝔠𝔬𝔪</span></h1>
-        </div> -->
+        </div>
         <div class="inner-link">
             <ul>
                 <li><a href="">adding later</a></li>
@@ -314,7 +314,7 @@
 </footer>
  </div>
     </div>
-</div>
+</div> -->
 
 
 
@@ -381,14 +381,16 @@
                     for (let item of json) {
                         html += `
         <div class="shows-card">
+<div class="carder">
             <a href="">
                 <img src="${item.image}" class="img-fluid">
                 <div class="card-text">
-                    <h4>${item.title}</h4>
+                    <h6>${item.title}</h6>
                     <p>${item.description}</p>
                     
                 </div>
             </a>
+            </div>
         </div>`;
                     }
 

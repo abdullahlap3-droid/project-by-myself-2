@@ -1,17 +1,17 @@
 [
   {
-    "albumId": 1,
-    "image": "./assets/images/1.jpeg",
+    
     "id": 1,
-    "title": "accusamus beatae ad facilis cum similique qui sunt",
-    "url": "https://via.placeholder.com/600/92c952",
-    "description": "A beautiful image of a theatre show.",
+    "image": "./assets/images/1.jpeg",
+    "title": "EAST",
+    "description": "Steven Berkoff’s witty and brutal portrayal of growing up in London’s East End follows the lives of a working-class family",
+    
     "thumbnailUrl": "https://via.placeholder.com/150/92c952"
   },
   {
     "albumId": 1,
     "id": 2,
-    "image": "./assets/artist-2.svg",
+    "image": "../assets/images/1.jpeg",
     "title": "reprehenderit est deserunt velit ipsam",
     "url": "https://via.placeholder.com/600/771796",
     "thumbnailUrl": "https://via.placeholder.com/150/771796"
@@ -19,7 +19,7 @@
   {
     "albumId": 1,
     "id": 3,
-    "image": "./assets/artist-3.svg",
+    "image": "../assets/images/1.jpeg",
     "title": "officia porro iure quia iusto qui ipsa ut modi",
     "url": "https://via.placeholder.com/600/24f355",
     "thumbnailUrl": "https://via.placeholder.com/150/24f355"
@@ -27,7 +27,7 @@
   {
     "albumId": 1,
     "id": 4,
-    "image": "./assets/artist-4.svg",
+    "image": "../assets/images/1.jpeg",
     "title": "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
     "url": "https://via.placeholder.com/600/d32776",
     "thumbnailUrl": "https://via.placeholder.com/150/d32776"
@@ -35,7 +35,7 @@
   {
     "albumId": 1,
     "id": 5,
-    "image": "./assets/artist-5.svg",
+    "image": "../assets/images/1.jpeg",
     "title": "natus nisi omnis corporis facere molestiae rerum in",
     "url": "https://via.placeholder.com/600/f66b97",
     "thumbnailUrl": "https://via.placeholder.com/150/f66b97"
