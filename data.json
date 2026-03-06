@@ -1,10 +1,11 @@
 [
   {
     "albumId": 1,
-    "image": "./assets/artist-1.svg",
+    "image": "./assets/images/1.jpeg",
     "id": 1,
     "title": "accusamus beatae ad facilis cum similique qui sunt",
     "url": "https://via.placeholder.com/600/92c952",
+    "description": "A beautiful image of a theatre show.",
     "thumbnailUrl": "https://via.placeholder.com/150/92c952"
   },
   {

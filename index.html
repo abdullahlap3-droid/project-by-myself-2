@@ -105,7 +105,29 @@
             </div>
         </div>
 
-        <!-- cards -->
+       <!-- top rated shows -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container">
+                    <div class="top-rated">
+                        <h1>𝐓𝐨𝐩 𝐑𝐚𝐭𝐞𝐝 𝐒𝐡𝐨𝐰𝐬</h1>
+                        <p>Discover the most acclaimed theatre productions, celebrated for their exceptional performances and storytelling.</p>
+                    </div>
+                    </div>
+                     <div class="slider-space">
+
+            <section class="shows-slider"></section>
+            <section class="shows-slider"></section>
+        </div>
+                </div>
+            </div>
+        </div>
+<!-- cards -->
+
+
+
         <section class="quickaccess-card">
 
             <div class="container">
@@ -157,11 +179,7 @@
             </div>
         </section>
 
-        <div class="slider-space">
-
-            <section class="shows-slider"></section>
-            <section class="shows-slider"></section>
-        </div>
+       
 
         <!-- Most trending shows -->
 
@@ -259,10 +277,17 @@
     </div>
 </section> -->
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
 
+       
 <footer>
-    <div class="4-list">
-        <div class="5-inner-list">
+    <div class="list-4">
+        <!-- <div class="inner-link logo">
+              <h1 class="footer-logo">𝔗𝔥𝔢𝔞𝔱𝔢𝔯𝔰𝔥𝔬𝔴<span>.𝔠𝔬𝔪</span></h1>
+        </div> -->
+        <div class="inner-link">
             <ul>
                 <li><a href="">adding later</a></li>
                 <li><a href="">adding later</a></li>
@@ -271,7 +296,7 @@
                 <li><a href="">adding later</a></li>
             </ul>
         </div>
-        <div class="5-inner-list">
+        <div class="inner-link">
             <ul>
                 <li><a href="">adding later</a></li>
                 <li><a href="">adding later</a></li>
@@ -280,22 +305,16 @@
                 <li><a href="">adding later</a></li>
             </ul>
         </div>
-        <div class="5-inner-list">
-            <ul>
-                <li><a href="">adding later</a></li>
-                <li><a href="">adding later</a></li>
-                <li><a href="">adding later</a></li>
-                <li><a href="">adding later</a></li>
-                <li><a href="">adding later</a></li>
-            </ul>
+        <div class="accounts-links">
+            <a href="">Facebook</a>
+            <a href="">Instagram</a>
+            <a href="">Twitter</a>
         </div>
-    </div>
-    <div class="accounts">
-        <a href="">Facebook</a>
-        <a href="">Instagram</a>
-        <a href="">Twitter</a>
     </div>
 </footer>
+ </div>
+    </div>
+</div>
 
 
 
@@ -364,9 +383,11 @@
         <div class="shows-card">
             <a href="">
                 <img src="${item.image}" class="img-fluid">
-                <h4>${item.title}</h4>
-                <p>${item.description}</p>
-                <button>About this show</button>
+                <div class="card-text">
+                    <h4>${item.title}</h4>
+                    <p>${item.description}</p>
+                    
+                </div>
             </a>
         </div>`;
                     }
