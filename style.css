@@ -146,6 +146,7 @@ a {
             .logo {
                 position: static;
                 margin-bottom: 10px;
+                margin-left: 0px;
             }
             .checking  {
                 font-size: 10px;
@@ -346,14 +347,16 @@ a {
         }
         .most-trending-text{
             margin: 10px;
+            margin-top: 30px;
             margin-bottom: 30px;
         }
         .most-trending{
-            box-shadow: inset 0px 0px 20px 2px rgba(239, 93, 93, 0.244);
+            margin-top: 60px;
+            /* box-shadow: 10px 0px 20px 2px rgba(239, 93, 93, 0.244); */
              /* border: 2px solid red; */
              padding: 20px;
              border-radius: 12px;
-             background-color: rgba(65, 58, 58, 0.473);
+             /* background-color: rgba(50, 45, 45, 0.635); */
         }
        
         .box-1{
@@ -383,7 +386,7 @@ a {
             color: #e83535;
             font-size: 40px;
         }
-        footer .list-4 {
+        /* footer .list-4 {
             display: flex;
             gap: 200px;
             align-items: center;
@@ -395,9 +398,81 @@ a {
             color: white;
         }
         .footer-logo {
-            /* color: red; */
+            color: red;
             font-size: 24px;
             right: 100px;
             position: relative;
             right: 500px;
+        } */
+
+        .quick-card{
+            /* box-shadow: outset 10px 10px 20px 20px rgba(239, 93, 93, 0.244); */
+            box-shadow: 5px 5px 20px 2px rgba(255, 70, 70, 0.402);
+            /* box-shadow: inset 10px 10px 20px 2px rgba(255, 212, 212, 0.699); */
+            /* border: 2px solid red; */
+            padding: 20px;
+            /* border-radius: 12px; */
+            color: rgb(254, 254, 254);
+            background-color: rgb(5, 4, 4);
+        }
+        .quick-card p{
+            font-size: 12px;
+        }
+        .quick-card img{
+            /* box-shadow: 5px 0px 10px 2px rgba(255, 212, 212, 0.699); */
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            opacity: 1;
+            border-radius: 13/px;
+        }
+        .onbutton{
+            padding: 8px 17px;
+            background-color: #e83535;
+            color: white;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+           footer{
+background-color: rgb(0, 0, 0);
+color: white;
+display: flex;
+height: 200px;
+justify-content: space-around;
+align-items: center;
+        }
+        a{
+            color: rgb(255, 240, 240);
+            text-decoration: none;
+
+        }
+        .nav-4-link ul li{
+            list-style: none;
+            margin: 10px;
+            
+        }
+        .nav-4-link ul li a:hover{
+            color: red;
+            transition: 0.3s;
+        }
+        .nav-4-link ul{
+            gap: 20px;
+        }
+        @media (max-width:687px) {
+            footer{
+                flex-direction: column;
+                height: auto;
+                align-items: start;
+                /* margin-left: 20px; */
+            }
+            .footer-logo,.accounts{
+                margin: 30px;
+            }
+        }
+        @media (max-width:331px) {
+            .footer-navigation{
+                position: relative;
+                right: 30px;
+            }
+            
         }
