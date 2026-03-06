@@ -113,15 +113,23 @@
                     <div class="container">
                     <div class="top-rated">
                         <h1>𝐓𝐨𝐩 𝐑𝐚𝐭𝐞𝐝 𝐒𝐡𝐨𝐰𝐬</h1>
-                        <p>Discover the most acclaimed theatre productions, celebrated for their exceptional performances and storytelling.</p>
+                        
+                        <p>Discover the most acclaimed theatre productions, celebrated for their <span style="color: red;">𝔢𝔵𝔠𝔢𝔭𝔱𝔦𝔬𝔫𝔞𝔩 𝔭𝔢𝔯𝔣𝔬𝔯𝔪𝔞𝔫𝔠𝔢𝔰</span> and storytelling.</p>
+                    <div class="straight-line"></div>
                     </div>
                     </div>
                      <div class="slider-space">
 
             <section class="shows-slider"></section>
-            <section class="shows-slider"></section>
+            <!-- <section class="shows-slider"></section> -->
+             <!-- <div class="straight-line"></div> -->
+              <div class="d-flex align-items-center justify-content-center">
+             <button class="see-more">See More</button>
+             </div>
+             <!-- <div class="straight-line"></div> -->
         </div>
                 </div>
+
             </div>
         </div>
 <!-- cards -->
@@ -134,7 +142,8 @@
                 <div class="row">
                     <div class="col-12">
                         <h1 class="quick-acc">𝐐𝐮𝐢𝐜𝐤 𝐀𝐜𝐜𝐞𝐬𝐬</h1>
-                        <p>𝐉𝐮𝐦𝐩 𝐪𝐮𝐢𝐜𝐤𝐥𝐲 𝐢𝐧𝐭𝐨 𝐨𝐮𝐫 𝐦𝐨𝐬𝐭 𝐩𝐨𝐩𝐮𝐥𝐚𝐫 <span class="fs-4" style="color: red;"> 𝔗𝔥𝔢𝔞𝔱𝔢𝔯𝔰𝔥𝔬𝔴</span> 𝐚𝐧𝐝 𝐟𝐞𝐚𝐭𝐮𝐫𝐞𝐬.</p>
+                        <p>𝐉𝐮𝐦𝐩 𝐪𝐮𝐢𝐜𝐤𝐥𝐲 𝐢𝐧𝐭𝐨 𝐨𝐮𝐫 𝐦𝐨𝐬𝐭 𝐩𝐨𝐩𝐮𝐥𝐚𝐫 <span  style="color: red;"> 𝔗𝔥𝔢𝔞𝔱𝔢𝔯𝔰𝔥𝔬𝔴</span> 𝐚𝐧𝐝 𝐟𝐞𝐚𝐭𝐮𝐫𝐞𝐬.</p>
+                        <div class="straight-line"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -184,7 +193,7 @@
         <!-- Most trending shows -->
 
 
-        <section class="most-trending" style="border: 2px solid red; margin-top: 20px; padding: 20px;">
+        <section class="most-trending" style=" margin-top: 20px; padding: 20px;">
             <div class="container">
                 <div class="most-trending-text">
                     <h1>Most trending</h1>
@@ -193,7 +202,7 @@
                 <div class="straight-line"></div>
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
-                         <img src="./assets/artist-1.svg" alt="" style="object-fit:inherit; height: 100%; width: 100%;">
+                         <img src="./assets/37637484.jpg" alt="" style="object-fit:inherit; height: 100%; width: 100%;">
 
                     </div>
                     <div class="col-md-8 col-sm-12 famous-text">
@@ -210,7 +219,7 @@
                 <div class="straight-line"></div>
                   <div class="row">
                     <div class="col-md-4 col-sm-12 mt-3">
-                         <img src="./assets/artist-1.svg" alt="" style="object-fit:inherit; height: 100%; width: 100%;">
+                         <img src="./assets/37635237.jpg" alt="" style="object-fit:inherit; height: 100%; width: 100%;">
 
                     </div>
                     <div class="col-md-8 col-sm-12 famous-text">
@@ -218,7 +227,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quae, blanditiis dolore
                             ratione fugiat asperiores assumenda dicta ducimus officiis at!</p>
                         <span></span>
-                        <span style="width: 70%;"></span>
+                        <span style="width: 70%; color: white;"></span>
                         <span style="width: 50%;"></span>
                         <button>About this show</button>
 
@@ -226,7 +235,9 @@
                 </div>
             </div>
             <div class="straight-line"></div>
-            <button class="see-more">See More</button>
+             <div class="d-flex align-items-center justify-content-center">
+             <button class="see-more">See More</button>
+             </div>
 
 
             
@@ -394,9 +405,9 @@
         </div>`;
                     }
 
-                    const loopHtml = html + html;
+                    let loopHtml = html + html;
                     shows_sections.forEach(section => {
-                        section.innerHTML = loopHtml;
+                       section.innerHTML = loopHtml;
                     });
 
                 })
