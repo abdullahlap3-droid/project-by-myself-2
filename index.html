@@ -375,7 +375,7 @@
                 .then(response => response.json())
                 .then(json => {
 
-                    let shows_section = document.querySelector('.shows-slider');
+                    let shows_sections = document.querySelectorAll('.shows-slider');
                     let html = '';
 
                     for (let item of json) {
@@ -394,7 +394,10 @@
         </div>`;
                     }
 
-                    shows_section.innerHTML = html
+                    const loopHtml = html + html;
+                    shows_sections.forEach(section => {
+                        section.innerHTML = loopHtml;
+                    });
 
                 })
             //   .catch(error => console.log("Error:", error));

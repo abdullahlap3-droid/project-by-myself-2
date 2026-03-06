@@ -161,12 +161,13 @@ a {
 
         .shows-slider {
             display: flex;
-            overflow-x: auto;
-            /* overflow: wrap; */
+            overflow: hidden;
             gap: 20px;
-            
+            width: max-content;
             padding: 20px;
             transition: 0.3s;
+            animation: move 20s linear infinite;
+            will-change: transform;
         }
 
         .slider-space {
@@ -211,14 +212,9 @@ a {
             color: rgb(252, 251, 251);
             transition: 0.3s;
         }
-        .shows-slider{
-
-            animation: move 5s linear infinite;
-        }
         .slider-space:hover .shows-slider { animation-play-state: paused; }
         .shows-card{
-           
-            
+            flex: 0 0 auto;
         }
         .shows-card:hover{
             transform: scale(1.1);
@@ -267,14 +263,10 @@ a {
     transition: 0.3s;
 }
 .shows-card .carder:hover{
-            animation-play-state: paused;
             transform: scale(1.1);
             transition: 0.5s;
             /* display: contents; */
             /* position: static; */
-            animation-play-state: paused;
-
-
             /* display: block; */
             /* animation: name 5s linear infinite; */
              /* box-shadow: 0px 0px 20px 2px rgba(239, 93, 93, 0.244); */
