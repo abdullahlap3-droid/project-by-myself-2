@@ -477,4 +477,25 @@ align-items: center;
             
         }
         
-        
+/* basic extra styling for home cards (same design, only clean look) */
+.card{
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card .card-body{
+    background-color: #eee9d2;
+}
+
+.card .card-title{
+    font-weight: bold;
+}
+
+.card .card-text{
+    font-size: 12px;
+}
+
+.footer-accounts a{
+    margin-right: 10px;
+}
