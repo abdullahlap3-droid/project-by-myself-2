@@ -1,96 +1,570 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        footer{
-background-color: rgb(0, 0, 0);
-color: white;
-display: flex;
-height: 200px;
-justify-content: space-around;
-align-items: center;
-        }
-        a{
-            color: rgb(255, 240, 240);
-            text-decoration: none;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theatre Show</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        }
-        li{
-            list-style: none;
-            margin: 10px;
-            
-        }
-        .nav-4-link ul li a:hover{
-            color: red;
-            transition: 0.3s;
-        }
-        ul{
-            gap: 20px;
-        }
-        @media (max-width:687px) {
-            footer{
-                flex-direction: column;
-                height: auto;
-                align-items: start;
-                /* margin-left: 20px; */
-            }
-            .footer-logo,.accounts{
-                margin: 30px;
-            }
-        }
-        @media (max-width:331px) {
-            .footer-navigation{
-                position: relative;
-                right: 30px;
-            }
-            
-        }
+    :root {
+      --page-bg: #cfd0d2;
+      --dark: #050607;
+      --dark-2: #0b0e12;
+      --cream: #f1ecd8;
+      --cream-2: #eee9d2;
+      --red: #ee3e35;
+    }
 
-    </style>
+    body {
+      background: var(--page-bg);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      padding: 0;
+    }
+
+    .site {
+      width: 100%;
+      margin: 0 auto;
+      min-height: 100vh;
+      background: var(--dark);
+      box-shadow: none;
+    }
+
+    .topbar {
+      min-height: 62px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0 18px;
+      gap: 16px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 230px;
+      gap: 10px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .brand-mark { font-size: 28px; color: #f2e0a5; }
+    .brand span { font-weight: 400; font-size: 12px; color: #d4d4d4; }
+
+    .menu-btn {
+      margin-left: auto;
+      display: none;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .menu-btn span {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    .menu-btn span::before,
+    .menu-btn span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      transition: 0.2s;
+    }
+
+    .menu-btn span::before { top: -6px; }
+    .menu-btn span::after { top: 6px; }
+    .menu-btn.is-open span { background: transparent; }
+    .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
+    .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
+
+    .nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 12px;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      background: var(--red);
+    }
+
+    .hero {
+      min-height: 390px;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.45) 48%, rgba(0, 0, 0, 0.7) 100%),
+        url("assets/english/image (2).jpeg") center 22%/cover no-repeat;
+      padding: 68px 74px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 4.1vw, 62px);
+      line-height: 1.02;
+      max-width: 710px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: #d6dbe3;
+      font-size: 24px;
+      max-width: 640px;
+    }
+
+    .hero .cta {
+      align-self: flex-end;
+      background: var(--red);
+      color: #fff;
+      border: 0;
+      border-radius: 6px;
+      padding: 12px 20px;
+      font-size: 25px;
+      font-weight: 800;
+      box-shadow: 0 8px 24px rgba(238, 62, 53, 0.45);
+      cursor: pointer;
+    }
+
+    .cream {
+      background: var(--cream);
+      color: #181818;
+      padding: 28px 34px;
+    }
+
+    .title {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .trending {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .trend-card {
+      background: var(--cream-2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .trend-card img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .trend-card b { font-size: 14px; display: block; margin-bottom: 4px; }
+    .trend-card small { color: #5d6063; font-size: 11px; display: block; }
+
+    .pill-btn {
+      border: 0;
+      background: #5f7485;
+      color: #fff;
+      border-radius: 6px;
+      padding: 9px 16px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .dark-row {
+      background: var(--dark-2);
+      padding: 26px 34px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .upcoming {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .up-card {
+      border: 1px solid #3e6075;
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      min-height: 88px;
+    }
+
+    .up-card:nth-child(3) { border-color: #c33030; }
+    .up-card img {
+      width: 62px;
+      height: 62px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .up-card b { font-size: 13px; display: block; margin-bottom: 2px; }
+    .up-card small { color: #b7c1ce; font-size: 11px; display: block; }
+
+    .artists-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 1.6fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .critics h3,
+    .featured h3,
+    .recognized h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .quote-mark {
+      color: var(--red);
+      font-size: 50px;
+      line-height: 0.5;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .critics p { font-size: 13px; line-height: 1.6; color: #3c3c3c; }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      text-align: center;
+    }
+
+    .artist img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #2d3c51;
+    }
+
+    .artist:nth-child(1) img,
+    .artist:nth-child(3) img { border-color: #d84139; }
+
+    .artist span {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: #2d2d2d;
+      font-weight: 700;
+    }
+
+    .recognized .icons {
+      display: flex;
+      gap: 10px;
+      margin: 8px 0 14px;
+    }
+
+    .badge {
+      width: 52px;
+      height: 64px;
+      background: #e44b41;
+      color: #fff;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .recognized button {
+      border: 0;
+      background: var(--red);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .footer {
+      background: #050608;
+      padding: 26px 34px 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer h3 {
+      font-size: 38px;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.3fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .footer a {
+      color: #c9cfdb;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .footer a:first-child { color: #f4574f; }
+
+    .posters {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .posters img {
+      width: 72px;
+      height: 98px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .sub-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: #aab3c1;
+    }
+
+    @media (max-width: 1000px) {
+      .trending { grid-template-columns: 1fr; }
+      .upcoming { grid-template-columns: 1fr 1fr; }
+      .artists-wrap { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .posters { justify-content: flex-start; flex-wrap: wrap; }
+      .hero .cta { align-self: flex-start; }
+    }
+
+    @media (max-width: 900px) {
+      .menu-btn { display: inline-flex; }
+      .nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #0a0a0a;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 8px;
+      }
+      .nav.is-open { display: flex; }
+      .nav a {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero { padding: 26px 16px; min-height: 290px; }
+      .hero p { font-size: 16px; }
+      .hero .cta { font-size: 16px; }
+      .title { font-size: 28px; }
+      .upcoming { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
 </head>
 <body>
-   
-    <footer>
+  <main class="site">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">*</div>
+        <div>Theatre<br>Show<span>.com</span></div>
+      </div>
+      <button class="menu-btn" type="button" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+      <ul class="nav">
+        <li><a class="active" href="#">𝐻𝑜𝓂𝑒</a></li>
+        <li><a href="#">𝒔𝒉𝒐𝒘𝒔</a></li>
+        <li><a href="#">𝑨𝒖𝒅𝒊𝒕𝒐𝒓𝒊𝒖𝒎</a></li>
+        <li><a href="#">𝑻𝒉𝒆𝒂𝒕𝒆𝒓 𝒔𝒑𝒆𝒂𝒌</a></li>
+        <li><a href="#">𝑨𝒓𝒕𝒊𝒔𝒕</a></li>
+        <li><a href="#">𝑨𝒘𝒂𝒓𝒅𝒔</a></li>
+        <li><a href="#">𝑴𝒂𝒈𝒂𝒛𝒊𝒏𝒆𝒔</a></li>
+        <li><a href="#">𝑸𝒖𝒆𝒓𝒊𝒆𝒔</a></li>
+      </ul>
+    </header>
+
+    <section class="hero">
+      <h1>EXPERIENCE THE MAGIC<br>OF LIVE THEATRE</h1>
+      <p>Discover shows in Urdu, Hindi, and English across top venues.</p>
+      <button class="cta">EXPLORE SHOWS NOW!</button>
+    </section>
+
+    <section class="cream">
+      <h2 class="title">CURRENTLY TRENDING</h2>
+      <div class="trending">
+        <div class="trend-card">
+          <img src="assets/english/image (1).jpeg" alt="show one">
+          <div><b>Show Elce Rlevy</b><small>Thelaw 006</small><small>Riews Stineseets qhbo</small></div>
+        </div>
+        <div class="trend-card">
+          <img src="assets/english/image (3).jpeg" alt="show two">
+          <div><b>Tesave FHe Scale</b><small>Nose 303</small><small>Snowe Gloes 2 loxees,3 nosee</small></div>
+        </div>
+        <button class="pill-btn">View Details</button>
+        <button class="pill-btn">English Showe</button>
+      </div>
+    </section>
+
+    <section class="dark-row">
+      <h2 class="title">UPCOMING PRODUCTIONS</h2>
+      <div class="upcoming">
+        <article class="up-card">
+          <img src="assets/english/Comedy.png" alt="upcoming 1">
+          <div><b>Niteo Rtove</b><small>Flaeee teow? l fsaes)</small><small>Class / 001</small></div>
+        </article>
+        <article class="up-card">
+          <img src="assets/english/image.jpeg" alt="upcoming 2">
+          <div><b>Rivog Selstes</b><small>2007.0</small><small>2008-17.03.25</small></div>
+        </article>
+        <article class="up-card">
+          <img src="assets/english/1.jpeg" alt="upcoming 3">
+          <div><b>Riiea Rde</b><small>Tec10</small><small>2009-17 A3895</small></div>
+        </article>
+        <article class="up-card">
+          <img src="assets/english/image (2).jpeg" alt="upcoming 4">
+          <div><b>Wile Ses</b><small>76e0 Cu0</small><small>Seen | Dbeesy | Slenoe</small></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cream">
+      <div class="artists-wrap">
+        <article class="critics">
+          <h3>ARTIST GALLERY</h3>
+          <span class="quote-mark">"</span>
+          <h3>WHAT CRITICS<br>ARE SAYING</h3>
+          <p>
+            The overall sessions are too iconic and able frame width drive the last
+            tendency in top venue stories. total electricity thickened course and
+            venues this swing has tiny rotate the artist.
+          </p>
+          <span class="quote-mark" style="text-align:right;">"</span>
+        </article>
+
+        <article class="featured">
+          <h3>OUR FEATURED ARTISTS</h3>
+          <div class="featured-grid">
+            <div class="artist"><img src="assets/english/image (1).jpeg" alt=""><span>Rons Fivy</span></div>
+            <div class="artist"><img src="assets/english/image.jpeg" alt=""><span>Riostaral</span></div>
+            <div class="artist"><img src="assets/english/image (3).jpeg" alt=""><span>Nisob8</span></div>
+            <div class="artist"><img src="assets/english/1.jpeg" alt=""><span>Nooht Eraro</span></div>
+            <div class="artist"><img src="assets/english/image (2).jpeg" alt=""><span>Gunithx</span></div>
+          </div>
+        </article>
+
+        <article class="recognized">
+          <h3>RECOGNIZED</h3>
+          <h3>EXCELLENCE</h3>
+          <div class="icons">
+            <div class="badge">T</div>
+            <div class="badge">T</div>
+          </div>
+          <button>View All Artists</button>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h3>MORE LIKE THIS</h3>
+      <div class="footer-grid">
         <div>
-<div class="footer-logo">
-    <h1>logo</h1>
-    <p>Lorem ipsum dolor sit.</p>
-</div>
-</div>
-<div class="footer-navigation" style="display: flex; align-items: center;justify-content: space-between;">
-<div class="nav-4-link">
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-    </ul>
-</div>
-<div class="nav-4-link">
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-    </ul>
-</div>
-<div class="nav-4-link">
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Home</a></li>
-    </ul>
-</div>
-</div>
-<div class="footer-accounts">
-    <a href="#">Account</a>
-    <a href="#">Account</a>
-    <a href="#">Account</a>
-</div>
+          <a href="#">Home</a>
+          <a href="#">Sneones Riotonibes</a>
+          <a href="#">Casternuie</a>
+          <a href="#">Sent vaer dsl foes</a>
+        </div>
+        <div>
+          <a href="#">Concel Us</a>
+          <a href="#">Gallect the Megctions</a>
+          <a href="#">FAQs</a>
+          <a href="#">Privery Polity</a>
+        </div>
+        <div>
+          <a href="#">Seled</a>
+          <a href="#">Faqs</a>
+          <a href="#">Cecolies</a>
+          <a href="#">Direction ot Frolly</a>
+        </div>
+        <div>
+          <a href="#">Riom3</a>
+          <a href="#">Ecoutes</a>
+          <a href="#">Metafution</a>
+          <a href="#">Fooby</a>
+        </div>
+        <div class="posters">
+          <img src="assets/english/Comedy.png" alt="">
+          <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
+          <img src="assets/english/image (3).jpeg" alt="">
+          <img src="assets/english/image.jpeg" alt="">
+        </div>
+      </div>
+      <div class="sub-footer">
+        <div>Contact Us  Queries  Cunlies</div>
+        <div>Feedback  Queries  o o o</div>
+      </div>
     </footer>
+  </main>
+
+  <script src="jquery-4.0.0.min.js"></script>
+  <script>
+    $(function () {
+      $(".menu-btn").on("click", function () {
+        $(this).toggleClass("is-open");
+        $(".nav").toggleClass("is-open");
+      });
+    });
+  </script>
 </body>
 </html>
+

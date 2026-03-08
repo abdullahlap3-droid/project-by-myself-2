@@ -1,0 +1,749 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist | Theatre Show</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --page-bg: #cfd0d2;
+      --dark: #050607;
+      --dark-2: #0b0e12;
+      --cream: #f1ecd8;
+      --cream-2: #ece5cd;
+      --red: #ee3e35;
+      --muted: #9ea7b4;
+      --line: rgba(255, 255, 255, 0.08);
+    }
+
+    body {
+      background: var(--page-bg);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    .site {
+      width: 100%;
+      min-height: 100vh;
+      background: var(--dark);
+    }
+
+    .topbar {
+      min-height: 62px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      padding: 0 18px;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 230px;
+      gap: 10px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .brand-mark { font-size: 28px; color: #f2e0a5; }
+    .brand span { font-weight: 400; font-size: 12px; color: #d4d4d4; }
+
+    .menu-btn {
+      margin-left: auto;
+      display: none;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .menu-btn span {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    .menu-btn span::before,
+    .menu-btn span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      transition: 0.2s;
+    }
+
+    .menu-btn span::before { top: -6px; }
+    .menu-btn span::after { top: 6px; }
+    .menu-btn.is-open span { background: transparent; }
+    .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
+    .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
+
+    .nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 12px;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      background: var(--red);
+    }
+
+    .hero-band {
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.84), rgba(7, 11, 23, 0.68)),
+        url("assets/english/image (1).jpeg") center/cover no-repeat;
+      border-bottom: 1px solid var(--line);
+      padding: 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      background: rgba(10, 16, 28, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      padding: 28px;
+      border-radius: 12px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(32px, 4vw, 58px);
+      line-height: 1.04;
+      margin-bottom: 10px;
+    }
+
+    .hero-copy p {
+      color: #d5ddeb;
+      font-size: clamp(14px, 1.5vw, 20px);
+      margin-bottom: 18px;
+      max-width: 700px;
+    }
+
+    .hero-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-chips span {
+      background: rgba(238, 62, 53, 0.18);
+      color: #ffd8d5;
+      border: 1px solid rgba(238, 62, 53, 0.45);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    .spotlight {
+      background: rgba(5, 8, 16, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .spotlight img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .spotlight-body {
+      padding: 12px;
+    }
+
+    .spotlight-body h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .spotlight-body p {
+      color: #b8c2d1;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .spotlight-body button {
+      border: 0;
+      background: var(--red);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 6px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .artist-section {
+      background: var(--cream);
+      color: #1a1a1a;
+      padding: 20px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      border-left: 6px solid var(--red);
+      padding-left: 10px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(24px, 3vw, 42px);
+    }
+
+    .section-head span {
+      color: #545c67;
+      font-size: 13px;
+    }
+
+    .lineup {
+      background: var(--cream-2);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .lineup-card {
+      text-align: center;
+      background: #101722;
+      color: #fff;
+      border-radius: 10px;
+      border: 1px solid #2a3850;
+      padding: 10px 8px;
+    }
+
+    .lineup-card img {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 3px solid #e53e35;
+      object-fit: cover;
+      margin-bottom: 8px;
+    }
+
+    .lineup-card h4 {
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .lineup-card p {
+      color: #b7c2d3;
+      font-size: 11px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 14px;
+    }
+
+    .gallery {
+      margin-top: 14px;
+      background: var(--cream-2);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .gallery h3 {
+      background: #111821;
+      color: #fff;
+      padding: 10px 12px;
+      font-size: 16px;
+    }
+
+    .gallery-grid {
+      padding: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #0e1624;
+      border: 1px solid #2a3850;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-item span {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      background: rgba(0, 0, 0, 0.62);
+      color: #fff;
+      font-size: 11px;
+      padding: 4px 7px;
+      border-radius: 999px;
+    }
+
+    .timeline,
+    .stack {
+      background: var(--cream-2);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+    }
+
+    .timeline h3,
+    .stack h3 {
+      background: #111821;
+      color: #fff;
+      padding: 10px 12px;
+      font-size: 16px;
+    }
+
+    .timeline-list {
+      padding: 10px 12px;
+    }
+
+    .time-row {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 13px;
+    }
+
+    .time-row:last-child { border-bottom: 0; }
+    .time-row b { color: #1d2330; }
+    .time-row p { color: #4f5660; }
+
+    .stack-body {
+      padding: 10px 12px;
+    }
+
+    .stack-item {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .stack-item:last-child { border-bottom: 0; }
+    .stack-item b { display: block; color: #1d2330; margin-bottom: 2px; }
+
+    .dark-footer-band {
+      background: var(--dark-2);
+      border-top: 1px solid var(--line);
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .category-profiles {
+      background: var(--cream);
+      padding: 0 20px 20px;
+      color: #171717;
+    }
+
+    .profile-category {
+      margin-top: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f4efdc, #efe8cf);
+    }
+
+    .profile-head {
+      background: #111821;
+      color: #fff;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .profile-head h3 {
+      font-size: 17px;
+    }
+
+    .profile-head span {
+      font-size: 12px;
+      color: #b2bdcf;
+    }
+
+    .profile-grid {
+      padding: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .profile-card {
+      background: #0f1520;
+      color: #fff;
+      border: 1px solid #253349;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .profile-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-body {
+      padding: 9px;
+    }
+
+    .profile-body h4 {
+      font-size: 14px;
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .profile-body p {
+      color: #b9c3d2;
+      font-size: 11px;
+      margin-bottom: 6px;
+    }
+
+    .profile-meta {
+      font-size: 11px;
+      color: #dbe4f2;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stat-box {
+      border: 1px solid #27374d;
+      border-radius: 10px;
+      padding: 12px;
+      background: #0f1726;
+    }
+
+    .stat-box h4 {
+      font-size: 13px;
+      color: #c9d2df;
+      margin-bottom: 6px;
+    }
+
+    .stat-box p {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .stat-box small {
+      color: #9fb0c7;
+      font-size: 11px;
+    }
+
+    .footer {
+      background: #050608;
+      padding: 18px 20px;
+      border-top: 1px solid var(--line);
+      color: #c9cfdb;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    @media (max-width: 1100px) {
+      .lineup { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .content-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .profile-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 900px) {
+      .menu-btn { display: inline-flex; }
+      .nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #0a0a0a;
+        border-top: 1px solid var(--line);
+        margin-top: 8px;
+      }
+      .nav.is-open { display: flex; }
+      .nav a {
+        border-bottom: 1px solid var(--line);
+        border-radius: 0;
+      }
+      .hero-grid { grid-template-columns: 1fr; }
+      .dark-footer-band { grid-template-columns: 1fr; }
+      .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .hero-band { padding: 14px; }
+      .hero-copy { padding: 16px; }
+      .artist-section { padding: 10px; }
+      .lineup { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .time-row { grid-template-columns: 1fr; gap: 4px; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .profile-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="site">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">*</div>
+        <div>Theatre<br>Show<span>.com</span></div>
+      </div>
+      <button class="menu-btn" type="button" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shows.html">Shows</a></li>
+        <li><a href="auditorium.html">Auditorium</a></li>
+        <li><a href="theater-speak.html">Theater Speak</a></li>
+        <li><a class="active" href="artist.html">Artist</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a href="magazines.html">Magazines</a></li>
+        <li><a href="queries.html">Queries</a></li>
+      </ul>
+    </header>
+
+    <section class="hero-band">
+      <div class="hero-grid">
+        <article class="hero-copy">
+          <h1>Artists Who Define the Stage</h1>
+          <p>Meet top performers, directors, and creators shaping contemporary theatre through craft, voice, and presence.</p>
+          <div class="hero-chips">
+            <span>Actors</span>
+            <span>Directors</span>
+            <span>Writers</span>
+            <span>Designers</span>
+            <span>Mentors</span>
+          </div>
+        </article>
+        <article class="spotlight">
+          <img src="assets/english/image (2).jpeg" alt="artist spotlight">
+          <div class="spotlight-body">
+            <h3>Spotlight: Areeba Khan</h3>
+            <p>Recognized for expressive character arcs and precision movement in ensemble scenes.</p>
+            <button type="button">View Full Profile</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="artist-section">
+      <div class="section-head">
+        <h2>Core Ensemble</h2>
+        <span>featured this month</span>
+      </div>
+
+      <div class="lineup">
+        <article class="lineup-card"><img src="assets/english/image (1).jpeg" alt=""><h4>Rania Ahmed</h4><p>Lead Actor</p></article>
+        <article class="lineup-card"><img src="assets/english/image.jpeg" alt=""><h4>Hamza Qureshi</h4><p>Director</p></article>
+        <article class="lineup-card"><img src="assets/english/image (3).jpeg" alt=""><h4>Misha Tariq</h4><p>Composer</p></article>
+        <article class="lineup-card"><img src="assets/english/1.jpeg" alt=""><h4>Saad Noman</h4><p>Writer</p></article>
+        <article class="lineup-card"><img src="assets/english/image (2).jpeg" alt=""><h4>Areeba Khan</h4><p>Actor</p></article>
+        <article class="lineup-card"><img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt=""><h4>Faris Malik</h4><p>Set Designer</p></article>
+      </div>
+
+      <div class="content-grid">
+        <section class="timeline">
+          <h3>Artist Schedule Timeline</h3>
+          <div class="timeline-list">
+            <div class="time-row"><b>Mon 6:00 PM</b><p>Scene Lab: Emotional Precision with Rania Ahmed</p></div>
+            <div class="time-row"><b>Tue 5:30 PM</b><p>Direction Clinic: Blocking and Rhythm by Hamza Qureshi</p></div>
+            <div class="time-row"><b>Wed 7:15 PM</b><p>Music Room: Vocal Layers with Misha Tariq</p></div>
+            <div class="time-row"><b>Thu 4:45 PM</b><p>Writers Table: Adaptation Notes by Saad Noman</p></div>
+            <div class="time-row"><b>Sat 6:40 PM</b><p>Open Stage Mentorship and Live Feedback Circle</p></div>
+          </div>
+        </section>
+
+        <section class="stack">
+          <h3>Artist Notes and Requests</h3>
+          <div class="stack-body">
+            <div class="stack-item"><b>Collaboration Board</b>Looking for costume collaborators for winter showcase production.</div>
+            <div class="stack-item"><b>Audition Window</b>Supporting roles open for bilingual drama cycle next month.</div>
+            <div class="stack-item"><b>Workshop Passes</b>Limited passes available for monologue coaching sessions.</div>
+            <div class="stack-item"><b>Production Call</b>Lighting assistants requested for three-night festival run.</div>
+          </div>
+        </section>
+      </div>
+
+      <section class="gallery" id="artist-gallery">
+        <h3>Artist Gallery</h3>
+        <div class="gallery-grid">
+          <article class="gallery-item"><img src="assets/english/image (1).jpeg" alt="Gallery 1"><span>Rehearsal</span></article>
+          <article class="gallery-item"><img src="assets/english/image (2).jpeg" alt="Gallery 2"><span>Live Scene</span></article>
+          <article class="gallery-item"><img src="assets/english/image (3).jpeg" alt="Gallery 3"><span>Backstage</span></article>
+          <article class="gallery-item"><img src="assets/english/image.jpeg" alt="Gallery 4"><span>Portrait</span></article>
+          <article class="gallery-item"><img src="assets/english/1.jpeg" alt="Gallery 5"><span>Costume Test</span></article>
+          <article class="gallery-item"><img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="Gallery 6"><span>Main Stage</span></article>
+          <article class="gallery-item"><img src="assets/english/Comedy.png" alt="Gallery 7"><span>Promo Art</span></article>
+          <article class="gallery-item"><img src="assets/english/image (2).jpeg" alt="Gallery 8"><span>Final Bow</span></article>
+        </div>
+      </section>
+    </section>
+
+    <section class="dark-footer-band">
+      <article class="stat-box"><h4>Active Artists</h4><p>126</p><small>Across 8 creative departments</small></article>
+      <article class="stat-box"><h4>Monthly Sessions</h4><p>34</p><small>Training, Q and A, and mentorship</small></article>
+      <article class="stat-box"><h4>Open Collaborations</h4><p>19</p><small>Casting, writing, and design projects</small></article>
+    </section>
+
+    <section class="category-profiles">
+      <div class="section-head">
+        <h2>Artist Profiles by Category</h2>
+        <span>extended directory</span>
+      </div>
+      <div id="profile-categories"></div>
+    </section>
+
+    <footer class="footer">
+      <div>Artist Hub: Profiles | Timeline | Workshops | Requests</div>
+      <div>Contact | Queries | Feedback</div>
+    </footer>
+  </main>
+
+  <script src="jquery-4.0.0.min.js"></script>
+  <script>
+    $(function () {
+      $(".menu-btn").on("click", function () {
+        $(this).toggleClass("is-open");
+        $(".nav").toggleClass("is-open");
+      });
+
+      const categories = [
+        "Lead Actors",
+        "Supporting Actors",
+        "Directors",
+        "Writers",
+        "Music and Vocal",
+        "Set and Lighting Designers",
+        "Choreographers",
+        "Stage Managers",
+        "Costume and Makeup",
+        "Guest Mentors"
+      ];
+
+      const names = [
+        "Rania Ahmed", "Hamza Qureshi", "Misha Tariq", "Saad Noman", "Areeba Khan",
+        "Faris Malik", "Nida Awan", "Bilal Raza", "Hira Hassan", "Noor Abbas",
+        "Aliya Sohail", "Taha Aslam", "Saba Rehman", "Imran Shehzad", "Maham Ali",
+        "Zoya Tariq", "Usman Khalid", "Kiran Noor", "Adeel Sami", "Maryam Fawad"
+      ];
+
+      const roles = ["Senior", "Resident", "Visiting", "Featured"];
+      const cities = ["Karachi", "Lahore", "Islamabad", "Multan"];
+      const imagePool = [
+        "assets/english/1.jpeg",
+        "assets/english/2.jpg",
+        "assets/english/3.jpg",
+        "assets/english/4.jpg",
+        "assets/english/5.jpg",
+        "assets/english/6.jpg",
+        "assets/english/7.jpg",
+        "assets/english/8.jpg",
+        "assets/english/9.jpg",
+        "assets/english/10.jpg",
+        "assets/english/11.jpg",
+        "assets/english/12.jpg",
+        "assets/english/13.jpg",
+        "assets/english/14.jpg",
+        "assets/english/15.jpg",
+        "assets/english/16.jpg"
+      ];
+
+      const container = $("#profile-categories");
+      let offset = 0;
+
+      categories.forEach((cat, ci) => {
+        const section = $('<section class="profile-category"></section>');
+        const head = $(`<div class="profile-head"><h3>${cat}</h3><span>8 profiles</span></div>`);
+        const grid = $('<div class="profile-grid"></div>');
+
+        for (let i = 0; i < 8; i++) {
+          const idx = (offset + i) % names.length;
+          const img = imagePool[(offset + i) % imagePool.length];
+          const years = 2 + ((offset + i) % 14);
+          const role = roles[(offset + i) % roles.length];
+          const city = cities[(offset + i) % cities.length];
+          const rating = (7.5 + ((offset + i) % 20) / 10).toFixed(1);
+
+          grid.append(`
+            <article class="profile-card">
+              <img src="${img}" alt="${names[idx]}">
+              <div class="profile-body">
+                <h4>${names[idx]}</h4>
+                <p>${role} Artist | ${years} years | ${city}</p>
+                <div class="profile-meta">
+                  <span>Available</span>
+                  <span>${rating}/10</span>
+                </div>
+              </div>
+            </article>
+          `);
+        }
+
+        offset += 3;
+        section.append(head);
+        section.append(grid);
+        container.append(section);
+      });
+    });
+  </script>
+</body>
+</html>
+
+
+
