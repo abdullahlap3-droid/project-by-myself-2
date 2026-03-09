@@ -1,298 +1,222 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shows | Theatre Show</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --page-bg: #cfd0d2;
-      --dark: #050607;
-      --dark-2: #0b0e12;
-      --cream: #f1ecd8;
-      --cream-2: #eee9d2;
-      --red: #ee3e35;
-      --muted: #9ea7b4;
-      --line: rgba(255, 255, 255, 0.08);
-    }
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+ <style>
+  /* applying to all */
+body {
+    background-color: black; /* dark background */
+    color: white;
+    font-family: Verdana, Geneva, sans-serif;
+}
 
-    body {
-      background: var(--page-bg);
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-    }
+/* ===== navbar styling ===== */
+nav {
+    display: flex;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(0,0,0,0.5);
+}
 
-    .site {
-      width: 100%;
-      min-height: 100vh;
-      background: var(--dark);
-    }
+/* logo on left */
+.logo {
+    margin-left: 20px;
+    color: red;
+    font-size: 24px;
+}
+.logo span {
+    font-size: 12px;
+    color: #ccc;
+    position: relative;
+    top: -5px;
+}
 
-    .topbar {
-      min-height: 62px;
-      background: #000;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid var(--line);
-      padding: 0 18px;
-      gap: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      flex-wrap: wrap;
-    }
+/* links list */
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin-right: 8px;
+    padding: 0;
+}
+.nav-links li {
+    margin-right: 20px;
+}
+.nav-links a {
+    padding: 4px 10px;
+    color: white;
+    text-decoration: none;
+}
+.nav-links a:hover,
+.nav-links a.onpage {
+    background-color: #e83535;
+    color: white;
+    border-radius: 20px;
+    padding: 3px 10px;
+    transition: 0.3s;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      min-width: 230px;
-      gap: 10px;
-      font-weight: 700;
-      line-height: 1.05;
-    }
-
-    .brand-mark { font-size: 28px; color: #f2e0a5; }
-    .brand span { font-weight: 400; font-size: 12px; color: #d4d4d4; }
-
-    .menu-btn {
-      margin-left: auto;
-      display: none;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 4px;
-      background: transparent;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .menu-btn span {
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      display: block;
-      position: relative;
-      transition: 0.2s;
-    }
-
-    .menu-btn span::before,
-    .menu-btn span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      transition: 0.2s;
-    }
-
-    .menu-btn span::before { top: -6px; }
-    .menu-btn span::after { top: 6px; }
-    .menu-btn.is-open span { background: transparent; }
-    .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
-    .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
-
-    .nav {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      flex-wrap: wrap;
-      margin-left: auto;
-    }
-
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      padding: 10px 12px;
-      border-radius: 2px;
-      display: block;
-    }
-
-    .nav a.active,
-    .nav a:hover {
-      background: var(--red);
-    }
-
-    .hero {
-      min-height: 280px;
-      padding: 46px 34px;
-      background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(8, 12, 24, 0.66) 58%, rgba(0, 0, 0, 0.8) 100%),
-        url("assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg") center/cover no-repeat;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero h1 {
-      font-size: clamp(34px, 4.3vw, 64px);
-      line-height: 1.05;
-      margin-bottom: 10px;
-      max-width: 820px;
-    }
-
-    .hero p {
-      color: #d3dae7;
-      font-size: clamp(14px, 1.7vw, 24px);
-      max-width: 780px;
-    }
-
-    .catalog {
-      background: var(--cream);
-      color: #171717;
-      padding: 24px 24px 28px;
-    }
-
-    .intro {
-      margin-bottom: 16px;
-      border-left: 6px solid var(--red);
-      padding-left: 12px;
-    }
-
-    .intro h2 {
-      font-size: clamp(24px, 3vw, 44px);
-      margin-bottom: 4px;
-    }
-
-    .intro p {
-      font-size: 14px;
-      color: #4f545c;
-    }
-
-    .category {
-      margin-top: 16px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: linear-gradient(180deg, #f4efdc, #efe8cf);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .cat-head {
-      background: #111821;
-      color: #fff;
-      padding: 12px 14px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cat-head h3 {
-      font-size: 20px;
-      letter-spacing: 0.2px;
-    }
-
-    .cat-head span {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .shows-grid {
-      padding: 14px;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .show-card {
-      background: #0f1520;
-      color: #fff;
-      border: 1px solid #243144;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .show-card:hover {
-      transform: translateY(-2px);
-      border-color: #db3f36;
-    }
-
-    .show-card img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-    }
-
-    .show-info {
-      padding: 10px;
-    }
-
-    .show-info h4 {
-      font-size: 14px;
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .meta {
-      font-size: 11px;
-      color: #b8c2d1;
-      margin-bottom: 8px;
-    }
-
-    .tags {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      color: #d8e1ef;
-    }
-
-    .rating {
-      color: #ffd369;
-      font-weight: 700;
-    }
-
-    .footer {
-      background: #050608;
-      padding: 22px 24px;
-      border-top: 1px solid var(--line);
-      color: #c9cfdb;
-      font-size: 12px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    @media (max-width: 1050px) {
-      .shows-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 900px) {
-      .menu-btn { display: inline-flex; }
-      .nav {
-        display: none;
-        width: 100%;
+/* mobile nav toggle */
+.nav-toggle {
+    display: none;
+}
+@media (max-width:1014px) {
+    .nav-toggle { display: block; }
+    .nav-links {
         flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        background: #0a0a0a;
-        border-top: 1px solid var(--line);
-        margin-top: 8px;
-      }
-      .nav.is-open { display: flex; }
-      .nav a {
-        border-bottom: 1px solid var(--line);
-        border-radius: 0;
-      }
-      .shows-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #e83535;
+        width: 100%;
+        padding: 20px;
+        display: none;
     }
+    .nav-links.show { display: flex; }
+    .nav-links li { margin: 10px 0; text-align: center; }
+    .logo { position: static; margin: 10px; }
+}
 
-    @media (max-width: 640px) {
-      .hero { padding: 24px 14px; min-height: 220px; }
-      .catalog { padding: 16px 10px 18px; }
-      .shows-grid { grid-template-columns: 1fr; }
-      .cat-head h3 { font-size: 16px; }
-    }
-  </style>
+/* ===== hero section ===== */
+.hero {
+    min-height: 280px;
+    padding: 46px 34px;
+    background: url("assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg") center/cover no-repeat;
+    color: white;
+    border-bottom: 1px solid #222;
+}
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 18px;
+    color: #ddd;
+}
+
+/* ===== catalog area ===== */
+.catalog {
+    background: #f1ecd8;
+    color: #171717;
+    padding: 24px;
+}
+.intro {
+    margin-bottom: 16px;
+    border-left: 6px solid #e83535;
+    padding-left: 12px;
+}
+
+.jump-buttons a {
+    display: inline-block;
+    background: #e83535;
+    color: white;
+    padding: 6px 12px;
+    margin-right: 8px;
+    border-radius: 4px;
+}
+
+.category {
+    margin-top: 16px;
+    background: #efe8cf;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.cat-head {
+    background: #111821;
+    color: white;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cat-head h3 {
+    font-size: 20px;
+    margin: 0;
+}
+.cat-head span {
+    font-size: 12px;
+    color: #9ea7b4;
+}
+
+.shows-grid { padding: 14px; }
+.show-card {
+    background: #0f1520;
+    color: white;
+    border: 1px solid #243144;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.2s;
+}
+.show-card:hover {
+    transform: translateY(-2px);
+    border-color: #db3f36;
+}
+.show-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+.show-info {
+    padding: 10px;
+}
+.show-info h4 {
+    font-size: 14px;
+    margin: 0 0 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.meta {
+    font-size: 11px;
+    color: #b8c2d1;
+    margin-bottom: 8px;
+}
+.tags {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #d8e1ef;
+}
+.rating {
+    color: #ffd369;
+    font-weight: 700;
+}
+
+.footer {
+    background: #050608;
+    padding: 22px 24px;
+    border-top: 1px solid #222;
+    color: #c9cfdb;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* responsive grid/nav */
+@media (max-width: 900px) {
+    .nav { display: none; }
+    .nav.show { display: flex; }
+    .menu-btn { display: flex; }
+}
+@media (max-width: 640px) {
+    .hero { padding: 24px 14px; min-height: 220px; }
+    .catalog { padding: 16px 10px; }
+    .cat-head h3 { font-size: 16px; }
+}
+ </style>
 </head>
-<body>
+
+<body class="page-shows">
   <main class="site">
     <header class="topbar">
       <div class="brand">
@@ -323,97 +247,197 @@
       <div class="intro">
         <h2>Shows Library</h2>
         <p>10 categories, many productions, and continuously updated listings.</p>
+        <div class="jump-buttons">
+          <a class="btn btn-dark btn-sm" href="#cat-tragedy">Tragedy</a>
+          <a class="btn btn-dark btn-sm" href="#cat-contemporary">Contemporary</a>
+          <a class="btn btn-dark btn-sm" href="#cat-musical">Musical</a>
+          <a class="btn btn-dark btn-sm" href="#cat-comedy">Comedy</a>
+          <a class="btn btn-dark btn-sm" href="#cat-historical">Historical</a>
+          <a class="btn btn-dark btn-sm" href="#cat-experimental">Experimental</a>
+          <a class="btn btn-dark btn-sm" href="#cat-family">Family</a>
+          <a class="btn btn-dark btn-sm" href="#cat-mystery">Mystery</a>
+          <a class="btn btn-dark btn-sm" href="#cat-romance">Romance</a>
+          <a class="btn btn-dark btn-sm" href="#cat-international">International</a>
+        </div>
       </div>
-      <div id="shows-catalog"></div>
+      <div id="shows-catalog">
+        <section class="category" id="cat-tragedy">
+          <div class="cat-head">
+            <h3>Tragedy Classics</h3>
+            <span id="count-tragedy">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-tragedy"></div>
+        </section>
+
+        <section class="category" id="cat-contemporary">
+          <div class="cat-head">
+            <h3>Contemporary Drama</h3>
+            <span id="count-contemporary">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-contemporary"></div>
+        </section>
+
+        <section class="category" id="cat-musical">
+          <div class="cat-head">
+            <h3>Musical Theatre</h3>
+            <span id="count-musical">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-musical"></div>
+        </section>
+
+        <section class="category" id="cat-comedy">
+          <div class="cat-head">
+            <h3>Comedy and Satire</h3>
+            <span id="count-comedy">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-comedy"></div>
+        </section>
+
+        <section class="category" id="cat-historical">
+          <div class="cat-head">
+            <h3>Historical Epics</h3>
+            <span id="count-historical">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-historical"></div>
+        </section>
+
+        <section class="category" id="cat-experimental">
+          <div class="cat-head">
+            <h3>Experimental Stage</h3>
+            <span id="count-experimental">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-experimental"></div>
+        </section>
+
+        <section class="category" id="cat-family">
+          <div class="cat-head">
+            <h3>Family and Kids</h3>
+            <span id="count-family">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-family"></div>
+        </section>
+
+        <section class="category" id="cat-mystery">
+          <div class="cat-head">
+            <h3>Mystery and Thriller</h3>
+            <span id="count-mystery">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-mystery"></div>
+        </section>
+
+        <section class="category" id="cat-romance">
+          <div class="cat-head">
+            <h3>Romance Specials</h3>
+            <span id="count-romance">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-romance"></div>
+        </section>
+
+        <section class="category" id="cat-international">
+          <div class="cat-head">
+            <h3>International Spotlight</h3>
+            <span id="count-international">0 shows available</span>
+          </div>
+          <div class="shows-grid row g-3" id="box-international"></div>
+        </section>
+      </div>
     </section>
 
     <footer class="footer">
-      <div>More Like This: Home, Shows, Artist, Awards, Magazines</div>
-      <div>Feedback | Queries | Contact Us</div>
+      <h3>MORE LIKE THIS</h3>
+      <div class="footer-grid">
+        <div>
+          <a href="#">Home</a>
+          <a href="#">Sneones Riotonibes</a>
+          <a href="#">Casternuie</a>
+          <a href="#">Sent vaer dsl foes</a>
+        </div>
+        <div>
+          <a href="#">Concel Us</a>
+          <a href="#">Gallect the Megctions</a>
+          <a href="#">FAQs</a>
+          <a href="#">Privery Polity</a>
+        </div>
+        <div>
+          <a href="#">Seled</a>
+          <a href="#">Faqs</a>
+          <a href="#">Cecolies</a>
+          <a href="#">Direction ot Frolly</a>
+        </div>
+        <div>
+          <a href="#">Riom3</a>
+          <a href="#">Ecoutes</a>
+          <a href="#">Metafution</a>
+          <a href="#">Fooby</a>
+        </div>
+        <div class="posters">
+          <img src="assets/english/Comedy.png" alt="">
+          <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
+          <img src="assets/english/image (3).jpeg" alt="">
+          <img src="assets/english/image.jpeg" alt="">
+        </div>
+      </div>
+      <div class="sub-footer">
+        <div>Contact Us Queries Cunlies</div>
+        <div>Feedback Queries o o o</div>
+      </div>
     </footer>
   </main>
 
   <script src="jquery-4.0.0.min.js"></script>
   <script>
-    $(function () {
-      $(".menu-btn").on("click", function () {
+    $(document).ready(function () {
+      $(".menu-btn").click(function () {
         $(this).toggleClass("is-open");
-        $(".nav").toggleClass("is-open");
+        $(".nav").toggleClass("show");
       });
 
-      const categories = [
-        "Tragedy Classics",
-        "Contemporary Drama",
-        "Musical Theatre",
-        "Comedy and Satire",
-        "Historical Epics",
-        "Experimental Stage",
-        "Family and Kids",
-        "Mystery and Thriller",
-        "Romance Specials",
-        "International Spotlight"
-      ];
-
-      const showPool = [
-        "Midnight Monologue", "Broken Lantern", "Shadow Balcony", "Last Curtain Call",
-        "Velvet Echo", "Rain Over Stage 9", "Burning Script", "Moonlight Interlude",
-        "Silent Gallery", "Seventh Bell", "Crimson Letterbox", "Golden Orchestra",
-        "Echoes of Anarkali", "City of Masks", "Whispered Exit", "Understudy Dreams"
-      ];
-
-      const imagePool = [
-        "assets/english/image (1).jpeg",
-        "assets/english/image (2).jpeg",
-        "assets/english/image (3).jpeg",
-        "assets/english/image.jpeg",
-        "assets/english/1.jpeg",
-        "assets/english/Comedy.png",
-        "assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg"
-      ];
-
-      const container = $("#shows-catalog");
-      let cardIndex = 0;
-
-      categories.forEach((cat, catIndex) => {
-        const section = $('<section class="category"></section>');
-        const head = $(`
-          <div class="cat-head">
-            <h3>${cat}</h3>
-            <span>8 shows available</span>
-          </div>
-        `);
-        const grid = $('<div class="shows-grid"></div>');
-
-        for (let i = 0; i < 8; i++) {
-          const title = showPool[(cardIndex + i) % showPool.length] + " " + (catIndex + 1);
-          const img = imagePool[(cardIndex + i) % imagePool.length];
-          const lang = ["Urdu", "English", "Hindi"][(cardIndex + i) % 3];
-          const city = ["Karachi", "Lahore", "Islamabad", "Multan"][(cardIndex + i) % 4];
-          const rating = (7.2 + ((cardIndex + i) % 20) / 10).toFixed(1);
-
-          grid.append(`
-            <article class="show-card">
-              <img src="${img}" alt="${title}">
-              <div class="show-info">
-                <h4>${title}</h4>
-                <div class="meta">${lang} | ${city} | Runtime 2h 05m</div>
-                <div class="tags">
-                  <span>Next: Fri 8:00 PM</span>
-                  <span class="rating">${rating}/10</span>
+      fetch('data.json')
+        .then(response => response.json())
+        .then(json => {
+          function populate(boxId, countId, list) {
+            let html = '';
+            for (let item of list) {
+              html += `
+                <div class="col-6 col-md-4 col-lg-3">
+                  <article class="show-card h-100">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="show-info">
+                      <h4>${item.title}</h4>
+                      <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                      <div class="tags">
+                        <span>Next: ${item.nextShow}</span>
+                        <span class="rating">${item.rating}/10</span>
+                      </div>
+                    </div>
+                  </article>
                 </div>
-              </div>
-            </article>
-          `);
-        }
+              `;
+            }
+            document.querySelector(boxId).innerHTML = html;
+            document.querySelector(countId).innerText = list.length + ' shows available';
+          }
 
-        cardIndex += 2;
-        section.append(head);
-        section.append(grid);
-        container.append(section);
-      });
+          populate('#box-tragedy', '#count-tragedy', json.tragedy_classics);
+          populate('#box-contemporary', '#count-contemporary', json.contemporary_drama);
+          populate('#box-musical', '#count-musical', json.musical_theatre);
+          populate('#box-comedy', '#count-comedy', json.comedy_and_satire);
+          populate('#box-historical', '#count-historical', json.historical_epics);
+          populate('#box-experimental', '#count-experimental', json.experimental_stage);
+          populate('#box-family', '#count-family', json.family_and_kids);
+          populate('#box-mystery', '#count-mystery', json.mystery_and_thriller);
+          populate('#box-romance', '#count-romance', json.romance_specials);
+          populate('#box-international', '#count-international', json.international_spotlight);
+        })
+        .catch(error => {
+          console.error('Failed to load data.json:', error);
+          const catalog = document.querySelector('#shows-catalog');
+          if (catalog) {
+            catalog.innerHTML = '<p style="color:#b30000;font-weight:700;">Could not load show data. Run this page using a local server (for example VS Code Live Server) instead of opening it directly as a file.</p>';
+          }
+        });
     });
   </script>
 </body>
+
 </html>
-
-

@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awards | Theatre Show</title>
+  
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-awards">
+  <main class="site">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">*</div>
+        <div>Theatre<br>Show<span>.com</span></div>
+      </div>
+      <button class="menu-btn" type="button" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shows.html">Shows</a></li>
+        <li><a href="auditorium.html">Auditorium</a></li>
+        <li><a href="theater-speak.html">Theater Speak</a></li>
+        <li><a href="artist.html">Artist</a></li>
+        <li><a class="active" href="awards.html">Awards</a></li>
+        <li><a href="magazines.html">Magazines</a></li>
+        <li><a href="queries.html">Queries</a></li>
+      </ul>
+    </header>
+
+    <section class="hero">
+      <h1>Theatre Awards and Honors Archive</h1>
+      <p>Explore annual winners, jury highlights, top nominations, and special recognition across theatre productions.</p>
+    </section>
+
+    <section class="section">
+      <div class="intro">
+        <h2>Major Award Highlights</h2>
+        <p>Most discussed award moments from current and previous seasons.</p>
+      </div>
+      <div class="spot-grid">
+        <article class="spot-card">
+          <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
+          <div class="spot-body"><h3>Best Production Spotlight</h3><p>Phantom-inspired drama won best production for stage innovation and audience impact.</p></div>
+        </article>
+        <article class="spot-card">
+          <img src="assets/english/image (2).jpeg" alt="">
+          <div class="spot-body"><h3>Lifetime Achievement</h3><p>Senior director honored for contribution to contemporary Urdu theatre movement.</p></div>
+        </article>
+        <article class="spot-card">
+          <img src="assets/english/image (1).jpeg" alt="">
+          <div class="spot-body"><h3>Emerging Talent</h3><p>New artists recognized for powerful debut performances and stage command.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dark-section">
+      <h2 class="dark-title">Yearly Winners</h2>
+      <div class="year-grid">
+        <article class="year-card">
+          <h3>2026</h3>
+          <div class="award-item">Best Play: The Last Lantern</div>
+          <div class="award-item">Best Director: Hamza Qureshi</div>
+          <div class="award-item">Best Actor: Rania Ahmed</div>
+          <div class="award-item">Best Set Design: Faris Malik</div>
+          <div class="award-item">Audience Choice: Velvet Echo</div>
+        </article>
+        <article class="year-card">
+          <h3>2025</h3>
+          <div class="award-item">Best Play: Crimson Balcony</div>
+          <div class="award-item">Best Director: S. Noman</div>
+          <div class="award-item">Best Actor: Misha Tariq</div>
+          <div class="award-item">Best Music: Moonlight Aria</div>
+          <div class="award-item">Audience Choice: Stage of Dreams</div>
+        </article>
+        <article class="year-card">
+          <h3>2024</h3>
+          <div class="award-item">Best Play: Silent Gallery</div>
+          <div class="award-item">Best Director: R. Ashraf</div>
+          <div class="award-item">Best Actor: Aliya Sohail</div>
+          <div class="award-item">Best Costume: House of Echo</div>
+          <div class="award-item">Audience Choice: Final Bow</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="long-section">
+      <div class="intro">
+        <h2>Category-Wise Nominations Archive</h2>
+        <p>Long listing by award category. Scroll to view complete records.</p>
+      </div>
+      <div id="award-categories"></div>
+    </section>
+
+    <footer class="footer">
+      <h3>MORE LIKE THIS</h3>
+      <div class="footer-grid">
+        <div>
+          <a href="#">Home</a>
+          <a href="#">Sneones Riotonibes</a>
+          <a href="#">Casternuie</a>
+          <a href="#">Sent vaer dsl foes</a>
+        </div>
+        <div>
+          <a href="#">Concel Us</a>
+          <a href="#">Gallect the Megctions</a>
+          <a href="#">FAQs</a>
+          <a href="#">Privery Polity</a>
+        </div>
+        <div>
+          <a href="#">Seled</a>
+          <a href="#">Faqs</a>
+          <a href="#">Cecolies</a>
+          <a href="#">Direction ot Frolly</a>
+        </div>
+        <div>
+          <a href="#">Riom3</a>
+          <a href="#">Ecoutes</a>
+          <a href="#">Metafution</a>
+          <a href="#">Fooby</a>
+        </div>
+        <div class="posters">
+          <img src="assets/english/Comedy.png" alt="">
+          <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
+          <img src="assets/english/image (3).jpeg" alt="">
+          <img src="assets/english/image.jpeg" alt="">
+        </div>
+      </div>
+      <div class="sub-footer">
+        <div>Contact Us  Queries  Cunlies</div>
+        <div>Feedback  Queries  o o o</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="jquery-4.0.0.min.js"></script>
+  <script>
+    $(function () {
+      $(".menu-btn").on("click", function () {
+        $(this).toggleClass("is-open");
+        $(".nav").toggleClass("is-open");
+      });
+
+      const awardCategories = [
+        "Best Play",
+        "Best Director",
+        "Best Actor",
+        "Audience Choice"
+      ];
+
+      const nominees = [
+        "The Last Lantern", "Crimson Balcony", "Silent Gallery", "Velvet Echo",
+        "Moonlight Interlude", "City of Masks", "Broken Lantern", "Whispered Exit",
+        "Golden Orchestra", "Shadow Balcony", "Understudy Dreams", "Seventh Bell"
+      ];
+
+      const imagePool = [
+        "assets/english/image (1).jpeg",
+        "assets/english/image (2).jpeg",
+        "assets/english/image (3).jpeg",
+        "assets/english/image.jpeg",
+        "assets/english/1.jpeg",
+        "assets/english/Comedy.png",
+        "assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg"
+      ];
+
+      const container = $("#award-categories");
+      let offset = 0;
+
+      awardCategories.forEach((cat, ci) => {
+        const block = $('<section class="category-block"></section>');
+        const head = $(`<div class="category-head"><h3>${cat}</h3><span>4 nominees</span></div>`);
+        const grid = $('<div class="nom-grid"></div>');
+
+        for (let i = 0; i < 4; i++) {
+          const idx = (offset + i) % nominees.length;
+          const img = imagePool[(offset + i) % imagePool.length];
+          const season = 2026 - ((offset + i) % 3);
+          const jury = ["Gold Jury", "Critics Circle", "Open Panel"][(offset + i) % 3];
+
+          grid.append(`
+            <article class="nom-card">
+              <img src="${img}" alt="${nominees[idx]}">
+              <div class="nom-body">
+                <h4>${nominees[idx]}</h4>
+                <p>Nominee entry for ${cat.toLowerCase()} category.</p>
+                <div class="nom-meta">
+                  <span>Season ${season}</span>
+                  <span>${jury}</span>
+                </div>
+              </div>
+            </article>
+          `);
+        }
+
+        offset += 2;
+        block.append(head);
+        block.append(grid);
+        container.append(block);
+      });
+    });
+  </script>
+</body>
+</html>
+

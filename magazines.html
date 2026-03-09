@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magazines | Theatre Show</title>
+  
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-magazines">
+  <main class="site">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">*</div>
+        <div>Theatre<br>Show<span>.com</span></div>
+      </div>
+      <button class="menu-btn" type="button" aria-label="Toggle navigation">
+        <span></span>
+      </button>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shows.html">Shows</a></li>
+        <li><a href="auditorium.html">Auditorium</a></li>
+        <li><a href="theater-speak.html">Theater Speak</a></li>
+        <li><a href="artist.html">Artist</a></li>
+        <li><a href="awards.html">Awards</a></li>
+        <li><a class="active" href="magazines.html">Magazines</a></li>
+        <li><a href="queries.html">Queries</a></li>
+      </ul>
+    </header>
+
+    <section class="hero">
+      <h1>Theatre Magazines and Editorial Archives</h1>
+      <p>Read monthly issues, interviews, backstage reports, and performance analysis from stage experts.</p>
+    </section>
+
+    <section class="section">
+      <div class="intro">
+        <h2>Featured This Month</h2>
+        <p>Top read stories from the latest issue.</p>
+      </div>
+      <div class="featured">
+        <article class="feature-main">
+          <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
+          <div class="feature-body">
+            <h3>The Revival Issue: Stage in New Era</h3>
+            <p>A long-form feature covering changing theatre audiences, funding models, and modern stage language.</p>
+          </div>
+        </article>
+        <article>
+          <div class="feature-side">
+            <img src="assets/english/image (2).jpeg" alt="">
+            <div class="feature-body"><h3>Director Diary</h3><p>Weekly column by resident directors.</p></div>
+          </div>
+          <div class="feature-side mt-12">
+            <img src="assets/english/image (1).jpeg" alt="">
+            <div class="feature-body"><h3>Actor Notes</h3><p>Performance notes and rehearsal breakdowns.</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="dark-row">
+      <h2 class="title">Recent Issues</h2>
+      <div class="issues-grid">
+        <article class="issue-card"><img src="assets/english/1.jpeg" alt=""><div class="issue-body"><h4>Issue 41</h4><p>Winter festival special coverage.</p><div class="issue-meta"><span>Jan 2026</span><span>PDF</span></div></div></article>
+        <article class="issue-card"><img src="assets/english/2.jpg" alt=""><div class="issue-body"><h4>Issue 40</h4><p>Directors roundtable and critic picks.</p><div class="issue-meta"><span>Dec 2025</span><span>PDF</span></div></div></article>
+        <article class="issue-card"><img src="assets/english/3.jpg" alt=""><div class="issue-body"><h4>Issue 39</h4><p>Top 20 scene transitions explained.</p><div class="issue-meta"><span>Nov 2025</span><span>PDF</span></div></div></article>
+        <article class="issue-card"><img src="assets/english/4.jpg" alt=""><div class="issue-body"><h4>Issue 38</h4><p>Costume and set design handbook.</p><div class="issue-meta"><span>Oct 2025</span><span>PDF</span></div></div></article>
+        <article class="issue-card"><img src="assets/english/5.jpg" alt=""><div class="issue-body"><h4>Issue 37</h4><p>Audience choice review collection.</p><div class="issue-meta"><span>Sep 2025</span><span>PDF</span></div></div></article>
+      </div>
+    </section>
+
+    <section class="long-list">
+      <div class="intro">
+        <h2>Magazine Library by Category</h2>
+        <p>Short archive with selected categories.</p>
+      </div>
+      <div id="mag-list"></div>
+    </section>
+
+    <footer class="footer">
+      <h3>MORE LIKE THIS</h3>
+      <div class="footer-grid">
+        <div>
+          <a href="#">Home</a>
+          <a href="#">Sneones Riotonibes</a>
+          <a href="#">Casternuie</a>
+          <a href="#">Sent vaer dsl foes</a>
+        </div>
+        <div>
+          <a href="#">Concel Us</a>
+          <a href="#">Gallect the Megctions</a>
+          <a href="#">FAQs</a>
+          <a href="#">Privery Polity</a>
+        </div>
+        <div>
+          <a href="#">Seled</a>
+          <a href="#">Faqs</a>
+          <a href="#">Cecolies</a>
+          <a href="#">Direction ot Frolly</a>
+        </div>
+        <div>
+          <a href="#">Riom3</a>
+          <a href="#">Ecoutes</a>
+          <a href="#">Metafution</a>
+          <a href="#">Fooby</a>
+        </div>
+        <div class="posters">
+          <img src="assets/english/Comedy.png" alt="">
+          <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
+          <img src="assets/english/image (3).jpeg" alt="">
+          <img src="assets/english/image.jpeg" alt="">
+        </div>
+      </div>
+      <div class="sub-footer">
+        <div>Contact Us  Queries  Cunlies</div>
+        <div>Feedback  Queries  o o o</div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="jquery-4.0.0.min.js"></script>
+  <script>
+    $(function () {
+      $(".menu-btn").on("click", function () {
+        $(this).toggleClass("is-open");
+        $(".nav").toggleClass("is-open");
+      });
+
+      const categories = [
+        "Interviews",
+        "Show Reviews",
+        "Backstage Stories",
+        "Festival Specials"
+      ];
+
+      const titles = [
+        "Stage Voices Monthly", "Curtain Review", "Playhouse Journal", "Theatre Lens",
+        "Encore Editorial", "Act and Scene", "The Script Room", "Stagecraft Weekly",
+        "Drama Digest", "Spotlight Column", "Curtain Chronicles", "Live Stage Notes"
+      ];
+
+      const imagePool = [
+        "assets/english/image (1).jpeg",
+        "assets/english/image (2).jpeg",
+        "assets/english/image (3).jpeg",
+        "assets/english/image.jpeg",
+        "assets/english/1.jpeg",
+        "assets/english/Comedy.png",
+        "assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg"
+      ];
+
+      const container = $("#mag-list");
+      let offset = 0;
+
+      categories.forEach((cat, ci) => {
+        const section = $('<section class="mag-category"></section>');
+        const head = $(`<div class="mag-head"><h3>${cat}</h3><span>4 articles</span></div>`);
+        const grid = $('<div class="mag-grid"></div>');
+
+        for (let i = 0; i < 4; i++) {
+          const idx = (offset + i) % titles.length;
+          const img = imagePool[(offset + i) % imagePool.length];
+          const issue = 30 + ((offset + i) % 12);
+          const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][(offset + i) % 12];
+
+          grid.append(`
+            <article class="mag-item">
+              <img src="${img}" alt="${titles[idx]}">
+              <div class="mag-body">
+                <h4>${titles[idx]} ${ci + 1}</h4>
+                <p>Editorial entry from ${cat.toLowerCase()} archive collection.</p>
+                <div class="mag-meta">
+                  <span>Issue ${issue}</span>
+                  <span>${month} 2026</span>
+                </div>
+              </div>
+            </article>
+          `);
+        }
+
+        offset += 2;
+        section.append(head);
+        section.append(grid);
+        container.append(section);
+      });
+    });
+  </script>
+</body>
+</html>
