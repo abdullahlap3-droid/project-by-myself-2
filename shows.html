@@ -395,39 +395,235 @@ nav {
       fetch('data.json')
         .then(response => response.json())
         .then(json => {
-          function populate(boxId, countId, list) {
-            let html = '';
-            for (let item of list) {
-              html += `
-                <div class="col-6 col-md-4 col-lg-3">
-                  <article class="show-card h-100">
-                    <img src="${item.image}" alt="${item.title}">
-                    <div class="show-info">
-                      <h4>${item.title}</h4>
-                      <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                      <div class="tags">
-                        <span>Next: ${item.nextShow}</span>
-                        <span class="rating">${item.rating}/10</span>
-                      </div>
+          // 1) Tragedy Classics
+          let section = document.querySelector('#box-tragedy');
+          let html = '';
+          for (let item of json.tragedy_classics) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
                     </div>
-                  </article>
-                </div>
-              `;
-            }
-            document.querySelector(boxId).innerHTML = html;
-            document.querySelector(countId).innerText = list.length + ' shows available';
+                  </div>
+                </article>
+              </div>
+            `;
           }
+          section.innerHTML = html;
+          document.querySelector('#count-tragedy').innerText = json.tragedy_classics.length + ' shows available';
 
-          populate('#box-tragedy', '#count-tragedy', json.tragedy_classics);
-          populate('#box-contemporary', '#count-contemporary', json.contemporary_drama);
-          populate('#box-musical', '#count-musical', json.musical_theatre);
-          populate('#box-comedy', '#count-comedy', json.comedy_and_satire);
-          populate('#box-historical', '#count-historical', json.historical_epics);
-          populate('#box-experimental', '#count-experimental', json.experimental_stage);
-          populate('#box-family', '#count-family', json.family_and_kids);
-          populate('#box-mystery', '#count-mystery', json.mystery_and_thriller);
-          populate('#box-romance', '#count-romance', json.romance_specials);
-          populate('#box-international', '#count-international', json.international_spotlight);
+          // 2) Contemporary Drama
+          section = document.querySelector('#box-contemporary');
+          html = '';
+          for (let item of json.contemporary_drama) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-contemporary').innerText = json.contemporary_drama.length + ' shows available';
+
+          // 3) Musical Theatre
+          section = document.querySelector('#box-musical');
+          html = '';
+          for (let item of json.musical_theatre) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-musical').innerText = json.musical_theatre.length + ' shows available';
+
+          // 4) Comedy and Satire
+          section = document.querySelector('#box-comedy');
+          html = '';
+          for (let item of json.comedy_and_satire) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-comedy').innerText = json.comedy_and_satire.length + ' shows available';
+
+          // 5) Historical Epics
+          section = document.querySelector('#box-historical');
+          html = '';
+          for (let item of json.historical_epics) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-historical').innerText = json.historical_epics.length + ' shows available';
+
+          // 6) Experimental Stage
+          section = document.querySelector('#box-experimental');
+          html = '';
+          for (let item of json.experimental_stage) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-experimental').innerText = json.experimental_stage.length + ' shows available';
+
+          // 7) Family and Kids
+          section = document.querySelector('#box-family');
+          html = '';
+          for (let item of json.family_and_kids) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-family').innerText = json.family_and_kids.length + ' shows available';
+
+          // 8) Mystery and Thriller
+          section = document.querySelector('#box-mystery');
+          html = '';
+          for (let item of json.mystery_and_thriller) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-mystery').innerText = json.mystery_and_thriller.length + ' shows available';
+
+          // 9) Romance Specials
+          section = document.querySelector('#box-romance');
+          html = '';
+          for (let item of json.romance_specials) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-romance').innerText = json.romance_specials.length + ' shows available';
+
+          // 10) International Spotlight
+          section = document.querySelector('#box-international');
+          html = '';
+          for (let item of json.international_spotlight) {
+            html += `
+              <div class="col-6 col-md-4 col-lg-3">
+                <article class="show-card h-100">
+                  <img src="${item.image}" alt="${item.title}">
+                  <div class="show-info">
+                    <h4>${item.title}</h4>
+                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                    <div class="tags">
+                      <span>Next: ${item.nextShow}</span>
+                      <span class="rating">${item.rating}/10</span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            `;
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-international').innerText = json.international_spotlight.length + ' shows available';
         })
         .catch(error => {
           console.error('Failed to load data.json:', error);
