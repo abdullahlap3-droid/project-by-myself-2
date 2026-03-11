@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="1" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b0b0d"/>
+      <stop offset="100%" stop-color="#190a10"/>
+    </linearGradient>
+    <radialGradient id="mist" cx="30%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#c1121f" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c1121f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#mist)"/>
+  <rect x="260" y="220" width="1080" height="460" rx="36" fill="#0f0f14" stroke="#2a1a1f"/>
+  <path d="M260 220 L1340 680" stroke="#2b0f14" stroke-width="4"/>
+  <text x="800" y="540" text-anchor="middle" fill="#e6e6ea" font-family="Cinzel, serif" font-size="42">Velvet Shadows</text>
+</svg>
