@@ -1,0 +1,146 @@
+{
+  "core_ensemble": [
+    {
+      "id": 1,
+      "name": "Rania Ahmed",
+      "role": "Lead Actor",
+      "image": "assets/english/image (1).jpeg",
+      "description": "Rania Ahmed is a celebrated stage actor with over 12 years of experience in classical and contemporary theatre. Known for her emotional depth and commanding presence.",
+      "awards": [
+        "Best Actress - Karachi Theatre Awards 2021",
+        "Critics' Choice Award 2022",
+        "Lifetime Achievement in Theatre (2023)"
+      ],
+      "shows": [
+        "Hamlet (2023) - Ophelia",
+        "A Doll's House (2022) - Nora",
+        "Death of a Salesman (2021) - Linda"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Hamza Qureshi",
+      "role": "Director",
+      "image": "assets/english/image.jpeg",
+      "description": "Hamza Qureshi is an innovative director focusing on visual storytelling and ensemble rhythm. His productions often blend classical texts with modern aesthetics.",
+      "awards": [
+        "Best Director - National Theatre Awards 2022",
+        "Young Director of the Year 2021"
+      ],
+      "shows": [
+        "Macbeth (2023) - Director",
+        "The Glass Menagerie (2022) - Director",
+        "Waiting for Godot (2021) - Director"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Misha Tariq",
+      "role": "Composer",
+      "image": "assets/english/image (3).jpeg",
+      "description": "Misha Tariq is a composer and vocal director who creates evocative soundscapes for stage. She integrates folk and electronic elements to enhance dramatic moments.",
+      "awards": [
+        "Best Original Score - Lahore Music Festival 2023",
+        "Theatre Sound Award 2022"
+      ],
+      "shows": [
+        "The Tempest (2023) - Composer",
+        "Antigone (2022) - Vocal Director",
+        "Midsummer Night's Dream (2021) - Composer"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Saad Noman",
+      "role": "Writer",
+      "image": "assets/english/1.jpeg",
+      "description": "Saad Noman is a playwright and adaptation specialist, known for his gripping narratives that explore social issues. His works have been staged across Pakistan.",
+      "awards": [
+        "Best New Play - Karachi Theatre Festival 2022",
+        "Writers' Guild Award 2021"
+      ],
+      "shows": [
+        "The Wall (2023) - Writer",
+        "Echoes (2022) - Writer",
+        "Adaptation of 'Crime and Punishment' (2021)"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Areeba Khan",
+      "role": "Actor",
+      "image": "assets/english/image (2).jpeg",
+      "description": "Areeba Khan is a versatile performer recognized for her expressive character arcs and precision in ensemble scenes. She has worked in both Urdu and English productions.",
+      "awards": [
+        "Rising Star Award 2022",
+        "Best Supporting Actress - 2023"
+      ],
+      "shows": [
+        "The Cherry Orchard (2023) - Anya",
+        "Our Town (2022) - Emily",
+        "Ruined (2021) - Sophie"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Faris Malik",
+      "role": "Set Designer",
+      "image": "assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg",
+      "description": "Faris Malik designs large-scale, immersive stage sets that transform the theatrical space. He combines minimalist aesthetics with functional innovation.",
+      "awards": [
+        "Best Set Design - National Theatre Awards 2023",
+        "Design Excellence Award 2022"
+      ],
+      "shows": [
+        "The Jungle Book (2023) - Set Designer",
+        "Peer Gynt (2022) - Set Designer",
+        "The Crucible (2021) - Set Designer"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Noor Abbas",
+      "role": "Director",
+      "image": "assets/english/image (3).jpeg",
+      "description": "Noor Abbas is a resident director for the youth theatre circuit, nurturing new talent and directing socially relevant plays for young audiences.",
+      "awards": [
+        "Best Director for Youth Theatre 2022"
+      ],
+      "shows": [
+        "The Little Prince (2023) - Director",
+        "Alice in Wonderland (2022) - Director",
+        "Peter Pan (2021) - Director"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Hira Hassan",
+      "role": "Lighting Artist",
+      "image": "assets/english/image (1).jpeg",
+      "description": "Hira Hassan is a lighting designer known for her atmospheric use of light and shadow in dark-stage productions. She has collaborated with leading directors across the country.",
+      "awards": [
+        "Best Lighting Design - 2023"
+      ],
+      "shows": [
+        "Dracula (2023) - Lighting Designer",
+        "The Woman in Black (2022) - Lighting Designer",
+        "Ghosts (2021) - Lighting Designer"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Taha Aslam",
+      "role": "Script Consultant",
+      "image": "assets/english/image (2).jpeg",
+      "description": "Taha Aslam is a script consultant and dramaturg, specializing in multilingual productions and adaptation of international works for local audiences.",
+      "awards": [
+        "Dramaturgy Award 2022"
+      ],
+      "shows": [
+        "The Visit (2023) - Dramaturg",
+        "Mother Courage (2022) - Script Consultant",
+        "The Good Person of Szechwan (2021) - Adaptation"
+      ]
+    }
+  ]
+}

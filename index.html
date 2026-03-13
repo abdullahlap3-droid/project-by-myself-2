@@ -1,56 +1,48 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Theatre Show</title>
-  
   <style>
-    /* basic reset for easy layout control */
+    /* reset – easy layout */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body.page-index {
-      --page-bg: #cfd0d2;
-      --dark: #050607;
-      --dark-2: #0b0e12;
-      --cream: #f1ecd8;
-      --cream-2: #eee9d2;
-      --red: #ee3e35;
-      --line: rgba(255, 255, 255, 0.08);
-      background: var(--page-bg);
+    body {
+      background: #cfd0d2;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
     }
 
-    body.page-index a {
+    a {
       color: inherit;
       text-decoration: none;
     }
 
-    body.page-index .site {
+    .site {
       width: 100%;
       min-height: 100vh;
-      background: var(--dark);
+      background: #050607;
     }
 
-    /* topbar */
-    body.page-index .topbar {
+    /* topbar – simple */
+    .topbar {
       min-height: 62px;
       background: #000;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       padding: 0 18px;
       gap: 16px;
       position: relative;
       flex-wrap: wrap;
     }
 
-    body.page-index .brand {
+    .brand {
       display: flex;
       align-items: center;
       min-width: 230px;
@@ -59,23 +51,23 @@
       line-height: 1.05;
     }
 
-    body.page-index .brand-mark {
+    .brand-mark {
       font-size: 28px;
       color: #f2e0a5;
     }
 
-    body.page-index .brand span {
+    .brand span {
       font-weight: 400;
       font-size: 12px;
       color: #d4d4d4;
     }
 
-    body.page-index .menu-btn {
+    .menu-btn {
       margin-left: auto;
       display: none;
       width: 38px;
       height: 38px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 4px;
       background: transparent;
       align-items: center;
@@ -84,7 +76,7 @@
       padding: 0;
     }
 
-    body.page-index .menu-btn span {
+    .menu-btn span {
       width: 18px;
       height: 2px;
       background: #fff;
@@ -93,8 +85,8 @@
       transition: 0.2s;
     }
 
-    body.page-index .menu-btn span::before,
-    body.page-index .menu-btn span::after {
+    .menu-btn span::before,
+    .menu-btn span::after {
       content: "";
       position: absolute;
       left: 0;
@@ -104,14 +96,14 @@
       transition: 0.2s;
     }
 
-    body.page-index .menu-btn span::before { top: -6px; }
-    body.page-index .menu-btn span::after { top: 6px; }
+    .menu-btn span::before { top: -6px; }
+    .menu-btn span::after { top: 6px; }
 
-    body.page-index .menu-btn.is-open span { background: transparent; }
-    body.page-index .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
-    body.page-index .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
+    .menu-btn.is-open span { background: transparent; }
+    .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
+    .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
 
-    body.page-index .nav {
+    .nav {
       list-style: none;
       display: flex;
       align-items: center;
@@ -120,7 +112,7 @@
       margin-left: auto;
     }
 
-    body.page-index .nav a {
+    .nav a {
       color: #fff;
       font-size: 16px;
       padding: 10px 12px;
@@ -128,104 +120,99 @@
       display: block;
     }
 
-    body.page-index .nav a.active,
-    body.page-index .nav a:hover {
-      background: var(--red);
+    .nav a.active,
+    .nav a:hover {
+      background: #ee3e35;
     }
 
-    /* hero */
-    body.page-index .hero {
+    /* hero section */
+    .hero {
       min-height: 390px;
-      background: linear-gradient(
-        90deg,
-        rgba(0, 0, 0, 0.78) 0%,
-        rgba(0, 0, 0, 0.45) 48%,
-        rgba(0, 0, 0, 0.7) 100%
-      ), url("assets/english/image (2).jpeg") center 22%/cover no-repeat;
+      background: linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.45) 48%, rgba(0,0,0,0.7) 100%), url("assets/english/image (2).jpeg") center 22%/cover no-repeat;
       padding: 68px 74px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: 18px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    body.page-index .hero h1 {
+    .hero h1 {
       font-size: clamp(38px, 4.1vw, 62px);
       line-height: 1.02;
       max-width: 710px;
       font-weight: 800;
     }
 
-    body.page-index .hero p {
+    .hero p {
       color: #d6dbe3;
       font-size: 24px;
       max-width: 640px;
     }
 
-    body.page-index .hero .cta {
+    .hero .cta {
       align-self: flex-end;
-      background: var(--red);
+      background: #ee3e35;
       color: #fff;
       border: 0;
       border-radius: 6px;
       padding: 12px 20px;
       font-size: 25px;
       font-weight: 800;
-      box-shadow: 0 8px 24px rgba(238, 62, 53, 0.45);
+      box-shadow: 0 8px 24px rgba(238,62,53,0.45);
       cursor: pointer;
     }
 
-    /* trending */
-    body.page-index .cream {
-      background: var(--cream);
+    /* cream background sections */
+    .cream {
+      background: #f1ecd8;
       color: #181818;
       padding: 28px 34px;
     }
 
-    body.page-index .title {
+    .title {
       font-size: 40px;
       font-weight: 800;
       margin-bottom: 18px;
     }
 
-    body.page-index .trending {
+    .trending {
       display: grid;
       grid-template-columns: 1fr 1fr auto auto;
       gap: 12px;
       align-items: center;
     }
 
-    body.page-index .trend-card {
-      background: var(--cream-2);
+    .trend-card {
+      background: #eee9d2;
       border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 10px;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
     }
 
-    body.page-index .trend-card img {
+    .trend-card img {
       width: 72px;
       height: 72px;
       object-fit: cover;
       border-radius: 6px;
     }
 
-    body.page-index .trend-card b {
+    .trend-card b {
       font-size: 14px;
       display: block;
       margin-bottom: 4px;
     }
 
-    body.page-index .trend-card small {
+    .trend-card small {
       color: #5d6063;
       font-size: 11px;
       display: block;
     }
 
-    body.page-index .pill-btn {
+    .pill-btn {
       border: 0;
       background: #5f7485;
       color: #fff;
@@ -235,22 +222,22 @@
       cursor: pointer;
     }
 
-    /* upcoming */
-    body.page-index .dark-row {
-      background: var(--dark-2);
+    /* dark row for upcoming */
+    .dark-row {
+      background: #0b0e12;
       padding: 26px 34px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    body.page-index .upcoming {
+    .upcoming {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin-top: 14px;
     }
 
-    body.page-index .up-card {
+    .up-card {
       border: 1px solid #3e6075;
       border-radius: 8px;
       padding: 10px;
@@ -260,67 +247,67 @@
       min-height: 88px;
     }
 
-    body.page-index .up-card:nth-child(3) {
+    .up-card:nth-child(3) {
       border-color: #c33030;
     }
 
-    body.page-index .up-card img {
+    .up-card img {
       width: 62px;
       height: 62px;
       border-radius: 6px;
       object-fit: cover;
     }
 
-    body.page-index .up-card b {
+    .up-card b {
       font-size: 13px;
       display: block;
       margin-bottom: 2px;
     }
 
-    body.page-index .up-card small {
+    .up-card small {
       color: #b7c1ce;
       font-size: 11px;
       display: block;
     }
 
-    /* artists */
-    body.page-index .artists-wrap {
+    /* artists & critics grid */
+    .artists-wrap {
       display: grid;
       grid-template-columns: 1.1fr 1.6fr 1fr;
       gap: 18px;
       align-items: start;
     }
 
-    body.page-index .critics h3,
-    body.page-index .featured h3,
-    body.page-index .recognized h3 {
+    .critics h3,
+    .featured h3,
+    .recognized h3 {
       font-size: 18px;
       font-weight: 800;
       margin-bottom: 14px;
     }
 
-    body.page-index .quote-mark {
-      color: var(--red);
+    .quote-mark {
+      color: #ee3e35;
       font-size: 50px;
       line-height: 0.5;
       margin-bottom: 10px;
       display: block;
     }
 
-    body.page-index .critics p {
+    .critics p {
       font-size: 13px;
       line-height: 1.6;
       color: #3c3c3c;
     }
 
-    body.page-index .featured-grid {
+    .featured-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 10px;
       text-align: center;
     }
 
-    body.page-index .artist img {
+    .artist img {
       width: 72px;
       height: 72px;
       border-radius: 50%;
@@ -328,12 +315,12 @@
       border: 3px solid #2d3c51;
     }
 
-    body.page-index .artist:nth-child(1) img,
-    body.page-index .artist:nth-child(3) img {
+    .artist:nth-child(1) img,
+    .artist:nth-child(3) img {
       border-color: #d84139;
     }
 
-    body.page-index .artist span {
+    .artist span {
       display: block;
       margin-top: 6px;
       font-size: 11px;
@@ -341,13 +328,13 @@
       font-weight: 700;
     }
 
-    body.page-index .recognized .icons {
+    .recognized .icons {
       display: flex;
       gap: 10px;
       margin: 8px 0 14px;
     }
 
-    body.page-index .badge {
+    .badge {
       width: 52px;
       height: 64px;
       background: #e44b41;
@@ -358,9 +345,9 @@
       font-size: 22px;
     }
 
-    body.page-index .recognized button {
+    .recognized button {
       border: 0;
-      background: var(--red);
+      background: #ee3e35;
       color: #fff;
       padding: 10px 16px;
       border-radius: 5px;
@@ -370,53 +357,53 @@
     }
 
     /* footer */
-    body.page-index .footer {
+    .footer {
       background: #050608;
       padding: 26px 34px 18px;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid rgba(255,255,255,0.08);
       color: #c9cfdb;
       font-size: 12px;
     }
 
-    body.page-index .footer h3 {
+    .footer h3 {
       font-size: 38px;
       margin-bottom: 12px;
       font-weight: 800;
     }
 
-    body.page-index .footer-grid {
+    .footer-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr) 1.3fr;
       gap: 18px;
       margin-bottom: 18px;
     }
 
-    body.page-index .footer a {
+    .footer a {
       color: #c9cfdb;
       display: block;
       margin-bottom: 8px;
       font-size: 12px;
     }
 
-    body.page-index .footer a:first-child {
+    .footer a:first-child {
       color: #f4574f;
     }
 
-    body.page-index .posters {
+    .posters {
       display: flex;
       gap: 10px;
       justify-content: flex-end;
     }
 
-    body.page-index .posters img {
+    .posters img {
       width: 72px;
       height: 98px;
       object-fit: cover;
       border-radius: 4px;
     }
 
-    body.page-index .sub-footer {
-      border-top: 1px solid var(--line);
+    .sub-footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 12px;
       display: flex;
       justify-content: space-between;
@@ -428,73 +415,71 @@
 
     /* responsive */
     @media (max-width: 1000px) {
-      body.page-index .trending,
-      body.page-index .artists-wrap {
+      .trending,
+      .artists-wrap {
         grid-template-columns: 1fr;
       }
 
-      body.page-index .upcoming,
-      body.page-index .footer-grid {
+      .upcoming,
+      .footer-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      body.page-index .featured-grid {
+      .featured-grid {
         grid-template-columns: repeat(3, 1fr);
       }
 
-      body.page-index .posters {
+      .posters {
         justify-content: flex-start;
         flex-wrap: wrap;
       }
 
-      body.page-index .hero .cta {
+      .hero .cta {
         align-self: flex-start;
       }
     }
 
     @media (max-width: 900px) {
-      body.page-index .menu-btn { display: inline-flex; }
+      .menu-btn { display: inline-flex; }
 
-      body.page-index .nav {
+      .nav {
         display: none;
         width: 100%;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
         background: #0a0a0a;
-        border-top: 1px solid var(--line);
+        border-top: 1px solid rgba(255,255,255,0.08);
         margin-top: 8px;
       }
 
-      body.page-index .nav.is-open { display: flex; }
+      .nav.is-open { display: flex; }
 
-      body.page-index .nav a {
-        border-bottom: 1px solid var(--line);
+      .nav a {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
         border-radius: 0;
       }
     }
 
     @media (max-width: 620px) {
-      body.page-index .hero {
+      .hero {
         padding: 26px 16px;
         min-height: 290px;
       }
 
-      body.page-index .hero p,
-      body.page-index .hero .cta {
+      .hero p,
+      .hero .cta {
         font-size: 16px;
       }
 
-      body.page-index .title { font-size: 28px; }
-      body.page-index .upcoming { grid-template-columns: 1fr; }
-      body.page-index .featured-grid { grid-template-columns: repeat(2, 1fr); }
+      .title { font-size: 28px; }
+      .upcoming { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
-<body class="page-index">
-  
+<body>
   <main class="site">
-   
     <header class="topbar">
       <div class="brand">
         <div class="brand-mark">*</div>
@@ -515,16 +500,14 @@
       </ul>
     </header>
 
-    <!-- hero banner -->
     <section class="hero">
-      <h1>Lorem, ipsum dolor.<br>Lorem, ipsum dolor.</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus.</p>
-      <button class="cta">Lorem, ipsum dolor.</button>
+      <h1>EXPERIANCE THE MAGIC<br>OF LIVE THEATER.</h1>
+      <p>Discover shows in Hindi,Urdu and English across all venues.</p>
+      <button class="cta">Explore Shows Now!</button>
     </section>
 
-    <!-- trending -->
     <section class="cream">
-      <h2 class="title">Lorem, ipsum.</h2>
+      <h2 class="title">Currently Trending</h2>
       <div class="trending">
         <div class="trend-card">
           <img src="assets/english/image (1).jpeg" alt="show one">
@@ -539,7 +522,6 @@
       </div>
     </section>
 
-    <!-- upcoming -->
     <section class="dark-row">
       <h2 class="title">UPCOMING PRODUCTIONS</h2>
       <div class="upcoming">
@@ -562,7 +544,6 @@
       </div>
     </section>
 
-    <!-- artists and critics -->
     <section class="cream">
       <div class="artists-wrap">
         <article class="critics">
@@ -574,7 +555,7 @@
             tendency in top venue stories. total electricity thickened course and
             venues this swing has tiny rotate the artist.
           </p>
-          <span class="quote-mark quote-right">"</span>
+          <span class="quote-mark" style="display:block; text-align:end;">"</span>
         </article>
 
         <article class="featured">
@@ -600,35 +581,34 @@
       </div>
     </section>
 
-    <!-- footer -->
-                <footer class="footer">
+    <footer class="footer">
       <h3>MORE LIKE THIS</h3>
-      <div class="footer-grid row g-3">
-        <div class="col-6 col-lg-2">
+      <div class="footer-grid">
+        <div>
           <a href="index.html">Home</a>
           <a href="shows.html">Shows</a>
           <a href="auditorium.html">Auditorium</a>
           <a href="artist.html">Artists</a>
         </div>
-        <div class="col-6 col-lg-2">
+        <div>
           <a href="shows.html#cat-urdu">Urdu Theater</a>
           <a href="shows.html#cat-english">English Theater</a>
           <a href="shows.html#cat-top-pick">Top Picks</a>
           <a href="shows.html#cat-musical">Musical Theater</a>
         </div>
-        <div class="col-6 col-lg-2">
+        <div>
           <a href="queries.html">Contact Us</a>
           <a href="queries.html">FAQs</a>
           <a href="queries.html">Support</a>
           <a href="queries.html">Feedback</a>
         </div>
-        <div class="col-6 col-lg-2">
+        <div>
           <a href="awards.html">Awards</a>
           <a href="magazines.html">Magazine</a>
           <a href="theater-speak.html">Theater Speak</a>
           <a href="snipet.html">Highlights</a>
         </div>
-        <div class="col-12 col-lg-4">
+        <div>
           <div class="posters">
             <img src="assets/english/Comedy.png" alt="">
             <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
@@ -644,11 +624,11 @@
     </footer>
   </main>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuBtn = document.querySelector(".menu-btn");
-      const nav = document.querySelector(".nav");
+    document.addEventListener("DOMContentLoaded", function() {
+      var menuBtn = document.querySelector(".menu-btn");
+      var nav = document.querySelector(".nav");
       if (menuBtn && nav) {
-        menuBtn.addEventListener("click", () => {
+        menuBtn.addEventListener("click", function() {
           menuBtn.classList.toggle("is-open");
           nav.classList.toggle("is-open");
         });
@@ -657,11 +637,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-

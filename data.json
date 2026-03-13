@@ -1,45 +1,122 @@
 {
     "urdu_theater_show":  [
                               {
-                                  "title":  "Ut labore magna",
-                                  "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
-                                  "language":  "elit",
-                                  "city":  "lorem city",
-                                  "runtime":  "lorem 1h 20m",
-                                  "nextShow":  "lorem fri 8:00 PM",
-                                  "rating":  "8.2",
-                                  "tragedy_image":  "./assets/urdu/1.jpg",
+                                  "title":  "World Culture Festival",
+                                  "description":  "14th Day of the World Culture Festival 2025",
+                                  "language":  "Uru",
+                                  "city":  "Islamabad",
+                                  "runtime":  "2h 20m",
+                                  "nextShow":  "fri 8:00 PM",
+                                  "rating":  "7.1",
+                                
                                   "image":  "./assets/urdu/1.jpg"
                               },
                               {
-                                  "title":  "Excepteur sint occaecat",
-                                  "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
-                                  "language":  "consectetur",
-                                  "city":  "urna park",
-                                  "runtime":  "lorem 1h 20m",
-                                  "nextShow":  "amet thu 9:00 PM",
+                                  "title":  "Artists Captivate Audiences",
+                                  "description":  "Colors of the World Culture Festival 2025 Continue to Shine at the Arts Council of Pakistan Karachi",
+                                  "language":  "Uru",
+                                  "city":  "Karachi",
+                                  "runtime":  "2h 30m",
+                                  "nextShow":  "fri 6:00 PM",
+                                  "rating":  "9.0",
+                                
+                                  "image":  "./assets/urdu/3.jpg"
+                              },
+                              {
+                                  "title":  "Jaan-e-Jaan",
+                                  "description":  "Stage play Hotel Jaan-e-Jaan gets a hilarious start",
+                                  "language":  "Urdu",
+                                  "city":  "Karachi",
+                                  "runtime":  "1h 20m",
+                                  "nextShow":  "thu 9:00 PM",
                                   "rating":  "8.2",
-                                  "tragedy_image":  "./assets/urdu/2.jpg",
+                                 
                                   "image":  "./assets/urdu/2.jpg"
+                              },
+                              {
+                                  "title":  "What?",
+                                  "description":  "Theatre play “What? ” by Eiad Elsiedy from Egypt",
+                                  "language":  "Urdu",
+                                  "city":  "Lahore",
+                                  "runtime":  "1h 50m",
+                                  "nextShow":  "thu 3:40 PM",
+                                  "rating":  "7.6",
+                                 
+                                  "image":  "./assets/urdu/4.jpg"
+                              },
+                              {
+                                  "title":  "Reading of Sandooq",
+                                  "description":  "Dramatic Reading of Sandooq by Talat Hussain",
+                                  "language":  "Urdu",
+                                  "city":  "Karachi",
+                                  "runtime":  "3h 50m",
+                                  "nextShow":  "sat 4:40 PM",
+                                  "rating":  "8.6",
+                                 
+                                  "image":  "./assets/urdu/5.jpg"
+                              },
+                              {
+                                  "title":  "The White Plague",
+                                  "description":  "Arts Council of Pakistan Karachi presents Theater Play “The White Plague” at studio II.",
+                                  "language":  "Urdu",
+                                  "city":  "Karachi",
+                                  "runtime":  "1h 10m",
+                                  "nextShow":  "mon 7:50 PM",
+                                  "rating":  "8.6",
+                                 
+                                  "image":  "./assets/urdu/6.jpg"
+                              },
+                              {
+                                  "title":  "TIK TAK",
+                                  "description":  "Play “TIK TAK” on 25th day of the ongoing Pakistan Theatre Festival",
+                                  "language":  "Urdu",
+                                  "city":  "Karachi",
+                                  "runtime":  "2h 14m",
+                                  "nextShow":  "tue 3:30 PM",
+                                  "rating":  "9.0",
+                                 
+                                  "image":  "./assets/urdu/7.jpg"
+                              },
+                              {
+                                  "title":  "Shab Bakhir Maa",
+                                  "description":  "Pakistan Theatre Festival: Theatre play “Shab Bakhir Maa”",
+                                  "language":  "Urdu",
+                                  "city":  "Karachi",
+                                  "runtime":  "1h 45m",
+                                  "nextShow":  "wed 9:30 PM",
+                                  "rating":  "7.8",
+                                 
+                                  "image":  "./assets/urdu/8.jpg"
+                              },
+                              {
+                                  "title":  "Art aur Aata",
+                                  "description":  "Pakistan Theatre Festival: ’Art Aur Aata’’ Theatre was presented by Grips Theatre Group ",
+                                  "language":  "Urdu",
+                                  "city":  "Karachi",
+                                  "runtime":  "4h 05m",
+                                  "nextShow":  "thu 11:30 PM",
+                                  "rating":  "6.7",
+                                 
+                                  "image":  "./assets/urdu/9.jpg"
                               }
                           ],
     "english_theater":  [
                             {
-                                "title":  "Sunt in culpa",
-                                "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
-                                "language":  "dolor",
-                                "city":  "dolor bay",
-                                "runtime":  "dolor 1h 50m",
-                                "nextShow":  "ipsum sat 7:30 PM",
+                                "title":  "Romeo and Juliet",
+                                "description":  "Shakespeare’s most tragic love story is revived in this modern interpretation by the Royal Shakespeare Company where two star-crossed lovers risk everything to be together.",
+                                "language":  "English",
+                                "city":  "Francisco",
+                                "runtime":  "1h 50m",
+                                "nextShow":  "sat 7:30 PM",
                                 "rating":  "7.1",
-                                "international_image":  "./assets/english/22.jpg",
-                                "image":  "./assets/english/22.jpg"
+                               
+                                "image":  "./assets/english/7.jpg"
                             },
                             {
-                                "title":  "Officia deserunt",
-                                "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
-                                "language":  "dolor",
-                                "city":  "nisi square",
+                                "title":  "Henry Vlll",
+                                "description":  "Stratford Festival presents Shakespeare’s Henry VIII, a searing drama about one of England’s most romantic yet brutal periods.",
+                                "language":  "English",
+                                "city":  "New",
                                 "runtime":  "elit 2h 20m",
                                 "nextShow":  "amet thu 9:00 PM",
                                 "rating":  "7.8",

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TheatreShow</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<style>
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:#000;
+position:fixed;
+width:100%;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+}
+
+.logo span:first-child{
+color:#ffc107;
+margin-right:5px;
+}
+
+.logo span:last-child{
+color:#ccc;
+font-weight:300;
+}
+
+
+.nav-links{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#fff;
+font-size:16px;
+}
+
+.nav-links li.active{
+background:#ff443a;
+padding:8px 15px;
+border-radius:5px;
+}
+
+
+
+/* HAMBURGER */
+
+.menu-btn{
+display:none;
+flex-direction:column;
+cursor:pointer;
+}
+
+.menu-btn span{
+width:25px;
+height:3px;
+background:white;
+margin:4px 0;
+}
+
+
+
+/* BANNER */
+
+.banner{
+height:100vh;
+background:url('https://images.unsplash.com/photo-1503095396549-807759245b35') center/cover no-repeat;
+display:flex;
+align-items:center;
+padding-left:80px;
+position:relative;
+}
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+}
+
+.banner-content{
+position:relative;
+max-width:600px;
+}
+
+.banner h1{
+font-size:60px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.banner p{
+font-size:20px;
+color:#cfcfcf;
+margin-bottom:40px;
+}
+
+.banner-btn{
+background:#ff443a;
+padding:18px 35px;
+color:white;
+text-decoration:none;
+font-weight:600;
+border-radius:6px;
+font-size:20px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.nav-links{
+position:absolute;
+top:80px;
+left:-100%;
+background:#000;
+width:100%;
+flex-direction:column;
+text-align:center;
+padding:40px 0;
+transition:0.4s;
+}
+
+.nav-links.show{
+left:0;
+}
+
+.menu-btn{
+display:flex;
+}
+
+.banner{
+padding-left:30px;
+}
+
+.banner h1{
+font-size:38px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+<div class="logo">
+<span>*</span> TheatreShow<span>.com</span>
+</div>
+
+<div class="menu-btn">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<ul class="nav-links">
+
+<li class="active"><a href="#">Home</a></li>
+<li><a href="#">Shows</a></li>
+<li><a href="#">Auditorium</a></li>
+<li><a href="#">Theater Speak</a></li>
+<li><a href="#">Artist</a></li>
+<li><a href="#">Awards</a></li>
+<li><a href="#">Magazines</a></li>
+<li><a href="#">Queries</a></li>
+
+</ul>
+
+</nav>
+
+
+
+<!-- HERO BANNER -->
+
+<section class="banner">
+
+<div class="overlay"></div>
+
+<div class="banner-content">
+
+<h1>
+Lorem, ipsum dolor.<br>
+Lorem, ipsum dolor.
+</h1>
+
+<p>
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus.
+</p>
+
+<a href="#" class="banner-btn">Lorem, ipsum dolor.</a>
+
+</div>
+
+</section>
+
+
+<!-- <script src="script.js"></script> -->
+<script>
+$(document).ready(function(){
+
+$(".menu-btn").click(function(){
+
+$(".nav-links").toggleClass("show");
+
+});
+
+});
+</script>
+
+</body>
+</html>

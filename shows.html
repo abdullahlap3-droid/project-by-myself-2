@@ -1,3444 +1,410 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shows | Theatre Show</title>
-
   <style>
-/*
-  Shared and externalized stylesheet
-  - Duplicated rules across pages are merged
-  - Page-specific styles stay under body.page-* selectors
-*/
-
-*
-{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body
-{
-  background-color: black;
-  color: white;
-}
-
-a
-{
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-}
-
-button
-{
-  padding: 4px 20px;
-  border-radius: 10px;
-}
-
-nav
-{
-  display: flex;
-  height: 80px;
-  width: 100%;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.493);
-  color: white;
-  justify-content: space-between;
-}
-
-.nav-lines span,
-.answer1,
-.answer2,
-.answer3,
-.answer4,
-.answer5
-{
-  display: none;
-}
-
-.navlinks
-{
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  color: white;
-  margin-right: 8px;
-}
-
-.navlinks li
-{
-  display: flex;
-  margin-right: 20px;
-  color: white;
-  font-size: 14px;
-}
-
-.navlinks li a:hover
-{
-  padding: 3px 10px;
-  background-color: #e83535;
-  color: white;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-
-.navlinks li a.onpage
-{
-  padding: 3px 17px;
-  background-color: #e83535;
-  color: white;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-
-.navlinks li a
-{
-  padding: 4px 10px;
-}
-
-.logo h1
-{
-  color: red;
-  font-size: 24px;
-}
-
-.logo
-{
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  margin-left: 20px;
-}
-
-.logo span
-{
-  color: rgb(208, 205, 205);
-  font-size: 12px;
-  position: relative;
-  top: -5px;
-}
-
-@media(max-width: 1014px)
-{
-  .nav-lines span
-  {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: rgb(255, 0, 0);
-    margin: 5px;
-  }
-
-  .navlinks
-  {
-    flex-direction: column;
-    z-index: 1000;
-    position: absolute;
-    height: auto;
-    width: 100%;
-    display: none;
-    top: 60px;
-    right: 0px;
-    align-items: center;
-    background-color: #e83535;
-    padding: 20px;
-  }
-
-  .navlinks.is-open
-  {
-    display: flex;
-  }
-
-  .navlinks li
-  {
-    margin: 10px 0;
-    border-radius: 20px;
-    text-align: center;
-  }
-
-  .navlinks li a:hover
-  {
-    padding: 3px 10px;
-    background-color: white;
-    color: black;
-    border-radius: 20px;
-    transition: 0.3s;
-  }
-
-  .logo
-  {
-    position: static;
-    margin-bottom: 10px;
-    margin-left: 0px;
-  }
-
-  .checking
-  {
-    font-size: 10px;
-    display: block;
-  }
-}
-
-.quick-acc
-{
-  color: red;
-  margin-top: 10px;
-}
-
-.shows-slider
-{
-  display: flex;
-  overflow: hidden;
-  gap: 20px;
-  width: max-content;
-  padding: 20px;
-  transition: 0.3s;
-  animation: move 90s linear infinite;
-  will-change: transform;
-}
-
-.slider-space
-{
-  margin-top: 20px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.slider-btn-1
-{
-  background-color: rgb(255, 0, 0);
-  color: white;
-  padding: 0px;
-  border: none;
-  padding: 6px 25px;
-  cursor: pointer;
-  padding-bottom: 7px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.slider-btn-2
-{
-  background-color: rgba(255, 255, 255, 0.372);
-  color: rgb(0, 0, 0);
-  padding: 0px;
-  border: none;
-  padding: 6px 25px;
-  cursor: pointer;
-  padding-bottom: 7px;
-  border-radius: 20px;
-  border: 1px solid black;
-  text-align: center;
-}
-
-.slider-btn-2:hover
-{
-  background-color: rgb(255, 0, 0);
-  color: rgb(252, 251, 251);
-  transition: 0.3s;
-}
-
-.slider-space:hover .shows-slider
-{
-  animation-play-state: paused;
-}
-
-.shows-card
-{
-  flex: 0 0 auto;
-}
-
-.shows-card:hover
-{
-  transform: scale(1.1);
-  transition: 0.5s;
-}
-
-.shows-card img
-{
-  height: 100%;
-  width: 100%;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.card-text
-{
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 100px;
-  left: 0;
-  bottom: 5px;
-  color: white;
-  padding: 20px;
-  text-align: start;
-  margin-left: 10px;
-}
-
-.card-text p
-{
-  font-size: 10px;
-}
-
-.carder
-{
-  box-shadow: 10px 10px 20px 2px rgba(239, 93, 93, 0.244);
-  position: relative;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 12px;
-  cursor: pointer;
-  display: inline-block;
-  transition: 0.3s;
-}
-
-.shows-card .carder:hover
-{
-  transform: scale(1.0.4);
-  transition: 0.5s;
-}
-
-.shows-card .carder:hover img
-{
-  transition: 0.5s;
-  opacity: 0.4;
-}
-
-.shows-card .carder:hover .card-text
-{
-  display: block;
-  transition: 0.5s;
-  transform: scale(1.1);
-  box-shadow: 0px 0px 0px px rgba(239, 93, 93, 0);
-}
-
-.shows-card a
-{
-
-}
-
-.img-fluider
-{
-  height: 65%;
-  width: 100%;
-  object-fit: cover;
-}
-
-@keyframes move
-{
-  0%{transform: translateX(0);
-  }100%{transform: translateX(-50%);
-  }
-}
-
-.famous-text span
-{
-  background-color: black;
-  width: 100%;
-  height: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  left: 300px;
-  overflow: hidden;
-}
-
-.straight-line
-{
-  width: 100%;
-  height: 1px;
-  background-color: rgb(255, 255, 255);
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.most-trending-text h1, .top-rated h1
-{
-  color: #e83535;
-  font-size: 40px;
-}
-
-.most-trending-text
-{
-  margin: 10px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-.most-trending
-{
-  margin-top: 60px;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.box-1
-{
-  font-weight: bold;
-  cursor: pointer;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  height: auto;
-  margin: 0px;
-  width: 100%;
-  border: 2px solid red;
-}
-
-.question1
-{
-  position: relative;
-  top: 20px;
-}
-
-.top-rated
-{
-  margin-top: 20px;
-}
-
-.quick-card
-{
-  box-shadow: 5px 5px 20px 2px rgba(255, 70, 70, 0.402);
-  padding: 20px;
-  color: rgb(254, 254, 254);
-  background-color: rgb(5, 4, 4);
-}
-
-.quick-card p, .card .card-text
-{
-  font-size: 12px;
-}
-
-.quick-card img
-{
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-  opacity: 1;
-  border-radius: 13/px;
-}
-
-.onbutton
-{
-  padding: 8px 17px;
-  background-color: #e83535;
-  color: white;
-  border-radius: 20px;
-  transition: 0.3s;
-}
-
-footer
-{
-  background-color: rgb(0, 0, 0);
-  color: white;
-  display: flex;
-  height: 200px;
-  justify-content: space-around;
-  align-items: center;
-}
-
-a
-{
-  color: rgb(255, 240, 240);
-  text-decoration: none;
-}
-
-.nav-4-link ul li
-{
-  list-style: none;
-  margin: 10px;
-}
-
-.nav-4-link ul li a:hover
-{
-  color: red;
-  transition: 0.3s;
-}
-
-.nav-4-link ul
-{
-  gap: 20px;
-}
-
-@media (max-width:687px)
-{
-  footer
-  {
-    flex-direction: column;
-    height: auto;
-    align-items: start;
-  }
-
-  .footer-logo, .accounts
-  {
-    margin: 30px;
-  }
-}
-
-@media (max-width:331px)
-{
-  .footer-navigation
-  {
-    position: relative;
-    right: 30px;
-  }
-}
-
-.card
-{
-  border: none;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.card .card-body
-{
-  background-color: #eee9d2;
-}
-
-.card .card-title
-{
-  font-weight: bold;
-}
-
-.footer-accounts a
-{
-  margin-right: 10px;
-}
-
-body.page-artist
-{
-  --page-bg: #cfd0d2;
-  --dark: #050607;
-  --dark-2: #0b0e12;
-  --cream: #f1ecd8;
-  --cream-2: #ece5cd;
-  --red: #ee3e35;
-  --muted: #9ea7b4;
-  --line: rgba(255, 255, 255, 0.08);
-}
-
-body.page-artist,
-body.page-auditorium,
-body.page-awards,
-body.page-magazines,
-body.page-queries,
-body.page-shows,
-body.page-theater-speak
-{
-  background: var(--page-bg);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
-}
-
-/* Keep non-index pages dark even if extra viewport space appears under content. */
-body[class^="page-"]:not(.page-index)
-{
-  background: var(--dark);
-}
-
-body.page-artist .site,
-body.page-auditorium .site,
-body.page-awards .site,
-body.page-magazines .site,
-body.page-queries .site,
-body.page-shows .site,
-body.page-theater-speak .site
-{
-  width: 100%;
-  min-height: 100vh;
-  background: var(--dark);
-}
-
-body.page-artist .topbar,
-body.page-auditorium .topbar,
-body.page-awards .topbar,
-body.page-magazines .topbar,
-body.page-queries .topbar,
-body.page-shows .topbar,
-body.page-theater-speak .topbar
-{
-  min-height: 62px;
-  background: #000;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-  padding: 0 18px;
-  gap: 16px;
-  position: static;
-  flex-wrap: wrap;
-}
-
-body.page-artist .brand,
-body.page-auditorium .brand,
-body.page-awards .brand,
-body.page-index .brand,
-body.page-magazines .brand,
-body.page-queries .brand,
-body.page-shows .brand,
-body.page-snipet .brand,
-body.page-theater-speak .brand
-{
-  display: flex;
-  align-items: center;
-  min-width: 230px;
-  gap: 10px;
-  font-weight: 700;
-  line-height: 1.05;
-}
-
-body.page-artist .brand-mark,
-body.page-auditorium .brand-mark,
-body.page-awards .brand-mark,
-body.page-index .brand-mark,
-body.page-magazines .brand-mark,
-body.page-queries .brand-mark,
-body.page-shows .brand-mark,
-body.page-snipet .brand-mark,
-body.page-theater-speak .brand-mark
-{
-  font-size: 28px;
-  color: #f2e0a5;
-}
-
-body.page-artist .brand span,
-body.page-auditorium .brand span,
-body.page-awards .brand span,
-body.page-index .brand span,
-body.page-magazines .brand span,
-body.page-queries .brand span,
-body.page-shows .brand span,
-body.page-snipet .brand span,
-body.page-theater-speak .brand span
-{
-  font-weight: 400;
-  font-size: 12px;
-  color: #d4d4d4;
-}
-
-body.page-artist .menu-btn,
-body.page-auditorium .menu-btn,
-body.page-awards .menu-btn,
-body.page-index .menu-btn,
-body.page-magazines .menu-btn,
-body.page-queries .menu-btn,
-body.page-shows .menu-btn,
-body.page-snipet .menu-btn,
-body.page-theater-speak .menu-btn
-{
-  margin-left: auto;
-  display: none;
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  background: transparent;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-}
-
-body.page-artist .menu-btn span,
-body.page-auditorium .menu-btn span,
-body.page-awards .menu-btn span,
-body.page-index .menu-btn span,
-body.page-magazines .menu-btn span,
-body.page-queries .menu-btn span,
-body.page-shows .menu-btn span,
-body.page-snipet .menu-btn span,
-body.page-theater-speak .menu-btn span
-{
-  width: 18px;
-  height: 2px;
-  background: #fff;
-  display: block;
-  position: relative;
-  transition: 0.2s;
-}
-
-body.page-artist .menu-btn span::before,
-body.page-artist .menu-btn span::after,
-body.page-auditorium .menu-btn span::before,
-body.page-auditorium .menu-btn span::after,
-body.page-awards .menu-btn span::before,
-body.page-awards .menu-btn span::after,
-body.page-index .menu-btn span::before,
-body.page-index .menu-btn span::after,
-body.page-magazines .menu-btn span::before,
-body.page-magazines .menu-btn span::after,
-body.page-queries .menu-btn span::before,
-body.page-queries .menu-btn span::after,
-body.page-shows .menu-btn span::before,
-body.page-shows .menu-btn span::after,
-body.page-snipet .menu-btn span::before,
-body.page-snipet .menu-btn span::after,
-body.page-theater-speak .menu-btn span::before,
-body.page-theater-speak .menu-btn span::after
-{
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 18px;
-  height: 2px;
-  background: #fff;
-  transition: 0.2s;
-}
-
-body.page-artist .menu-btn span::before,
-body.page-auditorium .menu-btn span::before,
-body.page-awards .menu-btn span::before,
-body.page-index .menu-btn span::before,
-body.page-magazines .menu-btn span::before,
-body.page-queries .menu-btn span::before,
-body.page-shows .menu-btn span::before,
-body.page-snipet .menu-btn span::before,
-body.page-theater-speak .menu-btn span::before
-{
-  top: -6px;
-}
-
-body.page-artist .menu-btn span::after,
-body.page-auditorium .menu-btn span::after,
-body.page-awards .menu-btn span::after,
-body.page-index .menu-btn span::after,
-body.page-magazines .menu-btn span::after,
-body.page-queries .menu-btn span::after,
-body.page-shows .menu-btn span::after,
-body.page-snipet .menu-btn span::after,
-body.page-theater-speak .menu-btn span::after
-{
-  top: 6px;
-}
-
-body.page-artist .menu-btn.is-open span,
-body.page-auditorium .menu-btn.is-open span,
-body.page-awards .menu-btn.is-open span,
-body.page-index .menu-btn.is-open span,
-body.page-magazines .menu-btn.is-open span,
-body.page-queries .menu-btn.is-open span,
-body.page-shows .menu-btn.is-open span,
-body.page-snipet .menu-btn.is-open span,
-body.page-theater-speak .menu-btn.is-open span
-{
-  background: transparent;
-}
-
-body.page-artist .menu-btn.is-open span::before,
-body.page-auditorium .menu-btn.is-open span::before,
-body.page-awards .menu-btn.is-open span::before,
-body.page-index .menu-btn.is-open span::before,
-body.page-magazines .menu-btn.is-open span::before,
-body.page-queries .menu-btn.is-open span::before,
-body.page-shows .menu-btn.is-open span::before,
-body.page-snipet .menu-btn.is-open span::before,
-body.page-theater-speak .menu-btn.is-open span::before
-{
-  top: 0;
-  transform: rotate(45deg);
-}
-
-body.page-artist .menu-btn.is-open span::after,
-body.page-auditorium .menu-btn.is-open span::after,
-body.page-awards .menu-btn.is-open span::after,
-body.page-index .menu-btn.is-open span::after,
-body.page-magazines .menu-btn.is-open span::after,
-body.page-queries .menu-btn.is-open span::after,
-body.page-shows .menu-btn.is-open span::after,
-body.page-snipet .menu-btn.is-open span::after,
-body.page-theater-speak .menu-btn.is-open span::after
-{
-  top: 0;
-  transform: rotate(-45deg);
-}
-
-body.page-artist .nav,
-body.page-auditorium .nav,
-body.page-awards .nav,
-body.page-index .nav,
-body.page-magazines .nav,
-body.page-queries .nav,
-body.page-shows .nav,
-body.page-snipet .nav,
-body.page-theater-speak .nav
-{
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  flex-wrap: wrap;
-  margin-left: auto;
-}
-
-body.page-artist .nav a,
-body.page-auditorium .nav a,
-body.page-awards .nav a,
-body.page-index .nav a,
-body.page-magazines .nav a,
-body.page-queries .nav a,
-body.page-shows .nav a,
-body.page-snipet .nav a,
-body.page-theater-speak .nav a
-{
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
-  padding: 10px 12px;
-  border-radius: 2px;
-  display: block;
-}
-
-body.page-artist .nav a.active,
-body.page-artist .nav a:hover,
-body.page-auditorium .nav a.active,
-body.page-auditorium .nav a:hover,
-body.page-awards .nav a.active,
-body.page-awards .nav a:hover,
-body.page-index .nav a.active,
-body.page-index .nav a:hover,
-body.page-magazines .nav a.active,
-body.page-magazines .nav a:hover,
-body.page-queries .nav a.active,
-body.page-queries .nav a:hover,
-body.page-shows .nav a.active,
-body.page-shows .nav a:hover,
-body.page-snipet .nav a.active,
-body.page-snipet .nav a:hover,
-body.page-theater-speak .nav a.active,
-body.page-theater-speak .nav a:hover
-{
-  background: var(--red);
-}
-
-body.page-artist .hero-band
-{
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.84), rgba(7, 11, 23, 0.68)), url("assets/english/image (1).jpeg") center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-  padding: 34px;
-}
-
-body.page-artist .hero-grid
-{
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 16px;
-  align-items: stretch;
-}
-
-body.page-artist .hero-copy
-{
-  background: rgba(10, 16, 28, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 28px;
-  border-radius: 12px;
-}
-
-body.page-artist .hero-copy h1
-{
-  font-size: clamp(32px, 4vw, 58px);
-  line-height: 1.04;
-  margin-bottom: 10px;
-}
-
-body.page-artist .hero-copy p
-{
-  color: #d5ddeb;
-  font-size: clamp(14px, 1.5vw, 20px);
-  margin-bottom: 18px;
-  max-width: 700px;
-}
-
-body.page-artist .hero-chips
-{
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-body.page-artist .hero-chips span
-{
-  background: rgba(238, 62, 53, 0.18);
-  color: #ffd8d5;
-  border: 1px solid rgba(238, 62, 53, 0.45);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 12px;
-}
-
-body.page-artist .spotlight
-{
-  background: rgba(5, 8, 16, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-body.page-artist .spotlight img
-{
-  width: 100%;
-  height: 230px;
-  object-fit: cover;
-  display: block;
-}
-
-body.page-artist .spotlight-body,
-body.page-auditorium .stat-list,
-body.page-auditorium .slot-list,
-body.page-auditorium .facility-list,
-body.page-queries .faq-list,
-body.page-queries .form-body,
-body.page-theater-speak .list-wrap
-{
-  padding: 12px;
-}
-
-body.page-artist .spotlight-body h3
-{
-  font-size: 20px;
-  margin-bottom: 4px;
-}
-
-body.page-artist .spotlight-body p
-{
-  color: #b8c2d1;
-  font-size: 12px;
-  line-height: 1.5;
-  margin-bottom: 8px;
-}
-
-body.page-artist .spotlight-body button
-{
-  border: 0;
-  background: var(--red);
-  color: #fff;
-  font-weight: 700;
-  border-radius: 6px;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-size: 12px;
-}
-
-body.page-artist .artist-section
-{
-  background: var(--cream);
-  color: #1a1a1a;
-  padding: 20px;
-}
-
-body.page-artist .section-head
-{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  border-left: 6px solid var(--red);
-  padding-left: 10px;
-}
-
-body.page-artist .section-head h2
-{
-  font-size: clamp(24px, 3vw, 42px);
-}
-
-body.page-artist .section-head span
-{
-  color: #545c67;
-  font-size: 13px;
-}
-
-body.page-artist .lineup
-{
-  background: var(--cream-2);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  padding: 14px;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-body.page-artist .lineup-card
-{
-  text-align: center;
-  background: #101722;
-  color: #fff;
-  border-radius: 10px;
-  border: 1px solid #2a3850;
-  padding: 10px 8px;
-}
-
-body.page-artist .lineup-card img
-{
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  border: 3px solid #e53e35;
-  object-fit: cover;
-  margin-bottom: 8px;
-}
-
-body.page-artist .lineup-card h4
-{
-  font-size: 13px;
-  margin-bottom: 2px;
-}
-
-body.page-artist .lineup-card p
-{
-  color: #b7c2d3;
-  font-size: 11px;
-}
-
-body.page-artist .content-grid
-{
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 14px;
-}
-
-body.page-artist .gallery
-{
-  margin-top: 14px;
-  background: var(--cream-2);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-body.page-artist .gallery h3,
-body.page-artist .timeline h3,
-body.page-artist .stack h3
-{
-  background: #111821;
-  color: #fff;
-  padding: 10px 12px;
-  font-size: 16px;
-}
-
-body.page-artist .gallery-grid
-{
-  padding: 12px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-
-body.page-artist .gallery-item
-{
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #0e1624;
-  border: 1px solid #2a3850;
-}
-
-body.page-artist .gallery-item img
-{
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  display: block;
-}
-
-body.page-artist .gallery-item span
-{
-  position: absolute;
-  left: 8px;
-  bottom: 8px;
-  background: rgba(0, 0, 0, 0.62);
-  color: #fff;
-  font-size: 11px;
-  padding: 4px 7px;
-  border-radius: 999px;
-}
-
-body.page-artist .timeline, body.page-artist .stack
-{
-  background: var(--cream-2);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-}
-
-body.page-artist .timeline-list,
-body.page-artist .stack-body,
-body.page-artist .dir-list
-{
-  padding: 10px 12px;
-}
-
-body.page-artist .time-row
-{
-  display: grid;
-  grid-template-columns: 110px 1fr;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 13px;
-}
-
-body.page-artist .time-row:last-child,
-body.page-artist .stack-item:last-child,
-body.page-artist .dir-row:last-child,
-body.page-auditorium .stat:last-child,
-body.page-awards .award-item:last-child,
-body.page-queries .faq-item:last-child,
-body.page-theater-speak .glossary-item:last-child,
-body.page-theater-speak .tip-item:last-child,
-body.page-theater-speak .interview-item:last-child
-{
-  border-bottom: 0;
-}
-
-body.page-artist .time-row b
-{
-  color: #1d2330;
-}
-
-body.page-artist .time-row p
-{
-  color: #4f5660;
-}
-
-body.page-artist .stack-item
-{
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-body.page-artist .stack-item b
-{
-  display: block;
-  color: #1d2330;
-  margin-bottom: 2px;
-}
-
-body.page-artist .dark-footer-band
-{
-  background: var(--dark-2);
-  border-top: 1px solid var(--line);
-  padding: 18px 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-}
-
-body.page-artist .artist-directory
-{
-  background: var(--cream);
-  padding: 0 20px 20px;
-  color: #171717;
-}
-
-body.page-artist .dir-box,
-body.page-awards .category-block,
-body.page-magazines .mag-category,
-body.page-queries .query-category
-{
-  margin-top: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f4efdc, #efe8cf);
-}
-
-body.page-artist .dir-head
-{
-  background: #111821;
-  color: #fff;
-  padding: 10px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-}
-
-body.page-artist .dir-row
-{
-  display: grid;
-  grid-template-columns: 120px 1fr 140px;
-  gap: 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  font-size: 13px;
-}
-
-body.page-artist .dir-row b
-{
-  color: #1c2431;
-}
-
-body.page-artist .stat-box
-{
-  border: 1px solid #27374d;
-  border-radius: 10px;
-  padding: 12px;
-  background: #0f1726;
-}
-
-body.page-artist .stat-box h4
-{
-  font-size: 13px;
-  color: #c9d2df;
-  margin-bottom: 6px;
-}
-
-body.page-artist .stat-box p
-{
-  font-size: 24px;
-  font-weight: 700;
-}
-
-body.page-artist .stat-box small
-{
-  color: #9fb0c7;
-  font-size: 11px;
-}
-
-body.page-artist .footer
-{
-  background: #050608;
-  padding: 18px 20px;
-  border-top: 1px solid var(--line);
-  color: #c9cfdb;
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-@media (max-width: 1100px)
-{
-  body.page-artist .lineup, body.page-artist .gallery-grid
-  {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  body.page-artist .content-grid
-  {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-artist .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-artist .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  body.page-artist .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-artist .nav a
-  {
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-  }
-
-  body.page-artist .hero-grid, body.page-artist .dark-footer-band
-  {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px)
-{
-  body.page-artist .hero-band
-  {
-    padding: 14px;
-  }
-
-  body.page-artist .hero-copy
-  {
-    padding: 16px;
-  }
-
-  body.page-artist .artist-section
-  {
-    padding: 10px;
-  }
-
-  body.page-artist .lineup, body.page-artist .gallery-grid
-  {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  body.page-artist .time-row, body.page-artist .dir-row
-  {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-}
-
-body.page-auditorium,
-body.page-shows,
-body.page-theater-speak
-{
-  --page-bg: #cfd0d2;
-  --dark: #050607;
-  --dark-2: #0b0e12;
-  --cream: #f1ecd8;
-  --cream-2: #eee9d2;
-  --red: #ee3e35;
-  --muted: #9ea7b4;
-  --line: rgba(255, 255, 255, 0.08);
-}
-
-body.page-auditorium .hero
-{
-  min-height: 260px;
-  padding: 44px 34px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(8, 12, 24, 0.66) 58%, rgba(0, 0, 0, 0.8) 100%), url("assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg") center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-}
-
-body.page-auditorium .hero h1
-{
-  font-size: clamp(32px, 4.2vw, 60px);
-  line-height: 1.05;
-  margin-bottom: 10px;
-}
-
-body.page-auditorium .hero p
-{
-  color: #d3dae7;
-  font-size: clamp(14px, 1.6vw, 22px);
-  max-width: 820px;
-}
-
-body.page-auditorium .layout, body.page-theater-speak .layout
-{
-  background: var(--cream);
-  color: #161616;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
-}
-
-body.page-auditorium .panel, body.page-theater-speak .panel
-{
-  background: linear-gradient(180deg, #f4efdc, #efe8cf);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-body.page-auditorium .panel-head,
-body.page-shows .cat-head,
-body.page-theater-speak .panel-head
-{
-  background: #111821;
-  color: #fff;
-  padding: 12px 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-body.page-auditorium .panel-head h2, body.page-theater-speak .panel-head h2
-{
-  font-size: 20px;
-}
-
-body.page-auditorium .panel-head span,
-body.page-awards .category-head span,
-body.page-magazines .mag-head span,
-body.page-queries .query-head span,
-body.page-shows .cat-head span,
-body.page-theater-speak .panel-head span
-{
-  font-size: 12px;
-  color: var(--muted);
-}
-
-body.page-auditorium .venues
-{
-  padding: 14px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-body.page-auditorium .venue-card
-{
-  background: #0f1520;
-  color: #fff;
-  border: 1px solid #243144;
-  border-left: 5px solid #ee3e35;
-  border-radius: 10px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 210px 1fr;
-  min-height: 140px;
-}
-
-body.page-auditorium .venue-card img, body.page-magazines .mag-item img
-{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-body.page-auditorium .venue-info,
-body.page-awards .spot-body,
-body.page-magazines .feature-body,
-body.page-shows .show-info,
-body.page-theater-speak .article-body
-{
-  padding: 10px;
-}
-
-body.page-auditorium .venue-info h3,
-body.page-awards .spot-body h3,
-body.page-theater-speak .article-body h3
-{
-  font-size: 15px;
-  margin-bottom: 4px;
-}
-
-body.page-auditorium .venue-info p
-{
-  font-size: 12px;
-  color: #b8c2d1;
-  margin-bottom: 6px;
-}
-
-body.page-auditorium .chip-row
-{
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-body.page-auditorium .chip
-{
-  background: rgba(238, 62, 53, 0.16);
-  border: 1px solid rgba(238, 62, 53, 0.45);
-  color: #ffd7d3;
-  padding: 3px 8px;
-  border-radius: 999px;
-  font-size: 11px;
-}
-
-body.page-auditorium .side-col, body.page-theater-speak .side-col
-{
-  display: grid;
-  gap: 16px;
-}
-
-body.page-auditorium .stat
-{
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 13px;
-}
-
-body.page-auditorium .slot
-{
-  background: #101722;
-  color: #fff;
-  border: 1px solid #263246;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-body.page-auditorium .slot b
-{
-  display: block;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-body.page-auditorium .slot small
-{
-  color: #bdc7d5;
-  font-size: 11px;
-}
-
-body.page-auditorium .facility-list ul
-{
-  list-style: none;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-body.page-auditorium .facility-list li::before
-{
-  content: "• ";
-  color: var(--red);
-  font-weight: 700;
-}
-
-body.page-auditorium .book
-{
-  padding: 12px;
-  display: grid;
-  gap: 8px;
-}
-
-body.page-auditorium .book input,
-body.page-auditorium .book select,
-body.page-auditorium .book button
-{
-  width: 100%;
-  border-radius: 6px;
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  font-size: 13px;
-}
-
-body.page-auditorium .book button
-{
-  border: 0;
-  background: var(--red);
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-body.page-auditorium .footer,
-body.page-awards .footer,
-body.page-magazines .footer,
-body.page-queries .footer,
-body.page-shows .footer,
-body.page-theater-speak .footer
-{
-  background: #050608;
-  padding: 22px 24px;
-  border-top: 1px solid var(--line);
-  color: #c9cfdb;
-  font-size: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-@media (max-width: 1000px)
-{
-  body.page-auditorium .layout, body.page-auditorium .venues
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-auditorium .venue-card
-  {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  body.page-auditorium .venue-card img
-  {
-    height: 170px;
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-auditorium .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-auditorium .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  body.page-auditorium .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-auditorium .nav a
-  {
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-  }
-}
-
-@media (max-width: 640px)
-{
-  body.page-auditorium .hero
-  {
-    padding: 24px 14px;
-    min-height: 220px;
-  }
-
-  body.page-auditorium .layout
-  {
-    padding: 10px;
-  }
-
-  body.page-auditorium .panel-head h2
-  {
-    font-size: 16px;
-  }
-}
-
-body.page-awards,
-body.page-magazines,
-body.page-queries
-{
-  --page-bg: #cfd0d2;
-  --dark: #050607;
-  --dark-2: #0b0e12;
-  --cream: #f1ecd8;
-  --cream-2: #eee9d2;
-  --red: #ee3e35;
-  --line: rgba(255, 255, 255, 0.08);
-  --muted: #9ea7b4;
-}
-
-body.page-awards .hero
-{
-  min-height: 280px;
-  padding: 46px 34px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(8, 12, 24, 0.68) 58%, rgba(0, 0, 0, 0.82) 100%), url("assets/english/image (3).jpeg") center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-}
-
-body.page-awards .hero h1, body.page-magazines .hero h1
-{
-  font-size: clamp(34px, 4.2vw, 62px);
-  line-height: 1.05;
-  margin-bottom: 10px;
-  max-width: 860px;
-}
-
-body.page-awards .hero p, body.page-magazines .hero p
-{
-  color: #d3dae7;
-  font-size: clamp(14px, 1.6vw, 22px);
-  max-width: 780px;
-}
-
-body.page-awards .section,
-body.page-awards .long-section,
-body.page-magazines .section,
-body.page-magazines .long-list,
-body.page-queries .section,
-body.page-queries .long-list
-{
-  background: var(--cream);
-  color: #171717;
-  padding: 22px;
-}
-
-body.page-awards .intro,
-body.page-magazines .intro,
-body.page-queries .intro
-{
-  border-left: 6px solid var(--red);
-  padding-left: 10px;
-  margin-bottom: 14px;
-}
-
-body.page-awards .intro h2,
-body.page-magazines .intro h2,
-body.page-queries .intro h2
-{
-  font-size: clamp(24px, 3vw, 42px);
-  margin-bottom: 4px;
-}
-
-body.page-awards .intro p,
-body.page-magazines .intro p,
-body.page-queries .intro p
-{
-  color: #4f545c;
-  font-size: 14px;
-}
-
-body.page-awards .spot-grid
-{
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-body.page-awards .spot-card,
-body.page-magazines .feature-main,
-body.page-magazines .feature-side,
-body.page-theater-speak .article
-{
-  background: #0f1520;
-  color: #fff;
-  border: 1px solid #243144;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-body.page-awards .spot-card img
-{
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-body.page-awards .spot-body p
-{
-  font-size: 12px;
-  color: #b8c2d1;
-}
-
-body.page-awards .dark-section,
-body.page-magazines .dark-row,
-body.page-queries .dark-row
-{
-  background: var(--dark-2);
-  padding: 22px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-body.page-awards .dark-title, body.page-magazines .title
-{
-  font-size: clamp(24px, 3vw, 40px);
-  margin-bottom: 12px;
-}
-
-body.page-awards .year-grid
-{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-body.page-awards .year-card
-{
-  border: 1px solid #324865;
-  border-radius: 10px;
-  background: #0f1728;
-  padding: 12px;
-}
-
-body.page-awards .year-card h3
-{
-  color: #fff;
-  margin-bottom: 8px;
-  font-size: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 6px;
-}
-
-body.page-awards .award-item
-{
-  font-size: 13px;
-  color: #cad3e2;
-  padding: 6px 0;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
-}
-
-body.page-awards .category-head,
-body.page-magazines .mag-head,
-body.page-queries .query-head
-{
-  background: #111821;
-  color: #fff;
-  padding: 10px 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-body.page-awards .category-head h3,
-body.page-magazines .mag-head h3,
-body.page-queries .query-head h3
-{
-  font-size: 16px;
-}
-
-body.page-awards .nom-grid
-{
-  padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-}
-
-body.page-awards .nom-card
-{
-  background: #101722;
-  color: #fff;
-  border: 1px solid #27374d;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-body.page-awards .nom-card img
-{
-  width: 100%;
-  height: 130px;
-  object-fit: cover;
-  display: block;
-}
-
-body.page-awards .nom-body,
-body.page-magazines .issue-body,
-body.page-magazines .mag-body
-{
-  padding: 9px;
-}
-
-body.page-awards .nom-body h4, body.page-magazines .mag-body h4
-{
-  font-size: 13px;
-  margin-bottom: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-body.page-awards .nom-body p,
-body.page-magazines .mag-body p,
-body.page-queries .query-item p
-{
-  font-size: 11px;
-  color: #b7c1d1;
-  margin-bottom: 6px;
-}
-
-body.page-awards .nom-meta,
-body.page-magazines .issue-meta,
-body.page-magazines .mag-meta
-{
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: #dbe4f2;
-}
-
-@media (max-width: 1100px)
-{
-  body.page-awards .spot-grid
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-awards .year-grid
-  {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  body.page-awards .nom-grid
-  {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-awards .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-awards .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  body.page-awards .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-awards .nav a
-  {
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-  }
-
-  body.page-awards .nom-grid
-  {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px)
-{
-  body.page-awards .hero
-  {
-    padding: 24px 14px;
-    min-height: 230px;
-  }
-
-  body.page-awards .section,
-  body.page-awards .dark-section,
-  body.page-awards .long-section
-  {
-    padding: 12px;
-  }
-
-  body.page-awards .year-grid, body.page-awards .nom-grid
-  {
-    grid-template-columns: 1fr;
-  }
-}
-
-body.page-index, body.page-snipet
-{
-  --page-bg: #cfd0d2;
-  --dark: #050607;
-  --dark-2: #0b0e12;
-  --cream: #f1ecd8;
-  --cream-2: #eee9d2;
-  --red: #ee3e35;
-}
-
-body.page-index, body.page-snipet
-{
-  background: var(--page-bg);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
-  padding: 0;
-}
-
-body.page-index .site, body.page-snipet .site
-{
-  width: 100%;
-  margin: 0 auto;
-  min-height: 100vh;
-  background: var(--dark);
-  box-shadow: none;
-}
-
-body.page-index .topbar, body.page-snipet .topbar
-{
-  min-height: 62px;
-  background: #000;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0 18px;
-  gap: 16px;
-  position: relative;
-  flex-wrap: wrap;
-}
-
-body.page-index .hero, body.page-snipet .hero
-{
-  min-height: 390px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.45) 48%, rgba(0, 0, 0, 0.7) 100%), url("assets/english/image (2).jpeg") center 22%/cover no-repeat;
-  padding: 68px 74px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-body.page-index .hero h1, body.page-snipet .hero h1
-{
-  font-size: clamp(38px, 4.1vw, 62px);
-  line-height: 1.02;
-  max-width: 710px;
-  font-weight: 800;
-}
-
-body.page-index .hero p, body.page-snipet .hero p
-{
-  color: #d6dbe3;
-  font-size: 24px;
-  max-width: 640px;
-}
-
-body.page-index .hero .cta, body.page-snipet .hero .cta
-{
-  align-self: flex-end;
-  background: var(--red);
-  color: #fff;
-  border: 0;
-  border-radius: 6px;
-  padding: 12px 20px;
-  font-size: 25px;
-  font-weight: 800;
-  box-shadow: 0 8px 24px rgba(238, 62, 53, 0.45);
-  cursor: pointer;
-}
-
-body.page-index .cream, body.page-snipet .cream
-{
-  background: var(--cream);
-  color: #181818;
-  padding: 28px 34px;
-}
-
-body.page-index .title, body.page-snipet .title
-{
-  font-size: 40px;
-  font-weight: 800;
-  margin-bottom: 18px;
-}
-
-body.page-index .trending, body.page-snipet .trending
-{
-  display: grid;
-  grid-template-columns: 1fr 1fr auto auto;
-  gap: 12px;
-  align-items: center;
-}
-
-body.page-index .trend-card, body.page-snipet .trend-card
-{
-  background: var(--cream-2);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-}
-
-body.page-index .trend-card img, body.page-snipet .trend-card img
-{
-  width: 72px;
-  height: 72px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-body.page-index .trend-card b, body.page-snipet .trend-card b
-{
-  font-size: 14px;
-  display: block;
-  margin-bottom: 4px;
-}
-
-body.page-index .trend-card small, body.page-snipet .trend-card small
-{
-  color: #5d6063;
-  font-size: 11px;
-  display: block;
-}
-
-body.page-index .pill-btn, body.page-snipet .pill-btn
-{
-  border: 0;
-  background: #5f7485;
-  color: #fff;
-  border-radius: 6px;
-  padding: 9px 16px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-body.page-index .dark-row, body.page-snipet .dark-row
-{
-  background: var(--dark-2);
-  padding: 26px 34px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-body.page-index .upcoming, body.page-snipet .upcoming
-{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-top: 14px;
-}
-
-body.page-index .up-card, body.page-snipet .up-card
-{
-  border: 1px solid #3e6075;
-  border-radius: 8px;
-  padding: 10px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  min-height: 88px;
-}
-
-body.page-index .up-card:nth-child(3), body.page-snipet .up-card:nth-child(3)
-{
-  border-color: #c33030;
-}
-
-body.page-index .up-card img, body.page-snipet .up-card img
-{
-  width: 62px;
-  height: 62px;
-  border-radius: 6px;
-  object-fit: cover;
-}
-
-body.page-index .up-card b, body.page-snipet .up-card b
-{
-  font-size: 13px;
-  display: block;
-  margin-bottom: 2px;
-}
-
-body.page-index .up-card small, body.page-snipet .up-card small
-{
-  color: #b7c1ce;
-  font-size: 11px;
-  display: block;
-}
-
-body.page-index .artists-wrap, body.page-snipet .artists-wrap
-{
-  display: grid;
-  grid-template-columns: 1.1fr 1.6fr 1fr;
-  gap: 18px;
-  align-items: start;
-}
-
-body.page-index .critics h3,
-body.page-index .featured h3,
-body.page-index .recognized h3,
-body.page-snipet .critics h3,
-body.page-snipet .featured h3,
-body.page-snipet .recognized h3
-{
-  font-size: 18px;
-  font-weight: 800;
-  margin-bottom: 14px;
-}
-
-body.page-index .quote-mark, body.page-snipet .quote-mark
-{
-  color: var(--red);
-  font-size: 50px;
-  line-height: 0.5;
-  margin-bottom: 10px;
-  display: block;
-}
-
-body.page-index .critics p, body.page-snipet .critics p
-{
-  font-size: 13px;
-  line-height: 1.6;
-  color: #3c3c3c;
-}
-
-body.page-index .featured-grid, body.page-snipet .featured-grid
-{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  text-align: center;
-}
-
-body.page-index .artist img, body.page-snipet .artist img
-{
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #2d3c51;
-}
-
-body.page-index .artist:nth-child(1) img,
-body.page-index .artist:nth-child(3) img,
-body.page-snipet .artist:nth-child(1) img,
-body.page-snipet .artist:nth-child(3) img
-{
-  border-color: #d84139;
-}
-
-body.page-index .artist span, body.page-snipet .artist span
-{
-  display: block;
-  margin-top: 6px;
-  font-size: 11px;
-  color: #2d2d2d;
-  font-weight: 700;
-}
-
-body.page-index .recognized .icons, body.page-snipet .recognized .icons
-{
-  display: flex;
-  gap: 10px;
-  margin: 8px 0 14px;
-}
-
-body.page-index .badge, body.page-snipet .badge
-{
-  width: 52px;
-  height: 64px;
-  background: #e44b41;
-  color: #fff;
-  border-radius: 6px;
-  display: grid;
-  place-items: center;
-  font-size: 22px;
-}
-
-body.page-index .recognized button, body.page-snipet .recognized button
-{
-  border: 0;
-  background: var(--red);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 5px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-body[class^="page-"] .footer
-{
-  background: #050608;
-  padding: 26px 34px 18px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-body[class^="page-"] .footer h3
-{
-  font-size: 38px;
-  margin-bottom: 12px;
-  font-weight: 800;
-}
-
-body[class^="page-"] .footer-grid
-{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) 1.3fr;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-body[class^="page-"] .footer a
-{
-  color: #c9cfdb;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 8px;
-  font-size: 12px;
-}
-
-body[class^="page-"] .footer a:first-child
-{
-  color: #f4574f;
-}
-
-body[class^="page-"] .posters
-{
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-}
-
-body[class^="page-"] .posters img
-{
-  width: 72px;
-  height: 98px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-body[class^="page-"] .sub-footer
-{
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 12px;
-  color: #aab3c1;
-}
-
-@media (max-width: 1000px)
-{
-  body.page-index .trending, body.page-index .artists-wrap
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-index .upcoming, body.page-index .footer-grid
-  {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  body[class^="page-"] .footer-grid
-  {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  body.page-index .featured-grid
-  {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  body.page-index .posters
-  {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  body[class^="page-"] .posters
-  {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  body.page-index .hero .cta
-  {
-    align-self: flex-start;
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-index .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-index .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: 8px;
-  }
-
-  body.page-index .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-index .nav a
-  {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 0;
-  }
-}
-
-@media (max-width: 620px)
-{
-  body.page-index .hero
-  {
-    padding: 26px 16px;
-    min-height: 290px;
-  }
-
-  body.page-index .hero p, body.page-index .hero .cta
-  {
-    font-size: 16px;
-  }
-
-  body.page-index .title
-  {
-    font-size: 28px;
-  }
-
-  body.page-index .upcoming
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-index .featured-grid
-  {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-body.page-magazines .hero
-{
-  min-height: 270px;
-  padding: 44px 34px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(8, 12, 24, 0.68) 58%, rgba(0, 0, 0, 0.82) 100%), url("assets/english/image.jpeg") center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-}
-
-body.page-magazines .featured
-{
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-body.page-magazines .feature-main img, body.page-magazines .feature-side img
-{
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-body.page-magazines .feature-main img
-{
-  height: 260px;
-}
-
-body.page-magazines .feature-side img
-{
-  height: 130px;
-}
-
-body.page-magazines .feature-body h3
-{
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-
-body.page-magazines .feature-body p, body.page-theater-speak .article-body p
-{
-  font-size: 12px;
-  color: #b8c2d1;
-  margin-bottom: 8px;
-}
-
-body.page-magazines .issues-grid
-{
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-
-body.page-magazines .issue-card,
-body.page-queries .faq-box,
-body.page-queries .form-box
-{
-  background: #0f1728;
-  border: 1px solid #324865;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-body.page-magazines .issue-card img
-{
-  width: 100%;
-  height: 170px;
-  object-fit: cover;
-  display: block;
-}
-
-body.page-magazines .issue-body h4, body.page-queries .query-item h4
-{
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-
-body.page-magazines .issue-body p
-{
-  font-size: 11px;
-  color: #c2ccdc;
-  margin-bottom: 6px;
-}
-
-body.page-magazines .mag-grid, body.page-queries .query-list
-{
-  padding: 10px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-body.page-magazines .mag-item
-{
-  background: #101722;
-  color: #fff;
-  border: 1px solid #27374d;
-  border-radius: 8px;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  min-height: 120px;
-}
-
-@media (max-width: 1100px)
-{
-  body.page-magazines .featured, body.page-magazines .mag-grid
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-magazines .issues-grid
-  {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-magazines .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-magazines .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  body.page-magazines .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-magazines .nav a
-  {
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-  }
-
-  body.page-magazines .issues-grid
-  {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px)
-{
-  body.page-magazines .hero
-  {
-    padding: 24px 14px;
-    min-height: 230px;
-  }
-
-  body.page-magazines .section,
-  body.page-magazines .dark-row,
-  body.page-magazines .long-list
-  {
-    padding: 12px;
-  }
-
-  body.page-magazines .issues-grid, body.page-magazines .mag-grid
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-magazines .mag-item
-  {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  body.page-magazines .mag-item img
-  {
-    height: 140px;
-  }
-}
-
-body.page-queries .hero
-{
-  min-height: 250px;
-  padding: 40px 34px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(8, 12, 24, 0.68) 58%, rgba(0, 0, 0, 0.82) 100%), url("assets/english/image (2).jpeg") center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-}
-
-body.page-queries .hero h1
-{
-  font-size: clamp(32px, 4vw, 58px);
-  line-height: 1.05;
-  margin-bottom: 10px;
-}
-
-body.page-queries .hero p
-{
-  color: #d3dae7;
-  font-size: clamp(14px, 1.6vw, 21px);
-  max-width: 800px;
-}
-
-body.page-queries .help-grid
-{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 12px;
-}
-
-body.page-queries .help-card
-{
-  background: #0f1520;
-  color: #fff;
-  border: 1px solid #243144;
-  border-radius: 10px;
-  padding: 12px;
-}
-
-body.page-queries .help-card h3
-{
-  font-size: 16px;
-  margin-bottom: 6px;
-}
-
-body.page-queries .help-card p
-{
-  font-size: 12px;
-  color: #c3ccdb;
-  margin-bottom: 10px;
-}
-
-body.page-queries .help-card a
-{
-  color: #ffd7d3;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 215, 211, 0.5);
-  font-size: 12px;
-}
-
-body.page-queries .faq-wrap
-{
-  display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 12px;
-}
-
-body.page-queries .box-head
-{
-  background: #111821;
-  color: #fff;
-  padding: 10px 12px;
-  font-size: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-body.page-queries .faq-item
-{
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 9px 0;
-}
-
-body.page-queries .faq-q
-{
-  color: #fff;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-body.page-queries .faq-a
-{
-  color: #bdc7d5;
-  font-size: 12px;
-  line-height: 1.5;
-  margin-top: 6px;
-  display: none;
-}
-
-body.page-queries .form-body input,
-body.page-queries .form-body select,
-body.page-queries .form-body textarea,
-body.page-queries .form-body button
-{
-  width: 100%;
-  margin-bottom: 9px;
-  border-radius: 6px;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  font-size: 13px;
-  background: #131c2c;
-  color: #fff;
-}
-
-body.page-queries .form-body textarea
-{
-  min-height: 110px;
-  resize: vertical;
-}
-
-body.page-queries .form-body button
-{
-  border: 0;
-  background: var(--red);
-  font-weight: 700;
-  cursor: pointer;
-}
-
-body.page-queries .mail-row
-{
-  margin-top: 12px;
-  font-size: 13px;
-  color: #d6deeb;
-}
-
-body.page-queries .mail-row a
-{
-  color: #ffd7d3;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 215, 211, 0.5);
-}
-
-body.page-queries .query-item
-{
-  background: #101722;
-  color: #fff;
-  border: 1px solid #27374d;
-  border-radius: 8px;
-  padding: 10px;
-}
-
-body.page-queries .query-item small
-{
-  color: #dbe4f2;
-  font-size: 11px;
-}
-
-@media (max-width: 1000px)
-{
-  body.page-queries .help-grid,
-  body.page-queries .faq-wrap,
-  body.page-queries .query-list
-  {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-queries .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-queries .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  body.page-queries .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-queries .nav a
-  {
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-  }
-}
-
-@media (max-width: 640px)
-{
-  body.page-queries .hero
-  {
-    padding: 24px 14px;
-    min-height: 220px;
-  }
-
-  body.page-queries .section,
-  body.page-queries .dark-row,
-  body.page-queries .long-list
-  {
-    padding: 12px;
-  }
-}
-
-body.page-shows .hero
-{
-  min-height: 280px;
-  padding: 46px 34px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(8, 12, 24, 0.66) 58%, rgba(0, 0, 0, 0.8) 100%), url("assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg") center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-}
-
-body.page-shows .hero h1
-{
-  font-size: clamp(34px, 4.3vw, 64px);
-  line-height: 1.05;
-  margin-bottom: 10px;
-  max-width: 820px;
-}
-
-body.page-shows .hero p
-{
-  color: #d3dae7;
-  font-size: clamp(14px, 1.7vw, 24px);
-  max-width: 780px;
-}
-
-body.page-shows .topbar
-{
-  position: static;
-}
-
-body.page-shows .catalog
-{
-  background: var(--cream);
-  color: #171717;
-  padding: 24px 24px 28px;
-}
-
-body.page-shows .intro
-{
-  margin-bottom: 16px;
-  border-left: 6px solid var(--red);
-  padding-left: 12px;
-}
-
-body.page-shows .intro h2
-{
-  font-size: clamp(24px, 3vw, 44px);
-  margin-bottom: 4px;
-}
-
-body.page-shows .intro p
-{
-  font-size: 14px;
-  color: #4f545c;
-}
-
-body.page-shows .jump-buttons
-{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-body.page-shows .jump-buttons a
-{
-  text-decoration: none;
-  background: #111722;
-  color: #fff;
-  border: 1px solid #29364c;
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 12px;
-}
-
-body.page-shows .jump-buttons a:hover
-{
-  background: var(--red);
-  border-color: var(--red);
-}
-
-body.page-shows .category
-{
-  margin-top: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: linear-gradient(180deg, #f4efdc, #efe8cf);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-body.page-shows .cat-head h3
-{
-  font-size: 20px;
-  letter-spacing: 0.2px;
-}
-
-/* removed grid layout so bootstrap row/col can be used instead
-body.page-shows .shows-grid
-{
-  padding: 14px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}*/
-
-body.page-shows .show-card
-{
-  background: #0f1520;
-  color: #fff;
-  border: 1px solid #243144;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-body.page-shows .show-card:hover
-{
-  transform: translateY(-2px);
-  border-color: #db3f36;
-}
-
-body.page-shows .show-card img, body.page-theater-speak .article img
-{
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-  display: block;
-}
-
-body.page-shows .show-info h4
-{
-  font-size: 14px;
-  margin-bottom: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-body.page-shows .meta
-{
-  font-size: 11px;
-  color: #b8c2d1;
-  margin-bottom: 8px;
-}
-
-body.page-shows .tags
-{
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: #d8e1ef;
-}
-
-body.page-shows .rating
-{
-  color: #ffd369;
-  font-weight: 700;
-}
-
-@media (max-width: 1050px)
-{
-  body.page-shows .shows-grid
-  {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-shows .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-shows .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  body.page-shows .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-shows .nav a
-  {
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-  }
-
-  body.page-shows .shows-grid
-  {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 640px)
-{
-  body.page-shows .hero
-  {
-    padding: 24px 14px;
-    min-height: 220px;
-  }
-
-  body.page-shows .catalog
-  {
-    padding: 16px 10px 18px;
-  }
-
-  body.page-shows .shows-grid
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-shows .cat-head h3
-  {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 1000px)
-{
-  body.page-snipet .trending, body.page-snipet .artists-wrap
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-snipet .upcoming, body.page-snipet .footer-grid
-  {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  body.page-snipet .featured-grid
-  {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  body.page-snipet .posters
-  {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  body.page-snipet .hero .cta
-  {
-    align-self: flex-start;
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-snipet .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-snipet .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: 8px;
-  }
-
-  body.page-snipet .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-snipet .nav a
-  {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 0;
-  }
-}
-
-@media (max-width: 620px)
-{
-  body.page-snipet .hero
-  {
-    padding: 26px 16px;
-    min-height: 290px;
-  }
-
-  body.page-snipet .hero p, body.page-snipet .hero .cta
-  {
-    font-size: 16px;
-  }
-
-  body.page-snipet .title
-  {
-    font-size: 28px;
-  }
-
-  body.page-snipet .upcoming
-  {
-    grid-template-columns: 1fr;
-  }
-
-  body.page-snipet .featured-grid
-  {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-body.page-theater-speak .hero
-{
-  min-height: 260px;
-  padding: 42px 34px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(8, 12, 24, 0.68) 58%, rgba(0, 0, 0, 0.82) 100%), url("assets/english/image (3).jpeg") center/cover no-repeat;
-  border-bottom: 1px solid var(--line);
-}
-
-body.page-theater-speak .hero h1
-{
-  font-size: clamp(32px, 4.1vw, 58px);
-  line-height: 1.05;
-  margin-bottom: 10px;
-}
-
-body.page-theater-speak .hero p
-{
-  color: #d3dae7;
-  font-size: clamp(14px, 1.6vw, 21px);
-  max-width: 850px;
-}
-
-body.page-theater-speak .articles
-{
-  padding: 14px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-body.page-theater-speak .article-body a
-{
-  color: #ffd7d3;
-  font-size: 12px;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 215, 211, 0.45);
-}
-
-body.page-theater-speak .glossary-item,
-body.page-theater-speak .tip-item,
-body.page-theater-speak .interview-item
-{
-  padding: 9px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-body.page-theater-speak .glossary-item b, body.page-theater-speak .interview-item b
-{
-  display: block;
-  color: #1a1f29;
-  margin-bottom: 2px;
-}
-
-body.page-theater-speak .badge-row
-{
-  padding: 12px;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-body.page-theater-speak .badge
-{
-  background: rgba(238, 62, 53, 0.14);
-  border: 1px solid rgba(238, 62, 53, 0.4);
-  color: #7f1e18;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-weight: 600;
-}
-
-@media (max-width: 1000px)
-{
-  body.page-theater-speak .layout, body.page-theater-speak .articles
-  {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 900px)
-{
-  body.page-theater-speak .menu-btn
-  {
-    display: inline-flex;
-  }
-
-  body.page-theater-speak .nav
-  {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-
-  body.page-theater-speak .nav.is-open
-  {
-    display: flex;
-  }
-
-  body.page-theater-speak .nav a
-  {
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-  }
-}
-
-@media (max-width: 640px)
-{
-  body.page-theater-speak .hero
-  {
-    padding: 22px 14px;
-    min-height: 220px;
-  }
-
-  body.page-theater-speak .layout
-  {
-    padding: 10px;
-  }
-
-  body.page-theater-speak .panel-head h2
-  {
-    font-size: 16px;
-  }
-}
-
-.quote-right
-{
-  text-align: right;
-}
-
-.mt-12
-{
-  margin-top: 12px;
-}
-
-
-/* shows page matches home navbar + footer */
-body.page-shows .topbar {
-  min-height: 62px;
-  background: #000;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--line);
-  padding: 0 18px;
-  gap: 16px;
-  position: relative;
-  flex-wrap: wrap;
-}
-
-body.page-shows .brand {
-  display: flex;
-  align-items: center;
-  min-width: 230px;
-  gap: 10px;
-  font-weight: 700;
-  line-height: 1.05;
-}
-
-body.page-shows .brand-mark {
-  font-size: 28px;
-  color: #f2e0a5;
-}
-
-body.page-shows .brand span {
-  font-weight: 400;
-  font-size: 12px;
-  color: #d4d4d4;
-}
-
-body.page-shows .menu-btn {
-  margin-left: auto;
-  display: none;
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  background: transparent;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 0;
-}
-
-body.page-shows .menu-btn span {
-  width: 18px;
-  height: 2px;
-  background: #fff;
-  display: block;
-  position: relative;
-  transition: 0.2s;
-}
-
-body.page-shows .menu-btn span::before,
-body.page-shows .menu-btn span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 18px;
-  height: 2px;
-  background: #fff;
-  transition: 0.2s;
-}
-
-body.page-shows .menu-btn span::before { top: -6px; }
-body.page-shows .menu-btn span::after { top: 6px; }
-
-body.page-shows .menu-btn.is-open span { background: transparent; }
-body.page-shows .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
-body.page-shows .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
-
-body.page-shows .nav {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  flex-wrap: wrap;
-  margin-left: auto;
-}
-
-body.page-shows .nav a {
-  color: #fff;
-  font-size: 16px;
-  padding: 10px 12px;
-  border-radius: 2px;
-  display: block;
-}
-
-body.page-shows .nav a.active,
-body.page-shows .nav a:hover {
-  background: var(--red);
-}
-
-body.page-shows .footer {
-  background: #050608;
-  padding: 26px 34px 18px;
-  border-top: 1px solid var(--line);
-  color: #c9cfdb;
-  font-size: 12px;
-}
-
-body.page-shows .footer h3 {
-  font-size: 38px;
-  margin-bottom: 12px;
-  font-weight: 800;
-}
-
-body.page-shows .footer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) 1.3fr;
-  gap: 18px;
-  margin-bottom: 18px;
-}
-
-body.page-shows .footer a {
-  color: #c9cfdb;
-  display: block;
-  margin-bottom: 8px;
-  font-size: 12px;
-}
-
-body.page-shows .footer a:first-child { color: #f4574f; }
-
-body.page-shows .posters {
-  display: flex;
-  gap: 10px;
-  justify-content: flex-end;
-}
-
-body.page-shows .posters img {
-  width: 72px;
-  height: 98px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-body.page-shows .sub-footer {
-  border-top: 1px solid var(--line);
-  padding-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 12px;
-  color: #aab3c1;
-}
-
-@media (max-width: 1000px) {
-  body.page-shows .footer-grid { grid-template-columns: 1fr 1fr; }
-  body.page-shows .posters { justify-content: flex-start; flex-wrap: wrap; }
-}
-
-@media (max-width: 900px) {
-  body.page-shows .menu-btn { display: inline-flex; }
-  body.page-shows .nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: #0a0a0a;
-    border-top: 1px solid var(--line);
-    margin-top: 8px;
-  }
-  body.page-shows .nav.is-open { display: flex; }
-  body.page-shows .nav a { border-bottom: 1px solid var(--line); border-radius: 0; }
-}
-
-/* minimal grid helpers (bootstrap replacement) */
-.shows-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.shows-grid .col-12 { grid-column: span 12; }
-.shows-grid .col-6 { grid-column: span 6; }
-.shows-grid .h-100 { height: 100%; }
-
-@media (min-width: 768px) {
-  .shows-grid .col-md-4 { grid-column: span 4; }
-}
-
-@media (min-width: 992px) {
-  .shows-grid .col-lg-3 { grid-column: span 3; }
-}
-</style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #050607;
+      color: white;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    button {
+      padding: 4px 20px;
+      border-radius: 10px;
+    }
+
+    /* topbar */
+    .topbar {
+      min-height: 62px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 18px;
+      gap: 16px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 230px;
+      gap: 10px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+
+    .brand-mark {
+      font-size: 28px;
+      color: #f2e0a5;
+    }
+
+    .brand span {
+      font-weight: 400;
+      font-size: 12px;
+      color: #d4d4d4;
+    }
+
+    .menu-btn {
+      margin-left: auto;
+      display: none;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .menu-btn span {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    .menu-btn span::before,
+    .menu-btn span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      transition: 0.2s;
+    }
+
+    .menu-btn span::before { top: -6px; }
+    .menu-btn span::after { top: 6px; }
+
+    .menu-btn.is-open span { background: transparent; }
+    .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
+    .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
+
+    .nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .nav a {
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 12px;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .nav a.active,
+    .nav a:hover {
+      background: #ee3e35;
+    }
+
+    /* hero */
+    .hero {
+      min-height: 280px;
+      padding: 46px 34px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(8,12,24,0.66) 58%, rgba(0,0,0,0.8) 100%), url("assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg") center/cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 4.3vw, 64px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      max-width: 820px;
+    }
+
+    .hero p {
+      color: #d3dae7;
+      font-size: clamp(14px, 1.7vw, 24px);
+      max-width: 780px;
+    }
+
+    /* catalog / intro */
+    .catalog {
+      background: #f1ecd8;
+      color: #171717;
+      padding: 24px 24px 28px;
+    }
+
+    .intro {
+      margin-bottom: 16px;
+      border-left: 6px solid #ee3e35;
+      padding-left: 12px;
+    }
+
+    .intro h2 {
+      font-size: clamp(24px, 3vw, 44px);
+      margin-bottom: 4px;
+    }
+
+    .intro p {
+      font-size: 14px;
+      color: #4f545c;
+    }
+
+    .jump-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .jump-buttons a {
+      text-decoration: none;
+      background: #111722;
+      color: #fff;
+      border: 1px solid #29364c;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    .jump-buttons a:hover {
+      background: #ee3e35;
+      border-color: #ee3e35;
+    }
+
+    /* category blocks */
+    .category {
+      margin-top: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: linear-gradient(180deg, #f4efdc, #efe8cf);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .cat-head {
+      background: #111821;
+      color: #fff;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cat-head h3 {
+      font-size: 20px;
+      letter-spacing: 0.2px;
+    }
+
+    .cat-head span {
+      font-size: 12px;
+      color: #9ea7b4;
+    }
+
+    /* shows grid (generic) */
+    .shows-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .shows-grid .col-12 { grid-column: span 12; }
+    .shows-grid .col-6 { grid-column: span 6; }
+    .shows-grid .h-100 { height: 100%; }
+
+    @media (min-width: 768px) {
+      .shows-grid .col-md-4 { grid-column: span 4; }
+    }
+
+    @media (min-width: 992px) {
+      .shows-grid .col-lg-3 { grid-column: span 3; }
+    }
+
+    /* show cards */
+    .show-card {
+      background: #0f1520;
+      color: #fff;
+      border: 1px solid #243144;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .show-card:hover {
+      transform: translateY(-2px);
+      border-color: #db3f36;
+    }
+
+    .show-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .show-info {
+      padding: 10px;
+    }
+
+    .show-info h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .meta {
+      font-size: 11px;
+      color: #b8c2d1;
+      margin-bottom: 8px;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #d8e1ef;
+    }
+
+    .rating {
+      color: #ffd369;
+      font-weight: 700;
+    }
+
+    /* footer */
+    .footer {
+      background: #050608;
+      padding: 26px 34px 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #c9cfdb;
+      font-size: 12px;
+    }
+
+    .footer h3 {
+      font-size: 38px;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.3fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .footer a {
+      color: #c9cfdb;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .footer a:first-child {
+      color: #f4574f;
+    }
+
+    .posters {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .posters img {
+      width: 72px;
+      height: 98px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .sub-footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: #aab3c1;
+    }
+
+    /* responsive */
+    @media (max-width: 1050px) {
+      .shows-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .posters {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .menu-btn {
+        display: inline-flex;
+      }
+      .nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #0a0a0a;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        margin-top: 8px;
+      }
+      .nav.is-open {
+        display: flex;
+      }
+      .nav a {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0;
+      }
+      .shows-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 24px 14px;
+        min-height: 220px;
+      }
+      .catalog {
+        padding: 16px 10px 18px;
+      }
+      .shows-grid {
+        grid-template-columns: 1fr;
+      }
+      .cat-head h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
-
-<body class="page-shows">
+<body>
   <main class="site">
     <header class="topbar">
       <div class="brand">
@@ -3470,16 +436,16 @@ body.page-shows .sub-footer {
         <h2>Lorem, ipsum.</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae!.</p>
         <div class="jump-buttons">
-          <a class="btn btn-dark btn-sm" href="#cat-urdu">Urdu Theater Show</a>
-          <a class="btn btn-dark btn-sm" href="#cat-english">English Theater</a>
-          <a class="btn btn-dark btn-sm" href="#cat-top-pick">Top Pick For You</a>
-          <a class="btn btn-dark btn-sm" href="#cat-musical">Musical Theater</a>
-          <a class="btn btn-dark btn-sm" href="#cat-hindi">Hindi Theater</a>
-          <a class="btn btn-dark btn-sm" href="#cat-comedy">Comedy</a>
-          <a class="btn btn-dark btn-sm" href="#cat-contemporary">Contemporary Drama</a>
-          <a class="btn btn-dark btn-sm" href="#cat-new">New</a>
-          <a class="btn btn-dark btn-sm" href="#cat-historic">Historic</a>
-          <a class="btn btn-dark btn-sm" href="#cat-upcoming">Upcoming Shows</a>
+          <a href="#cat-urdu">Urdu Theater Show</a>
+          <a href="#cat-english">English Theater</a>
+          <a href="#cat-top-pick">Top Pick For You</a>
+          <a href="#cat-musical">Musical Theater</a>
+          <a href="#cat-hindi">Hindi Theater</a>
+          <a href="#cat-comedy">Comedy</a>
+          <a href="#cat-contemporary">Currently Trending</a>
+          <a href="#cat-new">New</a>
+          <a href="#cat-historic">Historic</a>
+          <a href="#cat-upcoming">Upcoming Shows</a>
         </div>
       </div>
       <div id="shows-catalog">
@@ -3488,111 +454,102 @@ body.page-shows .sub-footer {
             <h3>Urdu Theater Show</h3>
             <span id="count-urdu">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3 " style="margin: 20px;" id="box-urdu"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-urdu"></div>
         </section>
-
         <section class="category" id="cat-english">
           <div class="cat-head">
             <h3>English Theater</h3>
             <span id="count-english">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-english"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-english"></div>
         </section>
-
         <section class="category" id="cat-top-pick">
           <div class="cat-head">
             <h3>Top Pick For You</h3>
             <span id="count-top-pick">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-top-pick"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-top-pick"></div>
         </section>
-
         <section class="category" id="cat-musical">
           <div class="cat-head">
             <h3>Musical Theater</h3>
             <span id="count-musical">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-musical"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-musical"></div>
         </section>
-
         <section class="category" id="cat-hindi">
           <div class="cat-head">
             <h3>Hindi Theater</h3>
             <span id="count-hindi">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-hindi"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-hindi"></div>
         </section>
-
         <section class="category" id="cat-comedy">
           <div class="cat-head">
             <h3>Comedy</h3>
             <span id="count-comedy">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-comedy"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-comedy"></div>
         </section>
-
         <section class="category" id="cat-contemporary">
           <div class="cat-head">
-            <h3>Contemporary Drama</h3>
+            <h3>Currently Trending</h3>
             <span id="count-contemporary">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-contemporary"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-contemporary"></div>
         </section>
-
         <section class="category" id="cat-new">
           <div class="cat-head">
             <h3>New</h3>
             <span id="count-new">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-new"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-new"></div>
         </section>
-
         <section class="category" id="cat-historic">
           <div class="cat-head">
             <h3>Historic</h3>
             <span id="count-historic">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-historic"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-historic"></div>
         </section>
-
         <section class="category" id="cat-upcoming">
           <div class="cat-head">
             <h3>Upcoming Shows</h3>
             <span id="count-upcoming">0 shows available</span>
           </div>
-          <div class="shows-grid row g-3" style="margin: 20px;" id="box-upcoming"></div>
+          <div class="shows-grid" style="margin: 20px;" id="box-upcoming"></div>
         </section>
       </div>
     </section>
 
-                <footer class="footer">
+    <footer class="footer">
       <h3>MORE LIKE THIS</h3>
-      <div class="footer-grid row g-3">
-        <div class="col-6 col-lg-2">
+      <div class="footer-grid">
+        <div>
           <a href="index.html">Home</a>
           <a href="shows.html">Shows</a>
           <a href="auditorium.html">Auditorium</a>
           <a href="artist.html">Artists</a>
         </div>
-        <div class="col-6 col-lg-2">
+        <div>
           <a href="shows.html#cat-urdu">Urdu Theater</a>
           <a href="shows.html#cat-english">English Theater</a>
           <a href="shows.html#cat-top-pick">Top Picks</a>
           <a href="shows.html#cat-musical">Musical Theater</a>
         </div>
-        <div class="col-6 col-lg-2">
+        <div>
           <a href="queries.html">Contact Us</a>
           <a href="queries.html">FAQs</a>
           <a href="queries.html">Support</a>
           <a href="queries.html">Feedback</a>
         </div>
-        <div class="col-6 col-lg-2">
+        <div>
           <a href="awards.html">Awards</a>
           <a href="magazines.html">Magazine</a>
           <a href="theater-speak.html">Theater Speak</a>
           <a href="snipet.html">Highlights</a>
         </div>
-        <div class="col-12 col-lg-4">
+        <div>
           <div class="posters">
             <img src="assets/english/Comedy.png" alt="">
             <img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="">
@@ -3607,269 +564,211 @@ body.page-shows .sub-footer {
       </div>
     </footer>
   </main>
-          <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuBtn = document.querySelector(".menu-btn");
-      const nav = document.querySelector(".nav");
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var menuBtn = document.querySelector(".menu-btn");
+      var nav = document.querySelector(".nav");
       if (menuBtn && nav) {
-        menuBtn.addEventListener("click", () => {
+        menuBtn.addEventListener("click", function() {
           menuBtn.classList.toggle("is-open");
           nav.classList.toggle("is-open");
         });
       }
 
       fetch('data.json')
-        .then(response => response.json())
-        .then(json => {
-          // 1) Urdu Theater Show
-          let section = document.querySelector('#box-urdu');
-          let html = '';
-          for (let item of json.urdu_theater_show) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+        .then(function(response) { return response.json(); })
+        .then(function(json) {
+          // Urdu Theater Show
+          var section = document.querySelector('#box-urdu');
+          var html = '';
+          for (var i = 0; i < json.urdu_theater_show.length; i++) {
+            var item = json.urdu_theater_show[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-urdu').innerText = json.urdu_theater_show.length + ' shows available';
 
-          // 2) English Theater
+          // English Theater
           section = document.querySelector('#box-english');
           html = '';
-          for (let item of json.english_theater) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.english_theater.length; i++) {
+            var item = json.english_theater[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-english').innerText = json.english_theater.length + ' shows available';
 
-          // 3) Top Pick For You
+          // Top Pick For You
           section = document.querySelector('#box-top-pick');
           html = '';
-          for (let item of json.top_pick_for_you) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.top_pick_for_you.length; i++) {
+            var item = json.top_pick_for_you[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-top-pick').innerText = json.top_pick_for_you.length + ' shows available';
 
-          // 4) Musical Theater
+          // Musical Theater
           section = document.querySelector('#box-musical');
           html = '';
-          for (let item of json.musical_theater) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.musical_theater.length; i++) {
+            var item = json.musical_theater[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-musical').innerText = json.musical_theater.length + ' shows available';
 
-          // 5) Hindi Theater
+          // Hindi Theater
           section = document.querySelector('#box-hindi');
           html = '';
-          for (let item of json.hindi_theater) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.hindi_theater.length; i++) {
+            var item = json.hindi_theater[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-hindi').innerText = json.hindi_theater.length + ' shows available';
 
-          // 6) Comedy
+          // Comedy
           section = document.querySelector('#box-comedy');
           html = '';
-          for (let item of json.comedy) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.comedy.length; i++) {
+            var item = json.comedy[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-comedy').innerText = json.comedy.length + ' shows available';
 
-          // 7) Contemporary Drama
+          // Contemporary Drama
           section = document.querySelector('#box-contemporary');
           html = '';
-          for (let item of json.contemporary_drama) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.contemporary_drama.length; i++) {
+            var item = json.contemporary_drama[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-contemporary').innerText = json.contemporary_drama.length + ' shows available';
 
-          // 8) New
+          // New
           section = document.querySelector('#box-new');
           html = '';
-          for (let item of json["new"]) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json["new"].length; i++) {
+            var item = json["new"][i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-new').innerText = json["new"].length + ' shows available';
 
-          // 9) Historic
+          // Historic
           section = document.querySelector('#box-historic');
           html = '';
-          for (let item of json.historic) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.historic.length; i++) {
+            var item = json.historic[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-historic').innerText = json.historic.length + ' shows available';
 
-          // 10) Upcoming Shows
+          // Upcoming Shows
           section = document.querySelector('#box-upcoming');
           html = '';
-          for (let item of json.upcoming_shows) {
-            html += `
-              <div class="col-6 col-md-4 col-lg-3">
-                <article class="show-card h-100">
-                  <img src="${item.image}" alt="${item.title}">
-                  <div class="show-info">
-                    <h4>${item.title}</h4>
-                    <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
-                    <div class="tags">
-                      <span>Next: ${item.nextShow}</span>
-                      <span class="rating">${item.rating}/10</span>
-                    </div>
-                  </div>
-                </article>
-              </div>
-            `;
+          for (var i = 0; i < json.upcoming_shows.length; i++) {
+            var item = json.upcoming_shows[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
           }
           section.innerHTML = html;
           document.querySelector('#count-upcoming').innerText = json.upcoming_shows.length + ' shows available';
-        })
-        // .catch(error => {
-          // console.error('Failed to load data.json:', error);
-          // const catalog = document.querySelector('#shows-catalog');
-          // if (catalog) {
-            // catalog.innerHTML = '<p style="color:#b30000;font-weight:700;">Could not load show data. Run this page using a local server (for example VS Code Live Server) instead of opening it directly as a file.</p>';
-          // }
-        // });
+        });
     });
   </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
