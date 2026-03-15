@@ -1,421 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Queries | Theatre Show</title>
-  <style>
-    /* reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #050607;
-      color: white;
-    }
-
-    a {
-      color: white;
-      text-decoration: none;
-    }
-
-    button {
-      padding: 4px 20px;
-      border-radius: 10px;
-    }
-
-    /* topbar */
-    .topbar {
-      min-height: 62px;
-      background: #000;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 0 18px;
-      gap: 16px;
-      position: relative;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      min-width: 230px;
-      gap: 10px;
-      font-weight: 700;
-      line-height: 1.05;
-    }
-
-    .brand-mark {
-      font-size: 28px;
-      color: #f2e0a5;
-    }
-
-    .brand span {
-      font-weight: 400;
-      font-size: 12px;
-      color: #d4d4d4;
-    }
-
-    .menu-btn {
-      margin-left: auto;
-      display: none;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 4px;
-      background: transparent;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      padding: 0;
-    }
-
-    .menu-btn span {
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      display: block;
-      position: relative;
-      transition: 0.2s;
-    }
-
-    .menu-btn span::before,
-    .menu-btn span::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 18px;
-      height: 2px;
-      background: #fff;
-      transition: 0.2s;
-    }
-
-    .menu-btn span::before { top: -6px; }
-    .menu-btn span::after { top: 6px; }
-
-    .menu-btn.is-open span { background: transparent; }
-    .menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
-    .menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
-
-    .nav {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      flex-wrap: wrap;
-      margin-left: auto;
-    }
-
-    .nav a {
-      color: #fff;
-      font-size: 16px;
-      padding: 10px 12px;
-      border-radius: 2px;
-      display: block;
-    }
-
-    .nav a.active,
-    .nav a:hover {
-      background: #ee3e35;
-    }
-
-    /* hero */
-    .hero {
-      min-height: 250px;
-      padding: 40px 34px;
-      background: linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(8,12,24,0.68) 58%, rgba(0,0,0,0.82) 100%), url("assets/english/image (2).jpeg") center/cover no-repeat;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 4vw, 58px);
-      line-height: 1.05;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      color: #d3dae7;
-      font-size: clamp(14px, 1.6vw, 21px);
-      max-width: 800px;
-    }
-
-    /* sections */
-    .section,
-    .long-list {
-      background: #f1ecd8;
-      color: #171717;
-      padding: 22px;
-    }
-
-    .intro {
-      border-left: 6px solid #ee3e35;
-      padding-left: 10px;
-      margin-bottom: 14px;
-    }
-
-    .intro h2 {
-      font-size: clamp(24px, 3vw, 42px);
-      margin-bottom: 4px;
-    }
-
-    .intro p {
-      color: #4f545c;
-      font-size: 14px;
-    }
-
-    /* help grid */
-    .help-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .help-card {
-      background: #0f1520;
-      color: #fff;
-      border: 1px solid #243144;
-      border-radius: 10px;
-      padding: 12px;
-    }
-
-    .help-card h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-
-    .help-card p {
-      font-size: 12px;
-      color: #c3ccdb;
-      margin-bottom: 10px;
-    }
-
-    .help-card a {
-      color: #ffd7d3;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,215,211,0.5);
-      font-size: 12px;
-    }
-
-    /* dark row (faq + form) */
-    .dark-row {
-      background: #0b0e12;
-      padding: 22px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .faq-wrap {
-      display: grid;
-      grid-template-columns: 1.3fr 1fr;
-      gap: 12px;
-    }
-
-    .faq-box,
-    .form-box {
-      background: #0f1728;
-      border: 1px solid #324865;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .box-head {
-      background: #111821;
-      color: #fff;
-      padding: 10px 12px;
-      font-size: 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .faq-list {
-      padding: 12px;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 9px 0;
-    }
-
-    .faq-item:last-child {
-      border-bottom: 0;
-    }
-
-    .faq-q {
-      color: #fff;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .faq-a {
-      color: #bdc7d5;
-      font-size: 12px;
-      line-height: 1.5;
-      margin-top: 6px;
-      display: none;
-    }
-
-    /* form */
-    .form-body {
-      padding: 12px;
-    }
-
-    .form-body input,
-    .form-body select,
-    .form-body textarea,
-    .form-body button {
-      width: 100%;
-      margin-bottom: 9px;
-      border-radius: 6px;
-      padding: 10px;
-      border: 1px solid rgba(255,255,255,0.14);
-      font-size: 13px;
-      background: #131c2c;
-      color: #fff;
-    }
-
-    .form-body textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .form-body button {
-      border: 0;
-      background: #ee3e35;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .mail-row {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #d6deeb;
-    }
-
-    .mail-row a {
-      color: #ffd7d3;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,215,211,0.5);
-    }
-
-    /* footer */
-    .footer {
-      background: #050608;
-      padding: 26px 34px 18px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: #c9cfdb;
-      font-size: 12px;
-    }
-
-    .footer h3 {
-      font-size: 38px;
-      margin-bottom: 12px;
-      font-weight: 800;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr) 1.3fr;
-      gap: 18px;
-      margin-bottom: 18px;
-    }
-
-    .footer a {
-      color: #c9cfdb;
-      display: block;
-      margin-bottom: 8px;
-      font-size: 12px;
-    }
-
-    .footer a:first-child {
-      color: #f4574f;
-    }
-
-    .posters {
-      display: flex;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-
-    .posters img {
-      width: 72px;
-      height: 98px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-
-    .sub-footer {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 12px;
-      color: #aab3c1;
-    }
-
-    /* responsive */
-    @media (max-width: 1000px) {
-      .help-grid,
-      .faq-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .posters {
-        justify-content: flex-start;
-        flex-wrap: wrap;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .menu-btn {
-        display: inline-flex;
-      }
-
-      .nav {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        background: #0a0a0a;
-        border-top: 1px solid rgba(255,255,255,0.08);
-        margin-top: 8px;
-      }
-
-      .nav.is-open {
-        display: flex;
-      }
-
-      .nav a {
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        border-radius: 0;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .hero {
-        padding: 24px 14px;
-        min-height: 220px;
-      }
-
-      .section,
-      .dark-row,
-      .long-list {
-        padding: 12px;
-      }
-    }
-  </style>
+  
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="queries">
   <main class="site">
     <header class="topbar">
       <div class="brand">
@@ -479,23 +71,34 @@
             <div class="faq-item"><div class="faq-q">How can I submit feedback?</div><div class="faq-a">Use the form on this page or email support directly using mailto links.</div></div>
           </div>
         </section>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="intro">
+        <h2>Submit a Query</h2>
+        <p>Share your details and we will get back to you shortly.</p>
+      </div>
+      <div class="faq-wrap">
         <section class="form-box">
-          <div class="box-head">Submit a Query</div>
+          <div class="box-head">Query Form</div>
           <div class="form-body">
-            <input type="text" placeholder="Your full name">
-            <input type="email" placeholder="Your email">
-            <select>
-              <option>Select query type</option>
+            <form id="queryForm">
+              <input id="qName" type="text" placeholder="Your full name" required pattern="^[A-Za-z ]{3,40}$" title="Use 3-40 letters only.">
+              <input id="qEmail" type="email" placeholder="Your email" required>
+              <select id="qType" required>
+                <option value="" disabled selected>Select query type</option>
               <option>Ticket / Booking</option>
               <option>Venue / Auditorium</option>
               <option>Artist / Gallery</option>
               <option>Awards / Magazines</option>
               <option>General Support</option>
-            </select>
-            <textarea placeholder="Write your query here..."></textarea>
-            <button type="button">Send Query</button>
-            <div class="mail-row">or email directly: <a href="mailto:support@theatreshow.com?subject=General%20Query">support@theatreshow.com</a></div>
+              </select>
+              <div class="form-note">Please keep the query between 10 and 300 characters.</div>
+              <textarea id="qMessage" placeholder="Write your query here..." required minlength="10" maxlength="300"></textarea>
+              <button type="submit">Send Query</button>
+              <div class="mail-row">or email directly: <a class="mail-link" href="mailto:support@theatreshow.com?subject=General%20Query">support@theatreshow.com</a></div>
+            </form>
           </div>
         </section>
       </div>
@@ -551,18 +154,11 @@
       </div>
     </footer>
   </main>
-  <script>
-    // simple mobile menu toggle
-    document.addEventListener("DOMContentLoaded", function() {
-      var menuBtn = document.querySelector(".menu-btn");
-      var nav = document.querySelector(".nav");
-      if (menuBtn && nav) {
-        menuBtn.addEventListener("click", function() {
-          menuBtn.classList.toggle("is-open");
-          nav.classList.toggle("is-open");
-        });
-      }
-    });
-  </script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
+
+
+
+

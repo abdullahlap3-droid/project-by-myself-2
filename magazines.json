@@ -1,0 +1,40 @@
+{
+  "categories": [
+    {
+      "name": "Interviews",
+      "items": [
+        { "title": "Stage Voices Monthly", "image": "assets/english/image (1).jpeg", "issue": "Issue 31", "date": "Jan 2026", "pdf": "assets/pdfs/issue-41.pdf" },
+        { "title": "Curtain Review", "image": "assets/english/image (2).jpeg", "issue": "Issue 32", "date": "Feb 2026", "pdf": "assets/pdfs/issue-40.pdf" },
+        { "title": "Playhouse Journal", "image": "assets/english/image (3).jpeg", "issue": "Issue 33", "date": "Mar 2026", "pdf": "assets/pdfs/issue-39.pdf" },
+        { "title": "Theatre Lens", "image": "assets/english/image.jpeg", "issue": "Issue 34", "date": "Apr 2026", "pdf": "assets/pdfs/issue-38.pdf" }
+      ]
+    },
+    {
+      "name": "Show Reviews",
+      "items": [
+        { "title": "Encore Editorial", "image": "assets/english/1.jpeg", "issue": "Issue 35", "date": "May 2026", "pdf": "assets/pdfs/issue-37.pdf" },
+        { "title": "Act and Scene", "image": "assets/english/Comedy.png", "issue": "Issue 36", "date": "Jun 2026", "pdf": "assets/pdfs/issue-41.pdf" },
+        { "title": "The Script Room", "image": "assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg", "issue": "Issue 37", "date": "Jul 2026", "pdf": "assets/pdfs/issue-40.pdf" },
+        { "title": "Stagecraft Weekly", "image": "assets/english/image (2).jpeg", "issue": "Issue 38", "date": "Aug 2026", "pdf": "assets/pdfs/issue-39.pdf" }
+      ]
+    },
+    {
+      "name": "Backstage Stories",
+      "items": [
+        { "title": "Drama Digest", "image": "assets/english/image (3).jpeg", "issue": "Issue 39", "date": "Sep 2026", "pdf": "assets/pdfs/issue-38.pdf" },
+        { "title": "Spotlight Column", "image": "assets/english/image.jpeg", "issue": "Issue 40", "date": "Oct 2026", "pdf": "assets/pdfs/issue-37.pdf" },
+        { "title": "Curtain Chronicles", "image": "assets/english/1.jpeg", "issue": "Issue 41", "date": "Nov 2026", "pdf": "assets/pdfs/issue-41.pdf" },
+        { "title": "Live Stage Notes", "image": "assets/english/Comedy.png", "issue": "Issue 42", "date": "Dec 2026", "pdf": "assets/pdfs/issue-40.pdf" }
+      ]
+    },
+    {
+      "name": "Festival Specials",
+      "items": [
+        { "title": "Festival Focus", "image": "assets/english/image (1).jpeg", "issue": "Issue 43", "date": "Jan 2027", "pdf": "assets/pdfs/issue-39.pdf" },
+        { "title": "Opening Night", "image": "assets/english/image (2).jpeg", "issue": "Issue 44", "date": "Feb 2027", "pdf": "assets/pdfs/issue-38.pdf" },
+        { "title": "Stage Awards", "image": "assets/english/image (3).jpeg", "issue": "Issue 45", "date": "Mar 2027", "pdf": "assets/pdfs/issue-37.pdf" },
+        { "title": "Final Curtain", "image": "assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg", "issue": "Issue 46", "date": "Apr 2027", "pdf": "assets/pdfs/issue-41.pdf" }
+      ]
+    }
+  ]
+}
