@@ -783,4 +783,273 @@
       });
 })();
 
+// ===== apt-project/index.html =====
+(function () {
+  if (!document.body || document.body.dataset.page !== "apt-index") return;
+  document.addEventListener("DOMContentLoaded", function () {
+    var menuBtn = document.querySelector(".menu-btn");
+    var nav = document.querySelector(".nav");
+    if (menuBtn && nav) {
+      menuBtn.addEventListener("click", function () {
+        nav.classList.toggle("show");
+      });
+    }
+  });
+})();
+
+// ===== apt-project/shows.html =====
+(function () {
+  if (!document.body || document.body.dataset.page !== "apt-shows") return;
+  document.addEventListener("DOMContentLoaded", function () {
+    var menuBtn = document.querySelector(".menu-btn");
+    var nav = document.querySelector(".nav");
+    if (menuBtn && nav) {
+      menuBtn.addEventListener("click", function () {
+        nav.classList.toggle("show");
+      });
+    }
+
+    fetch('data.json')
+      .then(response => response.json())
+      .then(json => {
+        // 1) Category 1
+        let section = document.querySelector('#box-tragedy');
+        let html = '';
+        for (let item of json.tragedy_classics) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-tragedy').innerText = json.tragedy_classics.length + ' shows available';
+
+        // 2) Category 2
+        section = document.querySelector('#box-contemporary');
+        html = '';
+        for (let item of json.contemporary_drama) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-contemporary').innerText = json.contemporary_drama.length + ' shows available';
+
+        // 3) Category 3
+        section = document.querySelector('#box-musical');
+        html = '';
+        for (let item of json.musical_theatre) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-musical').innerText = json.musical_theatre.length + ' shows available';
+
+        // 4) Category 4
+        section = document.querySelector('#box-comedy');
+        html = '';
+        for (let item of json.comedy_and_satire) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-comedy').innerText = json.comedy_and_satire.length + ' shows available';
+
+        // 5) Category 5
+        section = document.querySelector('#box-historical');
+        html = '';
+        for (let item of json.historical_epics) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-historical').innerText = json.historical_epics.length + ' shows available';
+
+        // 6) Category 6
+        section = document.querySelector('#box-experimental');
+        html = '';
+        for (let item of json.experimental_stage) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-experimental').innerText = json.experimental_stage.length + ' shows available';
+
+        // 7) Category 7
+        section = document.querySelector('#box-family');
+        html = '';
+        for (let item of json.family_and_kids) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-family').innerText = json.family_and_kids.length + ' shows available';
+
+        // 8) Category 8
+        section = document.querySelector('#box-mystery');
+        html = '';
+        for (let item of json.mystery_and_thriller) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-mystery').innerText = json.mystery_and_thriller.length + ' shows available';
+
+        // 9) Category 9
+        section = document.querySelector('#box-romance');
+        html = '';
+        for (let item of json.romance_specials) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-romance').innerText = json.romance_specials.length + ' shows available';
+
+        // 10) Category 10
+        section = document.querySelector('#box-international');
+        html = '';
+        for (let item of json.international_spotlight) {
+          html += `
+            <div class="col-6 col-md-4 col-lg-3">
+              <article class="show-card h-100">
+                <img src="${item.image}" alt="${item.title}">
+                <div class="show-info">
+                  <h4>${item.title}</h4>
+                  <div class="meta">${item.language} | ${item.city} | Runtime ${item.runtime}</div>
+                  <div class="tags">
+                    <span>Next: ${item.nextShow}</span>
+                    <span class="rating">${item.rating}/10</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          `;
+        }
+        section.innerHTML = html;
+        document.querySelector('#count-international').innerText = json.international_spotlight.length + ' shows available';
+      })
+      .catch(error => {
+        console.error('Failed to load data.json:', error);
+        const catalog = document.querySelector('#shows-catalog');
+        if (catalog) {
+          catalog.innerHTML = '<p style="color:#b30000;font-weight:700;">Could not load show data. Run this page using a local server (for example VS Code Live Server) instead of opening it directly as a file.</p>';
+        }
+      });
+  });
+})();
+
 
