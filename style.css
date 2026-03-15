@@ -1,4 +1,4 @@
-﻿/* ===== GLOBAL RESET & BASE ===== */
+﻿
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
-  background-color: #050607; /* default dark */
+  background-color: #050607; 
 }
 
 a {
@@ -21,7 +21,7 @@ button {
   border: none;
 }
 
-/* ===== SHARED COMPONENTS ===== */
+
 .topbar {
   min-height: 62px;
   background: #000;
@@ -87,11 +87,13 @@ button {
   transition: 0.2s;
 }
 
-.menu-btn span::before { top: -6px; }
-.menu-btn span::after { top: 6px; }
-.menu-btn.is-open span { background: transparent; }
-.menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
-.menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
+.menu-btn span::before { 
+  top: -6px;
+ }
+.menu-btn span::after { 
+  top: 6px;
+ }
+
 
 .nav {
   list-style: none;
@@ -115,7 +117,7 @@ button {
   background: #ee3e35;
 }
 
-/* footer */
+
 .footer {
   background: #050608;
   padding: 26px 34px 18px;
@@ -172,16 +174,16 @@ button {
   color: #aab3c1;
 }
 
-/* ===== PAGE: INDEX ===== */
-body.page-index {
+
+.page-index {
   background: #cfd0d2;
 }
-body.page-index .site {
+.page-index .site {
   width: 100%;
   min-height: 100vh;
   background: #050607;
 }
-body.page-index .hero {
+.page-index .hero {
   min-height: 280px;
   background: linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.45) 48%, rgba(0,0,0,0.7) 100%), url("assets/english/image (2).jpeg") center 22%/cover no-repeat;
   padding: 46px 34px;
@@ -190,18 +192,18 @@ body.page-index .hero {
   justify-content: center;
   gap: 18px;
 }
-body.page-index .hero h1 {
+.page-index .hero h1 {
   font-size: clamp(38px, 4.1vw, 62px);
   line-height: 1.02;
   max-width: 710px;
   font-weight: 800;
 }
-body.page-index .hero p {
+.page-index .hero p {
   color: #d6dbe3;
   font-size: 24px;
   max-width: 640px;
 }
-body.page-index .hero .cta {
+.page-index .hero .cta {
   align-self: flex-end;
   background: #ee3e35;
   color: #fff;

@@ -155,9 +155,73 @@
     </footer>
   </main>
   
-    <script src="script.js"></script>
+    <script src="jquery-4.0.0.min.js"></script>
+
+  
+   <script>
+$(document).ready(function () {
+    // Mobile menu
+    $('.menu-btn').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.nav').toggleClass('is-open');
+    });
+
+    // FAQ toggle
+    $(document).on('click', '.faq-q', function () {
+        $(this).next().toggle();
+    });
+
+    const $archive = $('#query-archive');
+    const $form = $('#queryForm');
+
+    function showSavedQueries() {
+        if ($archive.length === 0) return;
+        let savedData = sessionStorage.getItem('theatre_queries');
+        let queries = savedData ? JSON.parse(savedData) : [];
+        let html = '';
+        for (let query of queries) {
+            html += `
+                <div class="query-card">
+                    <b>${query.name}</b>
+                    <span class="query-type">${query.type}</span>
+                    <div>${query.message}</div>
+                    <div class="query-meta">
+                        <span>${query.email}</span>
+                        <span>${query.date}</span>
+                    </div>
+                </div>`;
+        }
+        $archive.html(html || '<p>No queries yet.</p>');
+    }
+
+    if ($form.length) {
+        $form.on('submit', function (e) {
+            e.preventDefault();
+            let name = $('#qName').val().trim();
+            let email = $('#qEmail').val().trim();
+            let type = $('#qType').val();
+            let message = $('#qMessage').val().trim();
+            if (!name || !email || !type || !message) return;
+
+            let savedData = sessionStorage.getItem('theatre_queries');
+            let queries = savedData ? JSON.parse(savedData) : [];
+            let newQuery = {
+                name, email, type, message,
+                date: new Date().toLocaleString()
+            };
+            queries.unshift(newQuery);
+            sessionStorage.setItem('theatre_queries', JSON.stringify(queries));
+            $form[0].reset();
+            showSavedQueries();
+        });
+    }
+
+    showSavedQueries();
+});
+</script>
 </body>
 </html>
+
 
 
 

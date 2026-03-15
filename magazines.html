@@ -123,9 +123,91 @@
     </footer>
   </main>
   
-    <script src="script.js"></script>
+    <script src="jquery-4.0.0.min.js"></script>
+
+  
+    <script>
+$(document).ready(function () {
+    // Mobile menu
+    $('.menu-btn').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.nav').toggleClass('is-open');
+    });
+
+    // Embedded magazines data (replaces magazines.json)
+    const magazineData = {
+        categories: [
+            {
+                name: "Behind the Curtain",
+                items: [
+                    {
+                        image: "images/mag1.jpg",
+                        title: "The Art of Stage Lighting",
+                        issue: "Issue #12",
+                        date: "March 2025",
+                        pdf: "pdfs/lighting.pdf"
+                    },
+                    {
+                        image: "images/mag2.jpg",
+                        title: "Interview with John Doe",
+                        issue: "Issue #11",
+                        date: "February 2025",
+                        pdf: "pdfs/interview.pdf"
+                    }
+                ]
+            },
+            {
+                name: "Playwrights' Corner",
+                items: [
+                    {
+                        image: "images/mag3.jpg",
+                        title: "Writing for the Modern Stage",
+                        issue: "Issue #8",
+                        date: "January 2025",
+                        pdf: "pdfs/writing.pdf"
+                    }
+                ]
+            }
+        ]
+    };
+
+    let categories = magazineData.categories || [];
+    let html = '';
+
+    for (let cat of categories) {
+        html += `
+            <section class="mag-category">
+                <div class="mag-head">
+                    <h3>${cat.name}</h3>
+                    <span>${cat.items.length} articles</span>
+                </div>
+                <div class="mag-grid">`;
+
+        for (let item of cat.items) {
+            html += `
+                <article class="mag-item">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div class="mag-body">
+                        <h4>${item.title}</h4>
+                        <p>Editorial from ${cat.name.toLowerCase()} archive.</p>
+                        <div class="mag-meta">
+                            <span>${item.issue}</span>
+                            <span>${item.date}</span>
+                        </div>
+                        <a class="download-btn" href="${item.pdf}" download>Download PDF</a>
+                    </div>
+                </article>`;
+        }
+
+        html += '</div></section>';
+    }
+
+    $('#mag-list').html(html);
+});
+</script>
 </body>
 </html>
+
 
 
 

@@ -254,8 +254,155 @@
   </main>
   <script src="jquery-4.0.0.min.js"></script>
   <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-  
-    <script src="script.js"></script>
+ <script>
+$(document).ready(function () {
+    // Mobile menu
+    $('.menu-btn').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.nav').toggleClass('is-open');
+    });
+
+    let currentShowTitle = '';
+
+    // Helper function to fill categories (unchanged)
+    function fillShowsCategory(containerSelector, countSelector, showsArray) {
+        let allCards = '';
+        for (let show of showsArray) {
+            allCards += `
+                <div class="col-6 col-md-4 col-lg-3">
+                    <article class="show-card h-100">
+                        <img src="${show.image}" alt="${show.title}">
+                        <div class="show-info">
+                            <h4>${show.title}</h4>
+                            <div class="meta">${show.language} | ${show.city} | Runtime ${show.runtime}</div>
+                            <div class="tags">
+                                <span>Next: ${show.nextShow}</span>
+                                <span class="rating">${show.rating}/10</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>`;
+        }
+        $(containerSelector).html(allCards);
+        $(countSelector).text(showsArray.length + ' shows available');
+    }
+
+    // Load shows data from JSON file
+    $.getJSON('data.json')
+        .done(function (showsData) {
+            // Populate categories using the loaded data
+            fillShowsCategory('#box-urdu', '#count-urdu', showsData.urdu_theater_show || []);
+            fillShowsCategory('#box-english', '#count-english', showsData.english_theater || []);
+            fillShowsCategory('#box-top-pick', '#count-top-pick', showsData.top_pick_for_you || []);
+            fillShowsCategory('#box-musical', '#count-musical', showsData.musical_theater || []);
+            fillShowsCategory('#box-comedy', '#count-comedy', showsData.comedy || []);
+            fillShowsCategory('#box-contemporary', '#count-contemporary', showsData.contemporary_drama || []);
+            fillShowsCategory('#box-new', '#count-new', showsData.new || []);
+            fillShowsCategory('#box-upcoming', '#count-upcoming', showsData.upcoming_shows || []);
+        })
+        .fail(function () {
+            console.error("Failed to load data.json. Make sure the file exists and is valid.");
+            // Optional: display an error message on the page
+            $('.category').append('<p style="color:red; text-align:center;">Could not load shows. Please try again later.</p>');
+        });
+
+    // Slider arrows (unchanged)
+    $('.next').click(function () {
+        let $slider = $(this).closest('.category').find('.card-slider');
+        $slider.animate({ scrollLeft: '+=200' }, 50);
+    });
+    $('.prev').click(function () {
+        let $slider = $(this).closest('.category').find('.card-slider');
+        $slider.animate({ scrollLeft: '-=200' }, 50);
+    });
+
+    // Feedback functions (unchanged)
+    function showFeedbackForCurrentShow() {
+        const $list = $('#feedbackList');
+        if ($list.length === 0) return;
+        let key = 'show_feedback_' + currentShowTitle;
+        let saved = localStorage.getItem(key);
+        let feedbackList = saved ? JSON.parse(saved) : [];
+        let html = '';
+        for (let item of feedbackList) {
+            html += `
+                <div class="feedback-card">
+                    <b>${item.name}</b>
+                    <div>${item.message}</div>
+                    <div class="feedback-meta">${item.date}</div>
+                </div>`;
+        }
+        $list.html(html || '<p>No feedback yet. Be the first!</p>');
+    }
+
+    $('#feedbackForm').on('submit', function (e) {
+        e.preventDefault();
+        let name = $('#fbName').val().trim();
+        let message = $('#fbMessage').val().trim();
+        if (!name || !message) return;
+        let key = 'show_feedback_' + currentShowTitle;
+        let saved = localStorage.getItem(key);
+        let list = saved ? JSON.parse(saved) : [];
+        list.unshift({ name, message, date: new Date().toLocaleString() });
+        localStorage.setItem(key, JSON.stringify(list));
+        $('#feedbackForm')[0].reset();
+        showFeedbackForCurrentShow();
+    });
+
+    // More / Less description (unchanged)
+    $('#showMoreBtn').on('click', function () {
+        $('#showModalDescFull').show();
+        $('#showModalDescShort').hide();
+        $('#showMoreBtn').hide();
+        $('#showLessBtn').show();
+    });
+    $('#showLessBtn').on('click', function () {
+        $('#showModalDescFull').hide();
+        $('#showModalDescShort').show();
+        $('#showLessBtn').hide();
+        $('#showMoreBtn').show();
+    });
+
+    // Open show modal (unchanged)
+    $(document).on('click', '.show-card', function () {
+        const $card = $(this);
+        const title = $card.find('h4').text() || 'Show';
+        const image = $card.find('img').attr('src') || '';
+        const meta = $card.find('.meta').text() || '';
+        const next = $card.find('.tags span:first').text().replace('Next: ', '') || '-';
+        const rating = $card.find('.rating').text() || '-';
+
+        const parts = meta.split(' | ');
+        const lang = parts[0] || '-';
+        const city = parts[1] || '-';
+        const runtime = parts[2] ? parts[2].replace('Runtime ', '') : '-';
+
+        const fullText = `Experience ${title} in ${city} - a compelling ${lang} theatre production with a runtime of ${runtime}. Next show: ${next}.`;
+        let shortText = fullText;
+        if (fullText.length > 120) shortText = fullText.substring(0, 120) + '...';
+
+        $('#showModalTitle').text(title);
+        $('#showModalTitleInline').text(title);
+        $('#showModalImage').attr('src', image);
+        $('#showModalLanguage').text(lang);
+        $('#showModalCity').text(city);
+        $('#showModalRuntime').text(runtime);
+        $('#showModalNext').text(next);
+        $('#showModalRating').text(rating);
+        $('#showModalDescShort').text(shortText);
+        $('#showModalDescFull').text(fullText);
+        $('#showModalDescFull').hide();
+        $('#showModalDescShort').show();
+        $('#showMoreBtn').show();
+        $('#showLessBtn').hide();
+
+        currentShowTitle = title;
+        showFeedbackForCurrentShow();
+
+        new bootstrap.Modal(document.getElementById('showModal')).show();
+    });
+});
+</script>
 </body>
 </html>
 

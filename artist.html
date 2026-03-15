@@ -216,7 +216,105 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   
   
-    <script src="script.js"></script>
+   
+ <script>
+$(document).ready(function () {
+    // Mobile menu
+    $('.menu-btn').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.nav').toggleClass('is-open');
+    });
+
+    // Slider arrows
+    $('.next').click(function () {
+        $('#coreSlider').animate({ scrollLeft: '+=300' }, 500);
+    });
+    $('.prev').click(function () {
+        $('#coreSlider').animate({ scrollLeft: '-=300' }, 500);
+    });
+
+    let artistsList = []; // Will be populated from JSON
+
+    // Load artist data from JSON file
+    $.getJSON('artist.json')
+        .done(function (data) {
+            // Assuming the JSON file contains an array directly, or has a property like "core_ensemble"
+            // Adjust according to your actual JSON structure.
+            // If your JSON is an array, use: artistsList = data;
+            // If it has a wrapper like { "core_ensemble": [...] }, use: artistsList = data.core_ensemble;
+            artistsList = data.core_ensemble || data; // Fallback: if data is array, use it directly
+            renderArtists(artistsList);
+        })
+        .fail(function () {
+            console.error("Failed to load artist.json. Make sure the file exists and is valid.");
+            $('#coreSlider').html('<p style="color: red; text-align: center; padding: 2rem;">Sorry, could not load artists.</p>');
+        });
+
+    // Render artist cards
+    function renderArtists(artists) {
+        let html = '';
+        for (let artist of artists) {
+            html += `
+                <article class="lineup-card">
+                    <img src="${artist.image}" alt="${artist.name}">
+                    <h4>${artist.name}</h4>
+                    <p>${artist.role}</p>
+                    <button class="view" data-id="${artist.id}">View Profile</button>
+                </article>`;
+        }
+        $('#coreSlider').html(html);
+    }
+
+    // Spotlight button (artist id 5)
+    $('#spotlightBtn').click(function () {
+        let found = artistsList.find(a => a.id === 5);
+        if (found) {
+            showArtistModal(found);
+        } else {
+            alert('Artist data not ready yet or artist ID 5 not found.');
+        }
+    });
+
+    // View Profile button (works for dynamically added cards)
+    $(document).on('click', '.view', function (e) {
+        e.preventDefault();
+        let artistId = $(this).data('id');
+        let found = artistsList.find(a => a.id === artistId);
+        if (found) {
+            showArtistModal(found);
+        } else {
+            alert('Artist data not loaded yet.');
+        }
+    });
+
+    // Show modal with artist details
+    function showArtistModal(artist) {
+        $('#modalImage').attr('src', artist.image);
+        $('#modalName').text(artist.name);
+        $('#modalRole').text(artist.role);
+        $('#modalDescription').text(artist.description || 'No description available.');
+
+        let awardsHtml = '';
+        if (artist.awards && artist.awards.length) {
+            for (let award of artist.awards) {
+                awardsHtml += `<li>* ${award}</li>`;
+            }
+        }
+        $('#modalAwards').html(awardsHtml || '<li>No awards listed</li>');
+
+        let showsHtml = '';
+        if (artist.shows && artist.shows.length) {
+            for (let show of artist.shows) {
+                showsHtml += `<div class="show-card"><strong>* ${show}</strong><small> - recent production</small></div>`;
+            }
+        }
+        $('#modalShows').html(showsHtml || '<p>No recent shows listed</p>');
+
+        new bootstrap.Modal(document.getElementById('artistModal')).show();
+    }
+});
+</script>
+  
 </body>
 </html>
 

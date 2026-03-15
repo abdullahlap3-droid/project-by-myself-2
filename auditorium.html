@@ -210,9 +210,55 @@
   </main>
   <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
   
-    <script src="script.js"></script>
+    <script src="jquery-4.0.0.min.js"></script>
+
+  
+   
+    <script>
+$(document).ready(function () {
+    // Mobile menu
+    $('.menu-btn').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.nav').toggleClass('is-open');
+    });
+
+    // Venue card click
+    $(document).on('click', '.venue-card', function () {
+        const $card = $(this);
+        const title = $card.find('h3').text() || 'Venue';
+        const imageSrc = $card.find('img').attr('src') || '';
+        const infoText = $card.find('.venue-info p').text() || '';
+
+        const parts = infoText.split(' | ');
+        const city = parts[0] || '-';
+        const capacity = parts[1] ? parts[1].replace('Capacity ', '') : '-';
+        const stage = parts[2] || '-';
+
+        let facilities = [];
+        $card.find('.chip').each(function () {
+            facilities.push($(this).text());
+        });
+        const facilityText = facilities.length ? facilities.join(', ') : '-';
+
+        $('#venueModalTitle').text(title);
+        $('#venueModalTitleInline').text(title);
+        $('#venueModalImage').attr('src', imageSrc);
+        $('#venueModalCity').text(city);
+        $('#venueModalCapacity').text(capacity);
+        $('#venueModalStage').text(stage);
+        $('#venueModalFacilities').text(facilityText);
+        $('#venueModalDescription').text(
+            `Explore ${title} with a ${stage} stage, seating for ${capacity}, and facilities: ${facilityText}.`
+        );
+
+        new bootstrap.Modal(document.getElementById('venueModal')).show();
+    });
+});
+</script>
+  
 </body>
 </html>
+
 
 
 

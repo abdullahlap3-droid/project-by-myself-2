@@ -136,9 +136,44 @@
     </footer>
   </main>
   
-    <script src="script.js"></script>
+    <script src="jquery-4.0.0.min.js"></script>
+
+  
+   <script>
+$(document).ready(function () {
+    // Mobile menu
+    $('.menu-btn').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.nav').toggleClass('is-open');
+    });
+
+    // Embedded award categories (could be expanded with real nominee data)
+    const categories = ['Best Play', 'Best Director', 'Best Actor', 'Audience Choice'];
+    const container = $('#award-categories');
+
+    for (let category of categories) {
+        let block = $('<section>').addClass('category-block');
+        let header = $('<div>').addClass('category-head');
+        header.append($('<h3>').text(category));
+        header.append($('<span>').text('4 nominees')); // Placeholder count
+        block.append(header);
+
+        let grid = $('<div>').addClass('nom-grid');
+        // Embedded dummy nominees – replace with actual data if needed
+        let nomineesHtml = '';
+        for (let i = 1; i <= 4; i++) {
+            nomineesHtml += `<div class="nominee-card">Nominee ${i}</div>`;
+        }
+        grid.html(nomineesHtml);
+
+        block.append(grid);
+        container.append(block);
+    }
+});
+</script>
 </body>
 </html>
+
 
 
 

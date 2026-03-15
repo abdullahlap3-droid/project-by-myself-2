@@ -156,10 +156,21 @@
     </footer>
   </main>
   
-    <script src="script.js"></script>
+    <script src="jquery-4.0.0.min.js"></script>
+
+  
+    <script>
+$(document).ready(function () {
+    $('.menu-btn').on('click', function () {
+        $(this).toggleClass('is-open');
+        $('.nav').toggleClass('is-open');
+    });
+});
+</script>
   
 </body>
 </html>
+
 
 
 
