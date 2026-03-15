@@ -4,10 +4,415 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Magazines | Theatre Show</title>
-  
-  <link rel="stylesheet" href="style.css">
+  <style>
+/* simple reset */* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+body {
+      background-color: #050607;
+      color: white;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+a {
+      color: white;
+      text-decoration: none;
+    }
+button {
+      padding: 4px 20px;
+      border-radius: 10px;
+    }
+/* topbar */
+    .topbar {
+      min-height: 62px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 18px;
+      gap: 16px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+.brand {
+      display: flex;
+      align-items: center;
+      min-width: 230px;
+      gap: 10px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+.brand-mark {
+      font-size: 28px;
+      color: #f2e0a5;
+    }
+.brand span {
+      font-weight: 400;
+      font-size: 12px;
+      color: #d4d4d4;
+    }
+.menu-btn {
+      margin-left: auto;
+      display: none;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+.menu-btn span {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+      transition: 0.2s;
+    }
+.menu-btn span::before, .menu-btn span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      transition: 0.2s;
+    }
+.menu-btn span::before { top: -6px; }
+.menu-btn span::after { top: 6px; }
+.menu-btn.is-open span { background: transparent; }
+.menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
+.menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
+.nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+.nav a {
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 12px;
+      border-radius: 2px;
+      display: block;
+    }
+.nav a.active, .nav a:hover {
+      background: #ee3e35;
+    }
+/* hero */
+    .hero {
+      min-height: 280px;
+      padding: 46px 34px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(8,12,24,0.68) 58%, rgba(0,0,0,0.82) 100%), url("assets/english/image.jpeg") center/cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+.hero h1 {
+      font-size: clamp(38px, 4.1vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      max-width: 860px;
+      font-weight: 800;
+    }
+.hero p {
+      color: #d6dbe3;
+      font-size: 24px;
+      max-width: 780px;
+    }
+/* sections */
+    .section, .long-list {
+      background: #f1ecd8;
+      color: #171717;
+      padding: 22px;
+    }
+.intro {
+      border-left: 6px solid #ee3e35;
+      padding-left: 10px;
+      margin-bottom: 14px;
+    }
+.intro h2 {
+      font-size: clamp(24px, 3vw, 42px);
+      margin-bottom: 4px;
+    }
+.intro p {
+      color: #4f545c;
+      font-size: 14px;
+    }
+/* featured section */
+    .featured {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+.feature-main, .feature-side {
+      background: #0f1520;
+      color: #fff;
+      border: 1px solid #243144;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+.feature-main img, .feature-side img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+.feature-main img {
+      height: 260px;
+    }
+.feature-side img {
+      height: 130px;
+    }
+.feature-body {
+      padding: 10px;
+    }
+.feature-body h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+.feature-body p {
+      font-size: 12px;
+      color: #b8c2d1;
+      margin-bottom: 8px;
+    }
+.mt-12 {
+      margin-top: 12px;
+    }
+/* dark row / recent issues */
+    .dark-row {
+      background: #0b0e12;
+      padding: 22px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+.title {
+      font-size: clamp(24px, 3vw, 40px);
+      margin-bottom: 12px;
+    }
+.issues-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+.issue-card {
+      background: #0f1728;
+      border: 1px solid #324865;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+.issue-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      display: block;
+    }
+.issue-body {
+      padding: 9px;
+    }
+.issue-body h4 {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+.issue-body p {
+      font-size: 11px;
+      color: #c2ccdc;
+      margin-bottom: 6px;
+    }
+.issue-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #dbe4f2;
+    }
+.download-btn {
+      display: inline-block;
+      margin-top: 6px;
+      background: #ee3e35;
+      color: #fff;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+.download-btn:hover {
+      background: #c0221a;
+    }
+/* magazine library (category blocks) */
+    .mag-category {
+      margin-top: 14px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f4efdc, #efe8cf);
+    }
+.mag-head {
+      background: #111821;
+      color: #fff;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+.mag-head h3 {
+      font-size: 16px;
+    }
+.mag-head span {
+      font-size: 12px;
+      color: #9ea7b4;
+    }
+.mag-grid {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+.mag-item {
+      background: #101722;
+      color: #fff;
+      border: 1px solid #27374d;
+      border-radius: 8px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      min-height: 120px;
+    }
+.mag-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+.mag-body {
+      padding: 9px;
+    }
+.mag-body h4 {
+      font-size: 13px;
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+.mag-body p {
+      font-size: 11px;
+      color: #b7c1d1;
+      margin-bottom: 6px;
+    }
+.mag-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #dbe4f2;
+    }
+/* footer */
+    .footer {
+      background: #050608;
+      padding: 26px 34px 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #c9cfdb;
+      font-size: 12px;
+    }
+.footer h3 {
+      font-size: 38px;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+.footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.3fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+.footer a {
+      color: #c9cfdb;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+.footer a:first-child {
+      color: #f4574f;
+    }
+.posters {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+.posters img {
+      width: 72px;
+      height: 98px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+.sub-footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: #aab3c1;
+    }
+/* responsive */
+    @media (max-width: 1100px) {
+      .featured,
+      .mag-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .issues-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+@media (max-width: 1000px) {body[data-page="magazines"] .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }body[data-page="magazines"] .posters {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+@media (max-width: 900px) {body[data-page="magazines"] .menu-btn {
+        display: inline-flex;
+      }body[data-page="magazines"] .nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #0a0a0a;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        margin-top: 8px;
+      }body[data-page="magazines"] .nav.is-open {
+        display: flex;
+      }body[data-page="magazines"] .nav a {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0;
+      }body[data-page="magazines"] .issues-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+@media (max-width: 640px) {body[data-page="magazines"] .hero {
+        padding: 24px 14px;
+        min-height: 230px;
+      }body[data-page="magazines"] .section, body[data-page="magazines"] .dark-row, body[data-page="magazines"] .long-list {
+        padding: 12px;
+      }body[data-page="magazines"] .issues-grid, body[data-page="magazines"] .mag-grid {
+        grid-template-columns: 1fr;
+      }body[data-page="magazines"] .mag-item {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }body[data-page="magazines"] .mag-item img {
+        height: 140px;
+      }
+    }
+  </style>
 </head>
-<body data-page="magazines">
+<body>
   <main class="site">
     <header class="topbar">
       <div class="brand">
@@ -122,10 +527,58 @@
       </div>
     </footer>
   </main>
-  
-  <script src="script.js"></script>
+  <script>
+if (!document.body || document.body.dataset.page !== "magazines") return;
+// wait for page to load
+    document.addEventListener("DOMContentLoaded", function() {
+      // mobile menu toggle
+      var menuBtn = document.querySelector(".menu-btn");
+      var nav = document.querySelector(".nav");
+      if (menuBtn && nav) {
+        menuBtn.addEventListener("click", function() {
+          menuBtn.classList.toggle("is-open");
+          nav.classList.toggle("is-open");
+        });
+      }
+
+                  // dynamic magazine categories (simple template method like shows page)
+      fetch('magazines.json')
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+          var categories = data.categories || [];
+          var container = document.querySelector("#mag-list");
+          var html = "";
+
+          for (var i = 0; i < categories.length; i++) {
+            var cat = categories[i];
+            html += '<section class="mag-category">';
+            html += '<div class="mag-head"><h3>' + cat.name + '</h3><span>' + cat.items.length + ' articles</span></div>';
+            html += '<div class="mag-grid">';
+
+            for (var j = 0; j < cat.items.length; j++) {
+              var item = cat.items[j];
+              html += '<article class="mag-item">';
+              html += '<img src="' + item.image + '" alt="' + item.title + '">';
+              html += '<div class="mag-body">';
+              html += '<h4>' + item.title + '</h4>';
+              html += '<p>Editorial entry from ' + cat.name.toLowerCase() + ' archive collection.</p>';
+              html += '<div class="mag-meta"><span>' + item.issue + '</span><span>' + item.date + '</span></div>';
+              html += '<a class="download-btn" href="' + item.pdf + '" download>Download PDF</a>';
+              html += '</div></article>';
+            }
+
+            html += '</div></section>';
+          }
+
+          if (container) {
+            container.innerHTML = html;
+          }
+        });
+      });
+  </script>
 </body>
 </html>
+
 
 
 

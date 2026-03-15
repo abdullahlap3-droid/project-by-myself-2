@@ -5,10 +5,537 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shows | Theatre Show</title>
   <link rel="stylesheet" href="bootstrap-5.3.8-dist/css/bootstrap.min.css">
-  
-  <link rel="stylesheet" href="style.css">
+  <style>
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+body {
+      background-color: #050607;
+      color: white;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+a {
+      color: white;
+      text-decoration: none;
+    }
+button {
+      padding: 4px 20px;
+      border-radius: 10px;
+    }
+/* topbar */
+    .topbar {
+      min-height: 62px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0 18px;
+      gap: 16px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+.brand {
+      display: flex;
+      align-items: center;
+      min-width: 230px;
+      gap: 10px;
+      font-weight: 700;
+      line-height: 1.05;
+    }
+.brand-mark {
+      font-size: 28px;
+      color: #f2e0a5;
+    }
+.brand span {
+      font-weight: 400;
+      font-size: 12px;
+      color: #d4d4d4;
+    }
+.menu-btn {
+      margin-left: auto;
+      display: none;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+    }
+.menu-btn span {
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      display: block;
+      position: relative;
+      transition: 0.2s;
+    }
+.menu-btn span::before, .menu-btn span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background: #fff;
+      transition: 0.2s;
+    }
+.menu-btn span::before { top: -6px; }
+.menu-btn span::after { top: 6px; }
+/* 
+    .menu-btn.is-open span { background: transparent; }
+.menu-btn.is-open span::before { top: 0; transform: rotate(45deg); }
+.menu-btn.is-open span::after { top: 0; transform: rotate(-45deg); }
+*/
+
+    .nav {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+.nav a {
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 12px;
+      border-radius: 2px;
+      display: block;
+    }
+.nav a.active, .nav a:hover {
+      background: #ee3e35;
+    }
+/* hero */
+    .hero {
+      min-height: 280px;
+      padding: 46px 34px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(8,12,24,0.66) 58%, rgba(0,0,0,0.8) 100%), url("assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg") center/cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+.hero h1 {
+      font-size: clamp(38px, 4.1vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      max-width: 820px;
+      font-weight: 800;
+    }
+.hero p {
+      color: #d6dbe3;
+      font-size: 24px;
+      max-width: 780px;
+    }
+/* catalog / intro */
+    .catalog {
+      background: #f1ecd8;
+      color: #171717;
+      padding: 24px 24px 28px;
+    }
+.intro {
+      margin-bottom: 16px;
+      border-left: 6px solid #ee3e35;
+      padding-left: 12px;
+    }
+.intro h2 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+.intro p {
+      font-size: 14px;
+      color: #4f545c;
+    }
+.jump-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+.jump-buttons a {
+      text-decoration: none;
+      background: #111722;
+      color: #fff;
+      border: 1px solid #29364c;
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+.jump-buttons a:hover {
+      background: #ee3e35;
+      border-color: #ee3e35;
+    }
+/* category blocks */
+    .category {
+      margin-top: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: linear-gradient(180deg, #f4efdc, #efe8cf);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+.cat-head {
+      background: #111821;
+      color: #fff;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+.cat-head h3 {
+      font-size: 20px;
+      letter-spacing: 0.2px;
+    }
+.cat-head span {
+      font-size: 12px;
+      color: #9ea7b4;
+    }
+/* shows grid (generic) */
+    .shows-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1rem;
+    }
+.shows-grid .col-12 { grid-column: span 12; }
+.shows-grid .col-6 { grid-column: span 6; }
+.shows-grid .h-100 { height: 100%; }
+/* override Bootstrap column sizing inside our CSS grid */
+    .shows-grid > [class*="col-"] {
+      width: auto;
+      max-width: none;
+      flex: unset;
+    }
+@media (min-width: 768px) {body[data-page="shows"] .shows-grid .col-md-4 { grid-column: span 4; }
+    }
+@media (min-width: 992px) {body[data-page="shows"] .shows-grid .col-lg-3 { grid-column: span 3; }
+    }
+/* show cards */
+    .show-card {
+      background: #0f1520;
+      color: #fff;
+      border: 1px solid #243144;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+.show-card:hover {
+      transform: translateY(-2px);
+      border-color: #db3f36;
+    }
+.show-card img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+    }
+.show-info {
+      padding: 10px;
+    }
+.show-info h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+.meta {
+      font-size: 11px;
+      color: #b8c2d1;
+      margin-bottom: 8px;
+    }
+.tags {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #d8e1ef;
+    }
+.rating {
+      color: #ffd369;
+      font-weight: 700;
+    }
+.show-modal-img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+/* modal theme */
+    .show-modal-content {
+      background: #0e141d;
+      color: #e9eef6;
+      border: 1px solid #223044;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    }
+.show-modal-header {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 20px;
+    }
+.show-modal-body {
+      padding: 20px;
+    }
+.show-modal-title {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+.show-meta-line {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #c8d2e0;
+    }
+.show-meta-line strong {
+      color: #f4f7fb;
+      font-weight: 700;
+    }
+.desc-toggle {
+      margin-left: 6px;
+      color: #f2f5f8;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+#showModalDescFull, #showLessBtn {
+      display: none;
+    }
+.desc-toggle .chev {
+      display: inline-block;
+      transform: translateY(-1px);
+      font-size: 14px;
+    }
+.artist-card {
+      background: #0b1018;
+      border: 1px solid #1f2a3a;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+.artist-card img {
+      height: 120px;
+      object-fit: cover;
+    }
+/* feedback section */
+    .feedback-card {
+      background: #0f1520;
+      border: 1px solid #243144;
+      border-radius: 8px;
+      padding: 12px;
+      color: #e8eef6;
+      margin-bottom: 10px;
+      box-shadow: none;
+    }
+.feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+.feedback-card b {
+      color: #f2e0a5;
+      font-size: 13px;
+    }
+.feedback-meta {
+      font-size: 11px;
+      color: #b7c1d1;
+      margin-top: 6px;
+    }
+.feedback-form {
+      background: #0f1520;
+      border: 1px solid #243144;
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+.feedback-form input, .feedback-form textarea {
+      width: 100%;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      padding: 9px 10px;
+      border: 1px solid #2b3b56;
+      font-size: 12px;
+      background: #141c2b;
+      color: #e8eef6;
+    }
+.feedback-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+.feedback-form button {
+      width: 100%;
+      border: 0;
+      background: #ee3e35;
+      font-weight: 700;
+      cursor: pointer;
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 10px;
+    }
+@media (max-width: 900px) {body[data-page="shows"] .feedback-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+@media (max-width: 640px) {body[data-page="shows"] .feedback-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+.slider-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      width: 100%;
+      margin: 20px;
+    }
+.slider-btn {
+      background: #0f1622;
+      color: #fff;
+      border: 1px solid #2c3a52;
+      border-radius: 999px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      font-size: 18px;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+.slider-btn:hover {
+      transform: translateY(-50%) translateY(-1px);
+      border-color: #f4574f;
+      background: #151e2b;
+    }
+.slider-btn.prev {
+      left: -18px;
+    }
+.slider-btn.next {
+      right: 32px;
+    }
+.card-slider {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 6px 4px;
+      flex: 1;
+      min-width: 0;
+    }
+.card-slider::-webkit-scrollbar {
+      height: 7px;
+    }
+.card-slider::-webkit-scrollbar-thumb {
+      background: #2f3d55;
+      border-radius: 12px;
+    }
+.card-slider > [class*="col-"] {
+      flex: 0 0 230px;
+      width: auto;
+      max-width: none;
+    }
+/* footer */
+    .footer {
+      background: #050608;
+      padding: 26px 34px 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #c9cfdb;
+      font-size: 12px;
+    }
+.footer h3 {
+      font-size: 38px;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+.footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.3fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+.footer a {
+      color: #c9cfdb;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+.footer a:first-child {
+      color: #f4574f;
+    }
+.posters {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+.posters img {
+      width: 72px;
+      height: 98px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+.sub-footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 12px;
+      color: #aab3c1;
+    }
+/* responsive */
+    @media (max-width: 1050px) {
+      .shows-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+@media (max-width: 1000px) {body[data-page="shows"] .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }body[data-page="shows"] .posters {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+@media (max-width: 900px) {body[data-page="shows"] .menu-btn {
+        display: inline-flex;
+      }body[data-page="shows"] .nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #0a0a0a;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        margin-top: 8px;
+      }body[data-page="shows"] .nav.is-open {
+        display: flex;
+      }body[data-page="shows"] .nav a {
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        border-radius: 0;
+      }body[data-page="shows"] .shows-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+@media (max-width: 640px) {body[data-page="shows"] .hero {
+        padding: 24px 14px;
+        min-height: 220px;
+      }body[data-page="shows"] .catalog {
+        padding: 16px 10px 18px;
+      }body[data-page="shows"] .shows-grid {
+        grid-template-columns: 1fr;
+      }body[data-page="shows"] .cat-head h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
-<body data-page="shows">
+<body>
   <main class="site">
     <header class="topbar">
       <div class="brand">
@@ -254,9 +781,329 @@
   </main>
   <script src="jquery-4.0.0.min.js"></script>
   <script src="bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-  
-  <script src="script.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+      var menuBtn = document.querySelector(".menu-btn");
+      var nav = document.querySelector(".nav");
+      if (menuBtn && nav) {
+        menuBtn.addEventListener("click", function() {
+          menuBtn.classList.toggle("is-open");
+          nav.classList.toggle("is-open");
+        });
+      }
+
+      var currentShowTitle = "";
+      var fakeFeedback = [
+        { name: "Ayesha", message: "Loved the pacing and performances. A must-watch!", date: "Just now" },
+        { name: "Bilal", message: "Great energy and strong acting. Really enjoyable.", date: "1 day ago" },
+        { name: "Sara", message: "Beautiful staging and a powerful story.", date: "2 days ago" }
+      ];
+
+      function renderFeedback() {
+        var listEl = document.getElementById("feedbackList");
+        if (!listEl) return;
+        var key = "show_feedback_" + currentShowTitle;
+        var data = localStorage.getItem(key);
+        var saved = data ? JSON.parse(data) : [];
+        var html = "";
+
+        for (var i = 0; i < fakeFeedback.length; i++) {
+          var f = fakeFeedback[i];
+          html += '<div class="feedback-card"><b>' + f.name + '</b><div>' + f.message + '</div><div class="feedback-meta">' + f.date + '</div></div>';
+        }
+
+        for (var j = 0; j < saved.length; j++) {
+          var s = saved[j];
+          html += '<div class="feedback-card"><b>' + s.name + '</b><div>' + s.message + '</div><div class="feedback-meta">' + s.date + '</div></div>';
+        }
+
+        listEl.innerHTML = html;
+      }
+
+      var feedbackForm = document.getElementById("feedbackForm");
+      if (feedbackForm) {
+        feedbackForm.addEventListener("submit", function(e) {
+          e.preventDefault();
+          var name = document.getElementById("fbName").value.trim();
+          var message = document.getElementById("fbMessage").value.trim();
+          if (!name || !message) return;
+
+          var key = "show_feedback_" + currentShowTitle;
+          var data = localStorage.getItem(key);
+          var saved = data ? JSON.parse(data) : [];
+          saved.unshift({ name: name, message: message, date: new Date().toLocaleString() });
+          localStorage.setItem(key, JSON.stringify(saved));
+          feedbackForm.reset();
+          renderFeedback();
+        });
+      }
+
+      $("#showMoreBtn").on("click", function() {
+        $("#showModalDescFull").show();
+        $("#showModalDescShort").hide();
+        $("#showMoreBtn").hide();
+        $("#showLessBtn").show();
+      });
+
+      $("#showLessBtn").on("click", function() {
+        $("#showModalDescFull").hide();
+        $("#showModalDescShort").show();
+        $("#showLessBtn").hide();
+        $("#showMoreBtn").show();
+      });
+
+      $(".next").click(function() {
+        $(this).closest(".category").find(".card-slider").animate({
+          scrollLeft: "+=200"
+        }, 50);
+      });
+
+      $(".prev").click(function() {
+        $(this).closest(".category").find(".card-slider").animate({
+          scrollLeft: "-=200"
+        }, 50);
+      });
+
+      document.addEventListener("click", function(event) {
+        var card = event.target.closest(".show-card");
+        if (!card) return;
+
+        var titleEl = card.querySelector("h4");
+        var imgEl = card.querySelector("img");
+        var metaEl = card.querySelector(".meta");
+        var nextEl = card.querySelector(".tags span");
+        var ratingEl = card.querySelector(".rating");
+
+        var title = titleEl ? titleEl.innerText : "Show Title";
+        var imageSrc = imgEl ? imgEl.src : "";
+        var metaText = metaEl ? metaEl.innerText : "";
+
+        var parts = metaText.split(" | ");
+        var language = parts[0] || "-";
+        var city = parts[1] || "-";
+        var runtime = parts[2] ? parts[2].replace("Runtime ", "") : "-";
+        var nextShow = nextEl ? nextEl.innerText.replace("Next: ", "") : "-";
+        var rating = ratingEl ? ratingEl.innerText : "-";
+        var fullDesc = "Experience " + title + " in " + city + " - a compelling " + language + " theatre production with a runtime of " + runtime + ". Next show: " + nextShow + ".";
+        var shortDesc = fullDesc.length > 120 ? fullDesc.slice(0, 120) + "..." : fullDesc;
+
+        document.getElementById("showModalTitle").innerText = title;
+        document.getElementById("showModalTitleInline").innerText = title;
+        document.getElementById("showModalImage").src = imageSrc;
+        document.getElementById("showModalLanguage").innerText = language;
+        document.getElementById("showModalCity").innerText = city;
+        document.getElementById("showModalRuntime").innerText = runtime;
+        document.getElementById("showModalNext").innerText = nextShow;
+        document.getElementById("showModalRating").innerText = rating;
+        document.getElementById("showModalDescShort").innerText = shortDesc;
+        document.getElementById("showModalDescFull").innerText = fullDesc;
+        $("#showModalDescFull").hide();
+        $("#showModalDescShort").show();
+        $("#showMoreBtn").show();
+        $("#showLessBtn").hide();
+        currentShowTitle = title;
+        renderFeedback();
+
+        new bootstrap.Modal(document.getElementById("showModal")).show();
+      });
+
+      fetch('data.json')
+        .then(function(response) { return response.json(); })
+        .then(function(json) {
+          // Urdu Theater Show
+          var section = document.querySelector('#box-urdu');
+          var html = '';
+          for (var i = 0; i < json.urdu_theater_show.length; i++) {
+            var item = json.urdu_theater_show[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-urdu').innerText = json.urdu_theater_show.length + ' shows available';
+
+          // English Theater
+          section = document.querySelector('#box-english');
+          html = '';
+          for (var i = 0; i < json.english_theater.length; i++) {
+            var item = json.english_theater[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-english').innerText = json.english_theater.length + ' shows available';
+
+          // Top Pick For You
+          section = document.querySelector('#box-top-pick');
+          html = '';
+          for (var i = 0; i < json.top_pick_for_you.length; i++) {
+            var item = json.top_pick_for_you[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-top-pick').innerText = json.top_pick_for_you.length + ' shows available';
+
+          // Musical Theater
+          section = document.querySelector('#box-musical');
+          html = '';
+          for (var i = 0; i < json.musical_theater.length; i++) {
+            var item = json.musical_theater[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-musical').innerText = json.musical_theater.length + ' shows available';
+
+          // Hindi Theater
+          section = document.querySelector('#box-hindi');
+          html = '';
+          for (var i = 0; i < json.hindi_theater.length; i++) {
+            var item = json.hindi_theater[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-hindi').innerText = json.hindi_theater.length + ' shows available';
+
+          // Comedy
+          section = document.querySelector('#box-comedy');
+          html = '';
+          for (var i = 0; i < json.comedy.length; i++) {
+            var item = json.comedy[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-comedy').innerText = json.comedy.length + ' shows available';
+
+          // Contemporary Drama
+          section = document.querySelector('#box-contemporary');
+          html = '';
+          for (var i = 0; i < json.contemporary_drama.length; i++) {
+            var item = json.contemporary_drama[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-contemporary').innerText = json.contemporary_drama.length + ' shows available';
+
+          // New
+          section = document.querySelector('#box-new');
+          html = '';
+          for (var i = 0; i < json["new"].length; i++) {
+            var item = json["new"][i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-new').innerText = json["new"].length + ' shows available';
+
+          // Historic
+          section = document.querySelector('#box-historic');
+          html = '';
+          for (var i = 0; i < json.historic.length; i++) {
+            var item = json.historic[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-historic').innerText = json.historic.length + ' shows available';
+
+          // Upcoming Shows
+          section = document.querySelector('#box-upcoming');
+          html = '';
+          for (var i = 0; i < json.upcoming_shows.length; i++) {
+            var item = json.upcoming_shows[i];
+            html += '<div class="col-6 col-md-4 col-lg-3">' +
+              '<article class="show-card h-100">' +
+              '<img src="' + item.image + '" alt="' + item.title + '">' +
+              '<div class="show-info">' +
+              '<h4>' + item.title + '</h4>' +
+              '<div class="meta">' + item.language + ' | ' + item.city + ' | Runtime ' + item.runtime + '</div>' +
+              '<div class="tags">' +
+              '<span>Next: ' + item.nextShow + '</span>' +
+              '<span class="rating">' + item.rating + '/10</span>' +
+              '</div></div></article></div>';
+          }
+          section.innerHTML = html;
+          document.querySelector('#count-upcoming').innerText = json.upcoming_shows.length + ' shows available';
+        });
+    });
+  </script>
 </body>
 </html>
+
 
 
