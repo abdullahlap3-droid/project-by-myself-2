@@ -83,53 +83,53 @@
         <h3>Artist Gallery</h3>
         <div class="row g-3 p-3">
           <div class="col-12 col-lg-3">
-            <div class="gallery-card"><img src="assets/english/image (2).jpeg" alt="Gallery 1"><span class="gallery-label">Spotlight</span></div>
+            <div class="gallery-card"><img src="assets/artist/1.webp" alt="Gallery 1"><span class="gallery-label">Spotlight</span></div>
           </div>
           <div class="col-12 col-lg-5">
-            <div class="gallery-card"><img src="assets/english/image (1).jpeg" alt="Gallery 2"><span class="gallery-label">Rehearsal</span></div>
+            <div class="gallery-card"><img src="assets/artist/2.jpg" alt="Gallery 2"><span class="gallery-label">Rehearsal</span></div>
           </div>
           <div class="col-12 col-lg-4">
-            <div class="gallery-card"><img src="assets/english/image (3).jpeg" alt="Gallery 3"><span class="gallery-label">Backstage</span></div>
+            <div class="gallery-card"><img src="assets/artist/3.jpg" alt="Gallery 3"><span class="gallery-label">Backstage</span></div>
           </div>
 
           <div class="col-12 col-lg-4">
-            <div class="gallery-card"><img src="assets/english/image.jpeg" alt="Gallery 4"><span class="gallery-label">Portrait</span></div>
+            <div class="gallery-card"><img src="assets/artist/4.jpeg" alt="Gallery 4"><span class="gallery-label">Portrait</span></div>
           </div>
           <div class="col-12 col-lg-3">
-            <div class="gallery-card"><img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="Gallery 5"><span class="gallery-label">Main Stage</span></div>
+            <div class="gallery-card"><img src="assets/artist/5.jpeg" alt="Gallery 5"><span class="gallery-label">Main Stage</span></div>
           </div>
           <div class="col-12 col-lg-5">
-            <div class="gallery-card"><img src="assets/english/1.jpeg" alt="Gallery 6"><span class="gallery-label">Costume</span></div>
+            <div class="gallery-card"><img src="assets/artist/6.jpg" alt="Gallery 6"><span class="gallery-label">Costume</span></div>
           </div>
 
           <div class="col-12 col-lg-5">
-            <div class="gallery-card"><img src="assets/english/Comedy.png" alt="Gallery 7"><span class="gallery-label">Promo</span></div>
+            <div class="gallery-card"><img src="assets/artist/7.jpeg" alt="Gallery 7"><span class="gallery-label">Promo</span></div>
           </div>
           <div class="col-12 col-lg-3">
-            <div class="gallery-card"><img src="assets/english/image (2).jpeg" alt="Gallery 8"><span class="gallery-label">Final Bow</span></div>
+            <div class="gallery-card"><img src="assets/artist/8.jpg" alt="Gallery 8"><span class="gallery-label">Final Bow</span></div>
           </div>
           <div class="col-12 col-lg-4">
-            <div class="gallery-card"><img src="assets/english/image (1).jpeg" alt="Gallery 9"><span class="gallery-label">Warmup</span></div>
+            <div class="gallery-card"><img src="assets/artist/9.jpg" alt="Gallery 9"><span class="gallery-label">Warmup</span></div>
           </div>
 
           <div class="col-12 col-lg-4">
-            <div class="gallery-card"><img src="assets/english/image.jpeg" alt="Gallery 10"><span class="gallery-label">Close Up</span></div>
+            <div class="gallery-card"><img src="assets/artist/10.jpg" alt="Gallery 10"><span class="gallery-label">Close Up</span></div>
           </div>
           <div class="col-12 col-lg-5">
-            <div class="gallery-card"><img src="assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg" alt="Gallery 11"><span class="gallery-label">Scene Shift</span></div>
+            <div class="gallery-card"><img src="assets/artist/11.jpg" alt="Gallery 11"><span class="gallery-label">Scene Shift</span></div>
           </div>
           <div class="col-12 col-lg-3">
-            <div class="gallery-card"><img src="assets/english/1.jpeg" alt="Gallery 12"><span class="gallery-label">Makeup</span></div>
+            <div class="gallery-card"><img src="assets/artist/12.jpg" alt="Gallery 12"><span class="gallery-label">Makeup</span></div>
           </div>
 
           <div class="col-12 col-lg-3">
-            <div class="gallery-card"><img src="assets/english/image (3).jpeg" alt="Gallery 13"><span class="gallery-label">Cast</span></div>
+            <div class="gallery-card"><img src="assets/artist/13.jpg" alt="Gallery 13"><span class="gallery-label">Cast</span></div>
           </div>
           <div class="col-12 col-lg-4">
-            <div class="gallery-card"><img src="assets/english/Comedy.png" alt="Gallery 14"><span class="gallery-label">Promo Night</span></div>
+            <div class="gallery-card"><img src="assets/artist/14.jpg" alt="Gallery 14"><span class="gallery-label">Promo Night</span></div>
           </div>
           <div class="col-12 col-lg-5">
-            <div class="gallery-card"><img src="assets/english/image (2).jpeg" alt="Gallery 15"><span class="gallery-label">Finale</span></div>
+            <div class="gallery-card"><img src="assets/artist/8.jpg" alt="Gallery 15"><span class="gallery-label">Finale</span></div>
           </div>
         </div>
       </section>
@@ -218,39 +218,46 @@
   
    
  <script>
-$(document).ready(function () {
-    // Mobile menu
+document.addEventListener('DOMContentLoaded', function () {
+
     $('.menu-btn').on('click', function () {
         $(this).toggleClass('is-open');
         $('.nav').toggleClass('is-open');
     });
 
-    // Slider arrows
+   
     $('.next').click(function () {
-        $('#coreSlider').animate({ scrollLeft: '+=300' }, 500);
+        $('#coreSlider').animate({ scrollLeft: '+=250' }, 50);
     });
     $('.prev').click(function () {
-        $('#coreSlider').animate({ scrollLeft: '-=300' }, 500);
+        $('#coreSlider').animate({ scrollLeft: '-=250' }, 50);
     });
 
-    let artistsList = []; // Will be populated from JSON
+  
+    let artistsList = []; 
 
-    // Load artist data from JSON file
-    $.getJSON('artist.json')
-        .done(function (data) {
-            // Assuming the JSON file contains an array directly, or has a property like "core_ensemble"
+    
+    fetch('artist.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
             // Adjust according to your actual JSON structure.
-            // If your JSON is an array, use: artistsList = data;
+            // If JSON is an array, use: artistsList = data;
             // If it has a wrapper like { "core_ensemble": [...] }, use: artistsList = data.core_ensemble;
-            artistsList = data.core_ensemble || data; // Fallback: if data is array, use it directly
+            artistsList = data.core_ensemble || data;
             renderArtists(artistsList);
         })
-        .fail(function () {
-            console.error("Failed to load artist.json. Make sure the file exists and is valid.");
-            $('#coreSlider').html('<p style="color: red; text-align: center; padding: 2rem;">Sorry, could not load artists.</p>');
+        .catch(error => {
+            console.error('Failed to load artist.json:', error);
+            document.getElementById('coreSlider').innerHTML = 
+                '<p style="color: red; text-align: center; padding: 2rem;">Sorry, could not load artists.</p>';
         });
 
-    // Render artist cards
+    // Render artist cards inside the slider
     function renderArtists(artists) {
         let html = '';
         for (let artist of artists) {
@@ -262,11 +269,11 @@ $(document).ready(function () {
                     <button class="view" data-id="${artist.id}">View Profile</button>
                 </article>`;
         }
-        $('#coreSlider').html(html);
+        document.getElementById('coreSlider').innerHTML = html;
     }
 
     // Spotlight button (artist id 5)
-    $('#spotlightBtn').click(function () {
+    document.getElementById('spotlightBtn').addEventListener('click', function () {
         let found = artistsList.find(a => a.id === 5);
         if (found) {
             showArtistModal(found);
@@ -275,41 +282,44 @@ $(document).ready(function () {
         }
     });
 
-    // View Profile button (works for dynamically added cards)
-    $(document).on('click', '.view', function (e) {
-        e.preventDefault();
-        let artistId = $(this).data('id');
-        let found = artistsList.find(a => a.id === artistId);
-        if (found) {
-            showArtistModal(found);
-        } else {
-            alert('Artist data not loaded yet.');
+    // Delegate "View Profile" button clicks (works for dynamically added cards)
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('view')) {
+            e.preventDefault();
+            let artistId = e.target.getAttribute('data-id');
+            // Convert to number if needed (data-id is string)
+            let found = artistsList.find(a => a.id == artistId);
+            if (found) {
+                showArtistModal(found);
+            } else {
+                alert('Artist data not loaded yet.');
+            }
         }
     });
 
-    // Show modal with artist details
+    // Show Bootstrap modal with artist details
     function showArtistModal(artist) {
-        $('#modalImage').attr('src', artist.image);
-        $('#modalName').text(artist.name);
-        $('#modalRole').text(artist.role);
-        $('#modalDescription').text(artist.description || 'No description available.');
+        // Set modal content using vanilla JS
+        document.getElementById('modalImage').setAttribute('src', artist.image);
+        document.getElementById('modalName').textContent = artist.name;
+        document.getElementById('modalRole').textContent = artist.role;
+        document.getElementById('modalDescription').textContent = artist.description || 'No description available.';
 
-        let awardsHtml = '';
+        // Awards text
+        let awardsText = '';
         if (artist.awards && artist.awards.length) {
-            for (let award of artist.awards) {
-                awardsHtml += `<li>* ${award}</li>`;
-            }
+            awardsText = artist.awards.join(', ');
         }
-        $('#modalAwards').html(awardsHtml || '<li>No awards listed</li>');
+        document.getElementById('modalAwardsText').textContent = awardsText || 'No awards listed';
 
-        let showsHtml = '';
+        // Shows text
+        let showsText = '';
         if (artist.shows && artist.shows.length) {
-            for (let show of artist.shows) {
-                showsHtml += `<div class="show-card"><strong>* ${show}</strong><small> - recent production</small></div>`;
-            }
+            showsText = artist.shows.join(', ');
         }
-        $('#modalShows').html(showsHtml || '<p>No recent shows listed</p>');
+        document.getElementById('modalShowsText').textContent = showsText || 'No recent shows listed';
 
+        // Show the modal (Bootstrap's JavaScript is assumed to be loaded)
         new bootstrap.Modal(document.getElementById('artistModal')).show();
     }
 });

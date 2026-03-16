@@ -847,7 +847,7 @@ body.page-auditorium {
 body.page-auditorium .hero {
   min-height: 280px;
   padding: 46px 34px;
-  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(8,12,24,0.66) 58%, rgba(0,0,0,0.8) 100%), url("assets/english/Drama-Hotel-Jaan-e-Jaan-at-Arts-Council-16.jpg") center/cover no-repeat;
+  background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(8,12,24,0.66) 58%, rgba(0,0,0,0.8) 100%), url("assets/auditorium/3.jpg") center/cover no-repeat;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 body.page-auditorium .hero h1 {

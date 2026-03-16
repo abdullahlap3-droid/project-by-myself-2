@@ -92,9 +92,9 @@
             <span id="count-musical">0 shows available</span>
           </div>
           <div class="slider-wrap">
-            <button class="slider-btn prev" type="button" aria-label="Previous">�</button>
+            <button class="slider-btn prev" type="button" aria-label="Previous"><</button>
             <div class="shows-grid card-slider" id="box-musical"></div>
-            <button class="slider-btn next" type="button" aria-label="Next">�</button>
+            <button class="slider-btn next" type="button" aria-label="Next">></button>
           </div>
         </section>
         <section class="category" id="cat-hindi">
@@ -103,9 +103,9 @@
             <span id="count-hindi">0 shows available</span>
           </div>
           <div class="slider-wrap">
-            <button class="slider-btn prev" type="button" aria-label="Previous">�</button>
+            <button class="slider-btn prev" type="button" aria-label="Previous"><</button>
             <div class="shows-grid card-slider" id="box-hindi"></div>
-            <button class="slider-btn next" type="button" aria-label="Next">�</button>
+            <button class="slider-btn next" type="button" aria-label="Next">></button>
           </div>
         </section>
         <section class="category" id="cat-comedy">
@@ -114,9 +114,9 @@
             <span id="count-comedy">0 shows available</span>
           </div>
           <div class="slider-wrap">
-            <button class="slider-btn prev" type="button" aria-label="Previous">�</button>
+            <button class="slider-btn prev" type="button" aria-label="Previous"><</button>
             <div class="shows-grid card-slider" id="box-comedy"></div>
-            <button class="slider-btn next" type="button" aria-label="Next">�</button>
+            <button class="slider-btn next" type="button" aria-label="Next">></button>
           </div>
         </section>
         <section class="category" id="cat-contemporary">
@@ -125,9 +125,9 @@
             <span id="count-contemporary">0 shows available</span>
           </div>
           <div class="slider-wrap">
-            <button class="slider-btn prev" type="button" aria-label="Previous">�</button>
+            <button class="slider-btn prev" type="button" aria-label="Previous"><</button>
             <div class="shows-grid card-slider" id="box-contemporary"></div>
-            <button class="slider-btn next" type="button" aria-label="Next">�</button>
+            <button class="slider-btn next" type="button" aria-label="Next">></button>
           </div>
         </section>
         <section class="category" id="cat-new">
@@ -136,9 +136,9 @@
             <span id="count-new">0 shows available</span>
           </div>
           <div class="slider-wrap">
-            <button class="slider-btn prev" type="button" aria-label="Previous">�</button>
+            <button class="slider-btn prev" type="button" aria-label="Previous"><</button>
             <div class="shows-grid card-slider" id="box-new"></div>
-            <button class="slider-btn next" type="button" aria-label="Next">�</button>
+            <button class="slider-btn next" type="button" aria-label="Next">></button>
           </div>
         </section>
         <section class="category" id="cat-historic">
@@ -147,9 +147,9 @@
             <span id="count-historic">0 shows available</span>
           </div>
           <div class="slider-wrap">
-            <button class="slider-btn prev" type="button" aria-label="Previous">�</button>
+            <button class="slider-btn prev" type="button" aria-label="Previous"><</button>
             <div class="shows-grid card-slider" id="box-historic"></div>
-            <button class="slider-btn next" type="button" aria-label="Next">�</button>
+            <button class="slider-btn next" type="button" aria-label="Next">></button>
           </div>
         </section>
         <section class="category" id="cat-upcoming">
@@ -158,9 +158,9 @@
             <span id="count-upcoming">0 shows available</span>
           </div>
           <div class="slider-wrap">
-            <button class="slider-btn prev" type="button" aria-label="Previous">�</button>
+            <button class="slider-btn prev" type="button" aria-label="Previous"><</button>
             <div class="shows-grid card-slider" id="box-upcoming"></div>
-            <button class="slider-btn next" type="button" aria-label="Next">�</button>
+            <button class="slider-btn next" type="button" aria-label="Next">></button>
           </div>
         </section>
       </div>
@@ -299,6 +299,9 @@ $(document).ready(function () {
             fillShowsCategory('#box-contemporary', '#count-contemporary', showsData.contemporary_drama || []);
             fillShowsCategory('#box-new', '#count-new', showsData.new || []);
             fillShowsCategory('#box-upcoming', '#count-upcoming', showsData.upcoming_shows || []);
+            fillShowsCategory('#box-hindi', '#count-hindi', showsData.hindi_theater || []);
+fillShowsCategory('#box-historic', '#count-historic', showsData.historic || []);
+
         })
         .fail(function () {
             console.error("Failed to load data.json. Make sure the file exists and is valid.");
