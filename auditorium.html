@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -39,7 +39,7 @@
       <section class="panel">
         <div class="panel-head">
           <h2>Top Auditoriums</h2>
-          <!-- <span>12 active venues</span> -->
+          
         </div>
         <div class="venues">
           <article class="venue-card">
@@ -120,23 +120,7 @@
           </div>
         </section>
 
-        <!-- <section class="panel">
-          <div class="panel-head">
-            <h2>Quick Booking</h2>
-            <span>request</span>
-          </div>
-          <form class="book">
-            <input type="text" placeholder="Production name">
-            <select>
-              <option>Select venue</option>
-              <option>Grand Arts Council Hall</option>
-              <option>National Cultural Arena</option>
-              <option>City Repertory Theatre</option>
-            </select>
-            <input type="date">
-            <button type="button">Submit Booking Request</button>
-          </form>
-        </section> -->
+        
       </aside>
     </section>
 
@@ -177,7 +161,7 @@
         </div>
       </div>
       <div class="sub-footer">
-        <div>Email: support@theatreshow.com | Phone: +92 300 0000000</div>
+        <div>Email: support@theatreshow.com | Phone: 03492886571</div>
         <div>Need help? Open the Queries page and send your question.</div>
       </div>
     </footer>
@@ -222,7 +206,7 @@ $(document).ready(function () {
         $('.nav').toggleClass('is-open');
     });
 
-    // Venue card click
+    
     $(document).on('click', '.venue-card', function () {
         const $card = $(this);
         const title = $card.find('h3').text() || 'Venue';
@@ -258,6 +242,8 @@ $(document).ready(function () {
   
 </body>
 </html>
+
+
 
 
 

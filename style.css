@@ -381,7 +381,7 @@ body.page-index .recognized button {
   cursor: pointer;
 }
 
-/* ===== PAGE: ARTIST ===== */
+
 body.page-artist {
   background-color: black;
   color: white;
@@ -751,7 +751,7 @@ body.page-artist .dir-row b {
 body.page-artist .dir-row span {
   color: #4f5660;
 }
-/* artist modal */
+
 body.page-artist .modal-content {
   background-color: #141a26;
   color: white;
@@ -840,7 +840,7 @@ body.page-artist #modalImage {
   border: 2px solid #ee3e35;
 }
 
-/* ===== PAGE: AUDITORIUM ===== */
+
 body.page-auditorium {
   background-color: #050607;
 }
@@ -926,7 +926,7 @@ body.page-auditorium .venue-info p {
   color: #b8c2d1;
   margin-bottom: 6px;
 }
-/* auditorium modal */
+
 body.page-auditorium .venue-modal-content {
   background: #0e141d;
   color: #e9eef6;
@@ -1043,7 +1043,7 @@ body.page-auditorium .book button {
   cursor: pointer;
 }
 
-/* ===== PAGE: AWARDS ===== */
+
 body.page-awards {
   background-color: #050607;
 }
@@ -1214,7 +1214,7 @@ body.page-awards .nom-meta {
   color: #dbe4f2;
 }
 
-/* ===== PAGE: MAGAZINES ===== */
+
 body.page-magazines {
   background-color: #050607;
 }
@@ -1421,7 +1421,7 @@ body.page-magazines .mag-meta {
   color: #dbe4f2;
 }
 
-/* ===== PAGE: QUERIES ===== */
+
 body.page-queries {
   background-color: #050607;
 }
@@ -1640,7 +1640,7 @@ body.page-queries .mail-link {
   border-bottom: none;
 }
 
-/* ===== PAGE: SHOWS ===== */
+
 body.page-shows {
   background-color: #050607;
 }
@@ -1791,7 +1791,7 @@ body.page-shows .show-modal-img {
   border-radius: 10px;
   object-fit: cover;
 }
-/* shows modal */
+
 body.page-shows .show-modal-content {
   background: #0e141d;
   color: #e9eef6;
@@ -1961,7 +1961,7 @@ body.page-shows .card-slider > [class*="col-"] {
   max-width: none;
 }
 
-/* ===== PAGE: THEATER-SPEAK ===== */
+
 body.page-theater-speak {
   background: #050607;
   color: #ffffff;
@@ -2056,7 +2056,7 @@ body.page-theater-speak .final-opinion {
   color: #d9e2ee;
 }
 
-/* ===== PAGE: APT-INDEX ===== */
+
 body.page-apt-index {
   background: #000;
   color: #fff;
@@ -2236,7 +2236,7 @@ body.page-apt-index .recognized button {
   cursor: pointer;
 }
 
-/* ===== PAGE: APT-SHOWS ===== */
+
 body.page-apt-shows {
   background: #000;
   color: #fff;
@@ -2340,7 +2340,7 @@ body.page-apt-shows .tags {
 }
 body.page-apt-shows .rating { color: #ffd369; font-weight: 700; }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 1100px) {
   body.page-artist .content-grid { grid-template-columns: 1fr; }
   body.page-awards .spot-grid { grid-template-columns: 1fr; }

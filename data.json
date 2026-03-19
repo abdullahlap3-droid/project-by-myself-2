@@ -113,6 +113,61 @@
                                 "image":  "./assets/english/7.jpg"
                             },
                             {
+                                "title":  "Othelo",
+                                "description":  "Shakespeare’s most tragic love story is revived in this modern interpretation by the Royal Shakespeare Company where two star-crossed lovers risk everything to be together.",
+                                "language":  "English",
+                                "city":  "Francisco",
+                                "runtime":  "1h 30m",
+                                "nextShow":  "sat 9:30 PM",
+                                "rating":  "9.1",
+                               
+                                "image":  "./assets/english/22.jpg"
+                            },
+                            {
+                                "title":  "Romeo and Juliet",
+                                "description":  "Shakespeare’s most tragic love story is revived in this modern interpretation by the Royal Shakespeare Company where two star-crossed lovers risk everything to be together.",
+                                "language":  "English",
+                                "city":  "Francisco",
+                                "runtime":  "1h 50m",
+                                "nextShow":  "sat 7:30 PM",
+                                "rating":  "7.1",
+                               
+                                "image":  "./assets/english/7.jpg"
+                            },
+                            {
+                                "title":  "Romeo and Juliet",
+                                "description":  "Shakespeare’s most tragic love story is revived in this modern interpretation by the Royal Shakespeare Company where two star-crossed lovers risk everything to be together.",
+                                "language":  "English",
+                                "city":  "Francisco",
+                                "runtime":  "1h 50m",
+                                "nextShow":  "sat 7:30 PM",
+                                "rating":  "7.1",
+                               
+                                "image":  "./assets/english/7.jpg"
+                            },
+                            {
+                                "title":  "Romeo and Juliet",
+                                "description":  "Shakespeare’s most tragic love story is revived in this modern interpretation by the Royal Shakespeare Company where two star-crossed lovers risk everything to be together.",
+                                "language":  "English",
+                                "city":  "Francisco",
+                                "runtime":  "1h 50m",
+                                "nextShow":  "sat 7:30 PM",
+                                "rating":  "7.1",
+                               
+                                "image":  "./assets/english/7.jpg"
+                            },
+                            {
+                                "title":  "Romeo and Juliet",
+                                "description":  "Shakespeare’s most tragic love story is revived in this modern interpretation by the Royal Shakespeare Company where two star-crossed lovers risk everything to be together.",
+                                "language":  "English",
+                                "city":  "Francisco",
+                                "runtime":  "1h 50m",
+                                "nextShow":  "sat 7:30 PM",
+                                "rating":  "7.1",
+                               
+                                "image":  "./assets/english/7.jpg"
+                            },
+                            {
                                 "title":  "Henry Vlll",
                                 "description":  "Stratford Festival presents Shakespeare’s Henry VIII, a searing drama about one of England’s most romantic yet brutal periods.",
                                 "language":  "English",
@@ -137,6 +192,94 @@
                                  "image":  "./assets/english/20.jpg"
                              },
                              {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
+                                 "title":  "Sunt in culpa",
+                                 "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                                 "language":  "consectetur",
+                                 "city":  "lorem city",
+                                 "runtime":  "amet 2h 05m",
+                                 "nextShow":  "lorem fri 8:00 PM",
+                                 "rating":  "8.7",
+                                 "romance_image":  "./assets/english/20.jpg",
+                                 "image":  "./assets/english/20.jpg"
+                             },
+                             {
                                  "title":  "Ut labore magna",
                                  "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
                                  "language":  "dolor",
@@ -149,6 +292,72 @@
                              }
                          ],
     "musical_theater":  [
+                            {
+                                "title":  "Sunt in culpa",
+                                "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
+                                "language":  "consectetur",
+                                "city":  "urna park",
+                                "runtime":  "ipsum 1h 35m",
+                                "nextShow":  "lorem fri 8:00 PM",
+                                "rating":  "8.7",
+                                "musical_image":  "./assets/english/Comedy.png",
+                                "image":  "./assets/english/Comedy.png"
+                            },
+                            {
+                                "title":  "Sunt in culpa",
+                                "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
+                                "language":  "consectetur",
+                                "city":  "urna park",
+                                "runtime":  "ipsum 1h 35m",
+                                "nextShow":  "lorem fri 8:00 PM",
+                                "rating":  "8.7",
+                                "musical_image":  "./assets/english/Comedy.png",
+                                "image":  "./assets/english/Comedy.png"
+                            },
+                            {
+                                "title":  "Sunt in culpa",
+                                "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
+                                "language":  "consectetur",
+                                "city":  "urna park",
+                                "runtime":  "ipsum 1h 35m",
+                                "nextShow":  "lorem fri 8:00 PM",
+                                "rating":  "8.7",
+                                "musical_image":  "./assets/english/Comedy.png",
+                                "image":  "./assets/english/Comedy.png"
+                            },
+                            {
+                                "title":  "Sunt in culpa",
+                                "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
+                                "language":  "consectetur",
+                                "city":  "urna park",
+                                "runtime":  "ipsum 1h 35m",
+                                "nextShow":  "lorem fri 8:00 PM",
+                                "rating":  "8.7",
+                                "musical_image":  "./assets/english/Comedy.png",
+                                "image":  "./assets/english/Comedy.png"
+                            },
+                            {
+                                "title":  "Sunt in culpa",
+                                "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
+                                "language":  "consectetur",
+                                "city":  "urna park",
+                                "runtime":  "ipsum 1h 35m",
+                                "nextShow":  "lorem fri 8:00 PM",
+                                "rating":  "8.7",
+                                "musical_image":  "./assets/english/Comedy.png",
+                                "image":  "./assets/english/Comedy.png"
+                            },
+                            {
+                                "title":  "Sunt in culpa",
+                                "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
+                                "language":  "consectetur",
+                                "city":  "urna park",
+                                "runtime":  "ipsum 1h 35m",
+                                "nextShow":  "lorem fri 8:00 PM",
+                                "rating":  "8.7",
+                                "musical_image":  "./assets/english/Comedy.png",
+                                "image":  "./assets/english/Comedy.png"
+                            },
                             {
                                 "title":  "Sunt in culpa",
                                 "description":  "lorem ipsum dolor sit amet consectetur adipiscing elit",
@@ -186,6 +395,72 @@
                           },
                           {
                               "title":  "Minim veniam quis",
+                              "description":  "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                              "language":  "amet",
+                              "city":  "ipsum town",
+                              "runtime":  "amet 2h 05m",
+                              "nextShow":  "lorem fri 8:00 PM",
+                              "rating":  "8.9",
+                              "mystery_image":  "./assets/english/18.jpg",
+                              "image":  "./assets/english/18.jpg"
+                          },
+                          {
+                              "title":  "Minim veniam quis",
+                              "description":  "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                              "language":  "amet",
+                              "city":  "ipsum town",
+                              "runtime":  "amet 2h 05m",
+                              "nextShow":  "lorem fri 8:00 PM",
+                              "rating":  "8.9",
+                              "mystery_image":  "./assets/english/18.jpg",
+                              "image":  "./assets/english/18.jpg"
+                          },
+                          {
+                              "title":  "Minim veniam quis",
+                              "description":  "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                              "language":  "amet",
+                              "city":  "ipsum town",
+                              "runtime":  "amet 2h 05m",
+                              "nextShow":  "lorem fri 8:00 PM",
+                              "rating":  "8.9",
+                              "mystery_image":  "./assets/english/18.jpg",
+                              "image":  "./assets/english/18.jpg"
+                          },
+                          {
+                              "title":  "Minim veniam quis",
+                              "description":  "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                              "language":  "amet",
+                              "city":  "ipsum town",
+                              "runtime":  "amet 2h 05m",
+                              "nextShow":  "lorem fri 8:00 PM",
+                              "rating":  "8.9",
+                              "mystery_image":  "./assets/english/18.jpg",
+                              "image":  "./assets/english/18.jpg"
+                          },
+                          {
+                              "title":  "Minim veniam quis",
+                              "description":  "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                              "language":  "amet",
+                              "city":  "ipsum town",
+                              "runtime":  "amet 2h 05m",
+                              "nextShow":  "lorem fri 8:00 PM",
+                              "rating":  "8.9",
+                              "mystery_image":  "./assets/english/18.jpg",
+                              "image":  "./assets/english/18.jpg"
+                          },
+                          {
+                              "title":  "Minim veniam quis",
+                              "description":  "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                              "language":  "amet",
+                              "city":  "ipsum town",
+                              "runtime":  "amet 2h 05m",
+                              "nextShow":  "lorem fri 8:00 PM",
+                              "rating":  "8.9",
+                              "mystery_image":  "./assets/english/18.jpg",
+                              "image":  "./assets/english/18.jpg"
+                          },
+                          {
+                              "title":  "Minim veniam quis",
                               "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
                               "language":  "lorem",
                               "city":  "urna park",
@@ -197,6 +472,94 @@
                           }
                       ],
     "comedy":  [
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
+                   {
+                       "title":  "Lorem ipsum dolor",
+                       "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                       "language":  "adipiscing",
+                       "city":  "dolor bay",
+                       "runtime":  "dolor 1h 50m",
+                       "nextShow":  "dolor sun 6:15 PM",
+                       "rating":  "8.2",
+                       "comedy_image":  "./assets/english/10.jpg",
+                       "image":  "./assets/english/10.jpg"
+                   },
                    {
                        "title":  "Lorem ipsum dolor",
                        "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
@@ -295,6 +658,94 @@
                     "image":  "./assets/english/14.jpg"
                 },
                 {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
+                    "title":  "Minim veniam quis",
+                    "description":  "duis aute irure dolor in reprehenderit in voluptate velit esse",
+                    "language":  "ipsum",
+                    "city":  "dolor bay",
+                    "runtime":  "elit 2h 20m",
+                    "nextShow":  "elit wed 7:45 PM",
+                    "rating":  "7.4",
+                    "experimental_image":  "./assets/english/14.jpg",
+                    "image":  "./assets/english/14.jpg"
+                },
+                {
                     "title":  "In reprehenderit velit",
                     "description":  "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
                     "language":  "dolor",
@@ -319,6 +770,72 @@
                          "image":  "./assets/english/12.jpg"
                      },
                      {
+                         "title":  "Lorem ipsum dolor",
+                         "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                         "language":  "dolor",
+                         "city":  "vitae hub",
+                         "runtime":  "elit 2h 20m",
+                         "nextShow":  "amet thu 9:00 PM",
+                         "rating":  "7.4",
+                         "historical_image":  "./assets/english/12.jpg",
+                         "image":  "./assets/english/12.jpg"
+                     },
+                     {
+                         "title":  "Lorem ipsum dolor",
+                         "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                         "language":  "dolor",
+                         "city":  "vitae hub",
+                         "runtime":  "elit 2h 20m",
+                         "nextShow":  "amet thu 9:00 PM",
+                         "rating":  "7.4",
+                         "historical_image":  "./assets/english/12.jpg",
+                         "image":  "./assets/english/12.jpg"
+                     },
+                     {
+                         "title":  "Lorem ipsum dolor",
+                         "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                         "language":  "dolor",
+                         "city":  "vitae hub",
+                         "runtime":  "elit 2h 20m",
+                         "nextShow":  "amet thu 9:00 PM",
+                         "rating":  "7.4",
+                         "historical_image":  "./assets/english/12.jpg",
+                         "image":  "./assets/english/12.jpg"
+                     },
+                     {
+                         "title":  "Lorem ipsum dolor",
+                         "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                         "language":  "dolor",
+                         "city":  "vitae hub",
+                         "runtime":  "elit 2h 20m",
+                         "nextShow":  "amet thu 9:00 PM",
+                         "rating":  "7.4",
+                         "historical_image":  "./assets/english/12.jpg",
+                         "image":  "./assets/english/12.jpg"
+                     },
+                     {
+                         "title":  "Lorem ipsum dolor",
+                         "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                         "language":  "dolor",
+                         "city":  "vitae hub",
+                         "runtime":  "elit 2h 20m",
+                         "nextShow":  "amet thu 9:00 PM",
+                         "rating":  "7.4",
+                         "historical_image":  "./assets/english/12.jpg",
+                         "image":  "./assets/english/12.jpg"
+                     },
+                     {
+                         "title":  "Lorem ipsum dolor",
+                         "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
+                         "language":  "dolor",
+                         "city":  "vitae hub",
+                         "runtime":  "elit 2h 20m",
+                         "nextShow":  "amet thu 9:00 PM",
+                         "rating":  "7.4",
+                         "historical_image":  "./assets/english/12.jpg",
+                         "image":  "./assets/english/12.jpg"
+                     },
+                     {
                          "title":  "Ut labore magna",
                          "description":  "excepteur sint occaecat cupidatat non proident sunt in culpa",
                          "language":  "elit",
@@ -331,6 +848,83 @@
                      }
                  ],
     "upcoming_shows":  [
+                           {
+                               "title":  "Consectetur adipiscing",
+                               "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
+                               "language":  "adipiscing",
+                               "city":  "urna park",
+                               "runtime":  "ipsum 1h 35m",
+                               "nextShow":  "elit wed 7:45 PM",
+                               "rating":  "7.4",
+                               "family_image":  "./assets/english/16.jpg",
+                               "image":  "./assets/english/16.jpg"
+                           },
+                           {
+                               "title":  "Consectetur adipiscing",
+                               "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
+                               "language":  "adipiscing",
+                               "city":  "urna park",
+                               "runtime":  "ipsum 1h 35m",
+                               "nextShow":  "elit wed 7:45 PM",
+                               "rating":  "7.4",
+                               "family_image":  "./assets/english/16.jpg",
+                               "image":  "./assets/english/16.jpg"
+                           },
+                           {
+                               "title":  "Consectetur adipiscing",
+                               "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
+                               "language":  "adipiscing",
+                               "city":  "urna park",
+                               "runtime":  "ipsum 1h 35m",
+                               "nextShow":  "elit wed 7:45 PM",
+                               "rating":  "7.4",
+                               "family_image":  "./assets/english/16.jpg",
+                               "image":  "./assets/english/16.jpg"
+                           },
+                           {
+                               "title":  "Consectetur adipiscing",
+                               "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
+                               "language":  "adipiscing",
+                               "city":  "urna park",
+                               "runtime":  "ipsum 1h 35m",
+                               "nextShow":  "elit wed 7:45 PM",
+                               "rating":  "7.4",
+                               "family_image":  "./assets/english/16.jpg",
+                               "image":  "./assets/english/16.jpg"
+                           },
+                           {
+                               "title":  "Consectetur adipiscing",
+                               "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
+                               "language":  "adipiscing",
+                               "city":  "urna park",
+                               "runtime":  "ipsum 1h 35m",
+                               "nextShow":  "elit wed 7:45 PM",
+                               "rating":  "7.4",
+                               "family_image":  "./assets/english/16.jpg",
+                               "image":  "./assets/english/16.jpg"
+                           },
+                           {
+                               "title":  "Consectetur adipiscing",
+                               "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
+                               "language":  "adipiscing",
+                               "city":  "urna park",
+                               "runtime":  "ipsum 1h 35m",
+                               "nextShow":  "elit wed 7:45 PM",
+                               "rating":  "7.4",
+                               "family_image":  "./assets/english/16.jpg",
+                               "image":  "./assets/english/16.jpg"
+                           },
+                           {
+                               "title":  "Consectetur adipiscing",
+                               "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
+                               "language":  "adipiscing",
+                               "city":  "urna park",
+                               "runtime":  "ipsum 1h 35m",
+                               "nextShow":  "elit wed 7:45 PM",
+                               "rating":  "7.4",
+                               "family_image":  "./assets/english/16.jpg",
+                               "image":  "./assets/english/16.jpg"
+                           },
                            {
                                "title":  "Consectetur adipiscing",
                                "description":  "ut enim ad minim veniam quis nostrud exercitation ullamco",
